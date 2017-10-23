@@ -20,27 +20,27 @@ public class PostAction implements Runnable {
 			while(true) {
 				process();
 
-				Logger.log(getClass().getName(), 
+				Logger.debug(getClass().getName(), 
 					"Sleeping on " + (PropsValue.POST_SLEEPING_TIME / 1000) + " seconds...");
 
 				Thread.sleep(PropsValue.POST_SLEEPING_TIME);
 			}
 		}
 		catch (ConfigurationException e) {
-			Logger.log(getClass().getName(), e);
+			Logger.error(getClass().getName(), e);
 		}
 		catch (DAOException e) {
-			Logger.log(getClass().getName(), e);
+			Logger.error(getClass().getName(), e);
 		}
 		catch (InterruptedException e) {
-			Logger.log(getClass().getName(), e);
+			Logger.error(getClass().getName(), e);
 		}
 	}
 
 	protected void process() throws DAOException, ConfigurationException {
 		long start = System.currentTimeMillis();
 
-		Logger.log(getClass().getName(), "Starting PostAction");
+		Logger.debug(getClass().getName(), "Starting PostAction");
 
 		int count = 0;
 
@@ -62,7 +62,7 @@ public class PostAction implements Runnable {
 		finally {
 			GeoCodeAPIHelper.release();
 
-			Logger.log(getClass().getName(), 
+			Logger.debug(getClass().getName(), 
 				String.format("Processed %d records on %d ms", 
 					count, (System.currentTimeMillis() - start)));
 		}
@@ -76,13 +76,13 @@ public class PostAction implements Runnable {
 
 			db.create(postEntry);
 
-			sourceDB.delete(postEntry);
+			sourceDB.deletePost(postEntry.getSeqID());
 		}
 		catch (DAOException e) {
-			Logger.log(getClass().getName(), e);
+			Logger.error(getClass().getName(), e);
 		}
 		catch (GeoCodeException e) {
-			Logger.log(getClass().getName(), e);
+			Logger.error(getClass().getName(), e);
 		}
 	}
 }

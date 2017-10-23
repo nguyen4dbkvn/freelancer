@@ -14,7 +14,7 @@ public class Logger {
 		return _enable;
 	}
 
-	public static void log(String className, String message) {
+	public static void debug(String className, String message) {
 
 		if (isEnable()) {
 			System.out.println(
@@ -24,28 +24,24 @@ public class Logger {
 		}
 	}
 
-	public static void log(String className, Throwable cause) {
+	public static void error(String className, Throwable cause) {
 
-		if (isEnable()) {
-			System.out.println(
-				String.format("%s %s[%s] %s", logSdf.format(new Date()), 
-					Thread.currentThread().getName(), 
-					className, cause.getMessage()));
+		System.out.println(
+			String.format("%s %s[%s] %s", logSdf.format(new Date()), 
+				Thread.currentThread().getName(), 
+				className, cause.getMessage()));
 
-			cause.printStackTrace();
-		}
+		cause.printStackTrace();
 	}
 
-	public static void log(String className, String message, Throwable cause) {
+	public static void error(String className, String message, Throwable cause) {
 
-		if (isEnable()) {
-			System.out.println(
-				String.format("%s %s[%s] %s", logSdf.format(new Date()), 
-					Thread.currentThread().getName(), 
-					className, message));
+		System.out.println(
+			String.format("%s %s[%s] %s", logSdf.format(new Date()), 
+				Thread.currentThread().getName(), 
+				className, message));
 
-			cause.printStackTrace();
-		}
+		cause.printStackTrace();
 	}
 
 	private static boolean _enable = false;

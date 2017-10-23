@@ -19,31 +19,33 @@ public class GetAction implements Runnable {
 			while(true) {
 				process();
 
-				Logger.log(getClass().getName(), 
+				Logger.debug(getClass().getName(), 
 					"Sleeping " + (PropsValue.GET_SLEEPING_TIME / 1000) + " seconds...");
 
 				Thread.sleep(PropsValue.GET_SLEEPING_TIME);
 			}
 		}
 		catch (ConfigurationException e) {
-			Logger.log(getClass().getName(), e);
+			Logger.error(getClass().getName(), e);
 		}
 		catch (DAOException e) {
-			Logger.log(getClass().getName(), e);
+			Logger.error(getClass().getName(), e);
 		}
 		catch (InterruptedException e) {
-			Logger.log(getClass().getName(), e);
+			Logger.error(getClass().getName(), e);
 		}
 	}
 
 	protected void process() throws DAOException, ConfigurationException {
 		long start = System.currentTimeMillis();
 
-		Logger.log(getClass().getName(), "Starting GetAction");
+		Logger.debug(getClass().getName(), "Starting GetAction");
+
 		int count = 0;
 
 		try {
 			String[] sourceDBNames = PropsValue.GET_SOURCE_DB_NAME;
+			String[] desDBNames = PropsValue.GET_DESTINATION_DB_NAME;
 
 			for (String sourceDBName : sourceDBNames) {
 				DBConnection sourceDB = DBConnectionUtil.getDB(sourceDBName.trim(), false);
@@ -54,33 +56,36 @@ public class GetAction implements Runnable {
 
 				for (GetEntry getEntry : getEntries) {
 
-					put(getEntry, sourceDB);
+					for (String desDBName : desDBNames) {
+
+						put(getEntry, sourceDB, desDBName.trim());
+					}
 				}
 			}
 		}
 		finally {
-			Logger.log(getClass().getName(), 
+			Logger.debug(getClass().getName(), 
 				String.format("Processed %d records on %d ms", count, 
 					(System.currentTimeMillis() - start)));
 		}
 	}
 
-	protected void put(GetEntry getEntry, DBConnection sourceDB) 
+	protected void put(GetEntry getEntry, DBConnection sourceDB, String desDBName) 
 		throws DAOException {
 		try {
-			String desDBName = getEntry.getDBName();
+			DBConnection desDB = DBConnectionUtil.getDB(desDBName, true);
 
-			DBConnection desDB = DBConnectionUtil.getDB(desDBName.trim(), true);
+			getEntry.setDBName(sourceDB.getName());
 
 			desDB.create(getEntry);
 
-			sourceDB.delete(getEntry);
+			sourceDB.deleteGet(getEntry.getSeqID());
 		}
 		catch (DAOException e) {
-			Logger.log(getClass().getName(), e);
+			Logger.error(getClass().getName(), e);
 		}
 		catch (GeoCodeException e) {
-			Logger.log(getClass().getName(), e);
+			Logger.error(getClass().getName(), e);
 		}
 	}
 }

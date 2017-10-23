@@ -15,7 +15,7 @@ import vn.bakastar.model.GetEntry;
 public class GetModelDAOImpl extends BaseModelDAOImpl implements GetModelDAO {
 
 	protected static final String SQL_INSERT = 
-		"INSERT INTO [$TABLE_NAME$] (accountID, deviceID, timestamp, statusCode, statusLastingTime, latitude, longitude, gpsAge, speedKPH, heading, altitude, address, distanceKM, odometerKM, creationTime, driverID, driverStatus, driverMessage, Cua, DieuHoa, Speed30s, params, imei) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+		"INSERT INTO [$TABLE_NAME$] (accountID, deviceID, timestamp, statusCode, statusLastingTime, latitude, longitude, gpsAge, speedKPH, heading, altitude, address, distanceKM, odometerKM, creationTime, driverID, driverStatus, driverMessage, Cua, DieuHoa, Speed30s, params, db_name, imei) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
 	public GetModelDAOImpl(DBConnection daoFactory, String tableName) {
 		super(daoFactory, tableName);
@@ -66,6 +66,7 @@ public class GetModelDAOImpl extends BaseModelDAOImpl implements GetModelDAO {
 			getEntry.getDieuHoa(),
 			getEntry.getSpeed30s(),
 			getEntry.getParams(),
+			getEntry.getDBName(),
 			getEntry.getImei()
 		};
 

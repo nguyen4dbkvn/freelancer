@@ -58,7 +58,7 @@ class GeoCodeAPIClientImpl implements GeoCodeAPIClient {
 		}
 		catch (IOException e) {
 
-			Logger.log(getClass().getName(), "Unable to close client", e);
+			Logger.error(getClass().getName(), "Unable to close client", e);
 		}
 
 		_httpClient = null;
@@ -75,7 +75,7 @@ class GeoCodeAPIClientImpl implements GeoCodeAPIClient {
 
 			if (address == null || address.trim().length() == 0) {
 
-				Logger.log(getClass().getName(), 
+				Logger.debug(getClass().getName(), 
 					String.format(
 						"Not found location of (%f, %f) by QueryRoad", 
 						latitude, longitude));
@@ -85,7 +85,7 @@ class GeoCodeAPIClientImpl implements GeoCodeAPIClient {
 		}
 		catch (GeoCodeException e) {
 
-			Logger.log(getClass().getName(), e);
+			Logger.error(getClass().getName(), e);
 
 			address = getAddressByZone(latitude, longitude);
 		}
@@ -111,7 +111,7 @@ class GeoCodeAPIClientImpl implements GeoCodeAPIClient {
 
 			String address = GeoCodeResultHelper.getAddressByRoad(response);
 
-			Logger.log(getClass().getName(), String.format(
+			Logger.debug(getClass().getName(), String.format(
 					"Method[%s] - executedTime: %d ms - POINT(%f, %f): %s", 
 					"QueryRoad", (System.currentTimeMillis() - start), 
 					latitude, longitude, address));
@@ -141,7 +141,7 @@ class GeoCodeAPIClientImpl implements GeoCodeAPIClient {
 
 			String address =  GeoCodeResultHelper.getAddressByZone(response);
 
-			Logger.log(getClass().getName(), String.format(
+			Logger.debug(getClass().getName(), String.format(
 					"Method[%s] - executedTime: %d ms - POINT(%f, %f): %s", 
 					"QueryZone", (System.currentTimeMillis() - start), 
 					latitude, longitude, address));

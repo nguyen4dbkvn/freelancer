@@ -3,7 +3,9 @@ package vn.bakastar.util;
 public class PropsKey {
 
 	public static final String POST_SOURCE_DB_NAME = "post.source.db.name";
+
 	public static final String GET_SOURCE_DB_NAME = "get.source.db.name";
+	public static final String GET_DESTINATION_DB_NAME = "get.destination.db.name";
 
 	public static final String JDBC_URL = "jdbc.url";
 	public static final String JDBC_DRIVER = "jdbc.driver";

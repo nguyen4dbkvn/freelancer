@@ -9,7 +9,7 @@ public class PropsValue {
 	public static final long SLEEPING_MIN_TIME_DEFAULT = 1;		//unit: second
 	public static final long SLEEPING_MAX_TIME_DEFAULT = 60;	//unit: second
 
-	public static final String POST_SOURCE_DB_NAME_DEFAULT = "gtse";
+	public static final String POST_SOURCE_DB_NAME_DEFAULT = "gpst@123.30.168.68";
 
 	public static final String POST_SOURCE_TABLE_NAME_DEFAULT = "dv_ed_post";
 	public static final String POST_DESTINATION_TABLE_NAME_DEFAULT = "ED_Get";
@@ -27,8 +27,11 @@ public class PropsValue {
 	// ------------------ PROPERTIES VALUE --------------------
 	public static final String[] POST_SOURCE_DB_NAME = 
 		PropsUtil.get(PropsKey.POST_SOURCE_DB_NAME, new String[] {POST_SOURCE_DB_NAME_DEFAULT});
+
 	public static final String[] GET_SOURCE_DB_NAME = 
 		PropsUtil.get(PropsKey.GET_SOURCE_DB_NAME, new String[]{});
+	public static final String[] GET_DESTINATION_DB_NAME =
+		PropsUtil.get(PropsKey.GET_DESTINATION_DB_NAME, new String[]{POST_SOURCE_DB_NAME_DEFAULT});
 
 	public static final String POST_SOURCE_TABLE_NAME = 
 		PropsUtil.get(PropsKey.POST_SOURCE_TABLE_NAME, POST_SOURCE_TABLE_NAME_DEFAULT);
