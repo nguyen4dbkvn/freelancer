@@ -2,6 +2,8 @@ package vn.bakastar.model;
 
 import java.io.Serializable;
 
+import vn.bakastar.geocode.connection.GeoCodeAPIHelper;
+
 public class PostEntry implements Serializable {
 
 	private static final long serialVersionUID = 4727507474252873626L;
@@ -134,8 +136,7 @@ public class PostEntry implements Serializable {
 	}
 
 	public String getAddress() {
-		// TODO
-		return "TODO";
+		return GeoCodeAPIHelper.getAddress(latitude, longitude);
 	}
 
 	public void setDistanceKM(double distanceKm) {

@@ -1,51 +1,51 @@
 package vn.bakastar.geocode.connection;
 
 import java.io.IOException;
-import java.io.UnsupportedEncodingException;
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.nio.charset.StandardCharsets;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 import org.apache.http.HttpEntity;
-import org.apache.http.NameValuePair;
 import org.apache.http.StatusLine;
-import org.apache.http.client.entity.UrlEncodedFormEntity;
+import org.apache.http.auth.AuthScope;
+import org.apache.http.auth.UsernamePasswordCredentials;
+import org.apache.http.client.CredentialsProvider;
 import org.apache.http.client.methods.CloseableHttpResponse;
-import org.apache.http.client.methods.HttpPost;
-import org.apache.http.entity.ContentType;
-import org.apache.http.entity.mime.MultipartEntityBuilder;
+import org.apache.http.client.methods.HttpGet;
+import org.apache.http.client.utils.URIBuilder;
+import org.apache.http.impl.client.BasicCredentialsProvider;
 import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClients;
 import org.apache.http.impl.conn.PoolingHttpClientConnectionManager;
-import org.apache.http.message.BasicNameValuePair;
 import org.apache.http.util.EntityUtils;
 
 import vn.bakastar.exceptions.GeoCodeException;
+import vn.bakastar.util.Logger;
+import vn.bakastar.util.PropsValue;
 
-public class GeoCodeAPIClientImpl implements GeoCodeAPIClient {
+class GeoCodeAPIClientImpl implements GeoCodeAPIClient {
 
-	public GeoCodeAPIClientImpl(TopicAPIConfiguration configuation) {
+	GeoCodeAPIClientImpl() {
 
-		_configuation = configuation;
+		_getRoadURL = PropsValue.GEOCODE_API_FQDN + PropsValue.GEOCODE_API_GET_ROAD_CONTEXT;
+		_getZoneURL = PropsValue.GEOCODE_API_FQDN + PropsValue.GEOCODE_API_GET_ZONE_CONTEXT;
 
-		StringBuffer sb = new StringBuffer(4);
-
-		sb.append("https://");
-		sb.append(configuation.topicApiFQDN());
-		if (configuation.topicApiPort() != 443) {
-			sb.append(":");
-			sb.append(configuation.topicApiPort());
-		}
-		_rootURL = sb.toString();
-		
 		PoolingHttpClientConnectionManager connectionManager = 
-			new PoolingHttpClientConnectionManager(3000, TimeUnit.MILLISECONDS);
+			new PoolingHttpClientConnectionManager(
+				PropsValue.GEOCODE_API_TIME_TO_LIVE, TimeUnit.MILLISECONDS);
 		connectionManager.setMaxTotal(200);
 		connectionManager.setDefaultMaxPerRoute(100);
 
+		CredentialsProvider provider = new BasicCredentialsProvider();
+		UsernamePasswordCredentials credentials =
+			new UsernamePasswordCredentials(
+				PropsValue.GEOCODE_API_USERNAME, PropsValue.GEOCODE_API_PASSWORD);
+		provider.setCredentials(AuthScope.ANY, credentials);
+
 		_httpClient = HttpClients.custom()
 				.setConnectionManager(connectionManager)
+				.setDefaultCredentialsProvider(provider)
 				.build();
 	}
 
@@ -55,131 +55,92 @@ public class GeoCodeAPIClientImpl implements GeoCodeAPIClient {
 			_httpClient.close();
 		}
 		catch (IOException e) {
-			_logger.error("Unable to close client", e);
+
+			Logger.log(getClass().getName(), "Unable to close client", e);
 		}
 
 		_httpClient = null;
-		_configuation = null;
-		_rootURL = null;
 	}
 
 	@Override
-	public JSONObject certificateAuthentication(byte[] certFile) throws GeoCodeException {
+	public String getAddress(double latitude, double longitude) 
+		throws GeoCodeException {
 
-		MultipartEntityBuilder builder = MultipartEntityBuilder.create();
-		builder.addTextBody(API_KEY, _configuation.topicApiApiKey());
-		builder.addTextBody(SYSTEM_CD, _configuation.topicApiSystemCd());
-		builder.addBinaryBody(CERT_FILE, certFile, ContentType.DEFAULT_BINARY, "certfile.txt");
-
-		HttpEntity multipart = builder.build();
-
-		String respone = doExcecute(
-			_configuation.topicApiCertificationAuthentication(), multipart);
-
-		JSONObject result;
-		try {
-			result = parseJSON(respone);
-		} catch (JSONException e) {
-			throw new TopicAPIException.CertificateAuthenticationFailure(
-				"Invalid JSON response: " + respone);
-		}
-
-		String resultCode = result.getString(
-			TopicAPIResponseParams.CertificateAuthentication.RESULT);
-
-		if (Validator.isNull(resultCode) || !resultCode.equals("00")) {
-			throw new TopicAPIException.CertificateAuthenticationFailure(
-					respone, resultCode);
-		}
-
-		return result;
-	}
-
-	@Override
-	public JSONObject authConfirm(String hash, int infoRequest) throws GeoCodeException {
-
-		List<NameValuePair> params = new ArrayList<>();
-		params.add(new BasicNameValuePair(API_KEY, _configuation.topicApiApiKey()));
-		params.add(new BasicNameValuePair(SYSTEM_CD, _configuation.topicApiSystemCd()));
-		params.add(new BasicNameValuePair(HASH, hash));
-		params.add(new BasicNameValuePair(INFO_REQUEST, String.valueOf(infoRequest)));
-
-		String respone = null;
-		JSONObject result;
+		String address = null;
 
 		try {
-			HttpEntity entity = new UrlEncodedFormEntity(params);
+			address = getAddressByRoad(latitude, longitude);
 
-			respone = doExcecute(
-					_configuation.topicApiAuthConfirm(), entity);
+			if (address == null || address.trim().length() == 0) {
 
-			result = parseJSON(respone);
-
-			String resultCode = result.getString(
-				TopicAPIResponseParams.AuthConfirm.RESULT);
-
-			if (Validator.isNull(resultCode) || !resultCode.equals("00")) {
-				throw new TopicAPIException.AuthConfirmFailure(
-						respone, resultCode);
+				address = getAddressByZone(latitude, longitude);
 			}
+		}
+		catch (GeoCodeException e) {
 
-			return result;
-		} catch (UnsupportedEncodingException e) {
-			throw new TopicAPIException.AuthConfirmFailure(e);
-		} catch (JSONException e) {
-			throw new TopicAPIException.AuthConfirmFailure(
-				"Invalid JSON response: " + respone);
+			Logger.log(getClass().getName(), e);
+
+			address = getAddressByZone(latitude, longitude);
+		}
+
+		return address;
+	}
+
+	protected String getAddressByRoad(double latitude, double longitude) 
+		throws GeoCodeException {
+
+		String response = null;
+
+		try {
+			URIBuilder builder = new URIBuilder(_getRoadURL)
+				.addParameter(LATITUDE, String.valueOf(latitude))
+				.addParameter(LONGITUDE, String.valueOf(longitude));
+
+			URI uri = builder.build();
+
+			response = doExcecute(uri);
+
+			return GeoCodeResultHelper.getAddressByRoad(response);
+		}
+		catch (URISyntaxException e) {
+			throw new GeoCodeException(e);
 		}
 	}
 
-	@Override
-	public JSONObject signatureVerification(byte[] certFile, byte[] appFile,
-			byte[] signFile) throws GeoCodeException {
+	protected String getAddressByZone(double latitude, double longitude) 
+		throws GeoCodeException {
 
-		MultipartEntityBuilder builder = MultipartEntityBuilder.create();
-		builder.addTextBody(API_KEY, _configuation.topicApiApiKey());
-		builder.addTextBody(SYSTEM_CD, _configuation.topicApiSystemCd());
-		builder.addBinaryBody(CERT_FILE, certFile, ContentType.DEFAULT_BINARY, "certfile.txt");
-		builder.addBinaryBody(APP_FILE, appFile, ContentType.DEFAULT_BINARY, "appfile.txt");
-		builder.addBinaryBody(SIGN_FILE, signFile, ContentType.DEFAULT_BINARY, "signfile.txt");
+		String response = null;
 
-		HttpEntity multipart = builder.build();
-
-		String respone = doExcecute(
-			_configuation.topicApiSignatureVerification(), multipart);
-
-		JSONObject result;
 		try {
-			result = parseJSON(respone);
-		} catch (JSONException e) {
-			throw new TopicAPIException.SignatureVerificationFailure(
-				"Invalid JSON response: " + respone);
+			URIBuilder builder = new URIBuilder(_getZoneURL)
+				.addParameter(LATITUDE, String.valueOf(latitude))
+				.addParameter(LONGITUDE, String.valueOf(longitude));
+
+			URI uri = builder.build();
+
+			response = doExcecute(uri);
+
+			return GeoCodeResultHelper.getAddressByZone(response);
+		} 
+		catch (URISyntaxException e) {
+			throw new GeoCodeException(e);
 		}
-
-		String resultCode = result.getString(
-			TopicAPIResponseParams.SignatureVerification.RESULT);
-
-		if (Validator.isNull(resultCode) || !(resultCode.equals("00") 
-				|| resultCode.equals("01"))) {
-			throw new TopicAPIException.SignatureVerificationFailure(
-					respone, resultCode);
-		}
-
-		return result;
 	}
 
-	protected String doExcecute(String apiContext, HttpEntity requestEntity) {
-		HttpPost httpPost = new HttpPost(getApiURL(apiContext));
+	protected String doExcecute(URI uri) throws GeoCodeException {
+		long start = System.currentTimeMillis();
+		
+		HttpGet httpGet = new HttpGet(uri);
 
 		try {
-			httpPost.setEntity(requestEntity);
-
-			CloseableHttpResponse httpResponse = _httpClient.execute(httpPost);
+			System.out.println("excecuting: " + uri.toString());
+			CloseableHttpResponse httpResponse = _httpClient.execute(httpGet);
 
 			StatusLine statusLine = httpResponse.getStatusLine();
 			int statusCode = statusLine.getStatusCode();
 
-			if (statusCode >= 400) {
+			if (statusCode < 200 || statusCode >= 300) {
 				String message = null;
 
 				if (httpResponse.getEntity() != null) {
@@ -188,34 +149,24 @@ public class GeoCodeAPIClientImpl implements GeoCodeAPIClient {
 					message = EntityUtils.toString(resEntity, StandardCharsets.UTF_8);
 				}
 
-				throw new TopicAPIException.CommunicationFailure(message, statusCode);
+				throw new GeoCodeException(message, statusCode);
 			}
+			System.out.println("excecuted: " + (System.currentTimeMillis() - start) + "ms");
 
 			return EntityUtils.toString(httpResponse.getEntity(), StandardCharsets.UTF_8);
 		} catch (IOException e) {
-			throw new TopicAPIException.CommunicationFailure(
-					"Unable to commuticate with TOPIC API", e);
+			throw new GeoCodeException(
+					"Unable to commuticate with GeoCode API", e);
 		} finally {
-			httpPost.releaseConnection();
+			if (httpGet != null)
+				httpGet.releaseConnection();
 		}
 	}
 
-	protected String getApiURL(String context) {
+	protected static final String LONGITUDE = "pos_lon";
+	protected static final String LATITUDE = "pos_lat";
 
-		return (_rootURL + context);
-	}
-
-	protected static final String API_KEY = "api_key";
-	protected static final String SYSTEM_CD = "system_cd";
-	protected static final String CERT_FILE = "certfile";
-	protected static final String APP_FILE = "appfile";
-	protected static final String SIGN_FILE = "signfile";
-	protected static final String HASH = "hash";
-	protected static final String INFO_REQUEST = "inforequest";
-
-	private CloseableHttpClient _httpClient;
-	private TopicAPIConfiguration _configuation;
-	private String _rootURL;
-
-	private static final Log _logger = LogFactoryUtil.getLog(GeoCodeAPIClientImpl.class);
+	protected CloseableHttpClient _httpClient;
+	protected String _getRoadURL;
+	protected String _getZoneURL;
 }

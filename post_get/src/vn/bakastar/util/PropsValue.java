@@ -5,31 +5,60 @@ public class PropsValue {
 	// ---------------- DEFAULT VALUE ---------------------
 	public static final String MYSQL_JDBC_DRIVER = "com.mysql.jdbc.Driver";
 
-	public static final long DEFAULT_SLEEPING_TIME = 15;
+	public static final long SLEEPING_TIME_DEFAULT = 15;
+	public static final long SLEEPING_MIN_TIME_DEFAULT = 1;
+	public static final long SLEEPING_MAX_TIME_DEFAULT = 60;
 
-	public static final long DEFAULT_SLEEPING_MIN_TIME = 1;
+	public static final String ORIGINAL_DB_NAME_DEFAULT = "gtse";
 
-	public static final long DEFAULT_SLEEPING_MAX_TIME = 60;
+	public static final String POST_SOURCE_TABLE_NAME_DEFAULT = "dv_ed_post";
+	public static final String POST_DESTINATION_TABLE_NAME_DEFAULT = "ED_Get";
 
-	public static final String DEFAULT_ORIGINAL_DB_NAME = "gtse";
+	public static final String GET_SOURCE_TABLE_NAME_DEFAULT = "ED_Post";
+	public static final String GET_DESTINATION_TABLE_NAME_DEFAULT = "dv_ed_get";
 
-	public static final String DEFAULT_POST_TABLE_POST_NAME = "dv_ed_post";
-	public static final String DEFAULT_POST_TABLE_GET_NAME = "ED_Get";
-
-	public static final String DEFAULT_GET_TABLE_POST_NAME = "ED_Post";
-	public static final String DEFAULT_GET_TABLE_GET_NAME = "dv_ed_get";
+	public static final String GEOCODE_API_FQDN_DEFAULT = "https://esi.vn/geocode";
+	public static final String GEOCODE_API_GET_ROAD_CONTEXT_DEFAULT = "/geo/road";
+	public static final String GEOCODE_API_GET_ZONE_CONTEXT_DEFAULT = "/geo/zone";
+	public static final String GEOCODE_API_USERNAME_DEFAULT = "vmg-geocode";
+	public static final String GEOCODE_API_PASSWORD_DEFAULT = "TruyvanGe0";
+	public static final long GEOCODE_TIME_TO_LIVE_DEFAULT = 1000;
 
 	// ------------------ PROPERTIES VALUE --------------------
 	public static final String ORIGINAL_DB_NAME = 
-		PropsUtil.get(PropsKey.ORIGINAL_DB_NAME, DEFAULT_ORIGINAL_DB_NAME);
+		PropsUtil.get(PropsKey.ORIGINAL_DB_NAME, ORIGINAL_DB_NAME_DEFAULT);
 
-	public static final String POST_TABLE_POST_NAME = 
-		PropsUtil.get(PropsKey.POST_TABLE_POST_NAME, DEFAULT_POST_TABLE_POST_NAME);
-	public static final String POST_TABLE_GET_NAME = 
-		PropsUtil.get(PropsKey.POST_TABLE_GET_NAME, DEFAULT_POST_TABLE_GET_NAME);
+	public static final String POST_SOURCE_TABLE_NAME = 
+		PropsUtil.get(PropsKey.POST_SOURCE_TABLE_NAME, POST_SOURCE_TABLE_NAME_DEFAULT);
+	public static final String POST_DESTINATION_TABLE_NAME = 
+		PropsUtil.get(PropsKey.POST_DESTINATION_TABLE_NAME, POST_DESTINATION_TABLE_NAME_DEFAULT);
 
-	public static final String GET_TABLE_POST_NAME = 
-		PropsUtil.get(PropsKey.GET_TABLE_POST_NAME, DEFAULT_GET_TABLE_POST_NAME);
-	public static final String GET_TABLE_GET_NAME = 
-		PropsUtil.get(PropsKey.GET_TABLE_GET_NAME, DEFAULT_GET_TABLE_GET_NAME);
+	public static final String GET_SOURCE_TABLE_NAME = 
+		PropsUtil.get(PropsKey.GET_SOURCE_TABLE_NAME, GET_SOURCE_TABLE_NAME_DEFAULT);
+	public static final String GET_DESTINATION_TABLE_NAME = 
+		PropsUtil.get(PropsKey.GET_DESTINATION_TABLE_NAME, GET_DESTINATION_TABLE_NAME_DEFAULT);
+
+	public static final String GEOCODE_API_FQDN = 
+		PropsUtil.get(PropsKey.GEOCODE_API_FQDN, GEOCODE_API_FQDN_DEFAULT);
+	public static final String GEOCODE_API_GET_ROAD_CONTEXT = 
+		PropsUtil.get(PropsKey.GEOCODE_API_GET_ROAD_CONTEXT, GEOCODE_API_GET_ROAD_CONTEXT_DEFAULT);
+	public static final String GEOCODE_API_GET_ZONE_CONTEXT = 
+		PropsUtil.get(PropsKey.GEOCODE_API_GET_ZONE_CONTEXT, GEOCODE_API_GET_ZONE_CONTEXT_DEFAULT);
+	public static final String GEOCODE_API_USERNAME = 
+		PropsUtil.get(PropsKey.GEOCODE_API_USERNAME, GEOCODE_API_USERNAME_DEFAULT);
+	public static final String GEOCODE_API_PASSWORD = 
+		PropsUtil.get(PropsKey.GEOCODE_API_PASSWORD, GEOCODE_API_PASSWORD_DEFAULT);
+	public static final long GEOCODE_API_TIME_TO_LIVE =
+		PropsUtil.get(PropsKey.GEOCODE_API_TIME_TO_LIVE, GEOCODE_TIME_TO_LIVE_DEFAULT);
+
+	public static final long SLEEPING_MIN_TIME =
+		PropsUtil.get(PropsKey.SLEEPING_MIN_TIME, SLEEPING_MIN_TIME_DEFAULT);
+	public static final long SLEEPING_MAX_TIME =
+		PropsUtil.get(PropsKey.SLEEPING_MAX_TIME, SLEEPING_MAX_TIME_DEFAULT);
+	public static final long GET_SLEEPING_TIME =
+		PropsUtil.get(PropsUtil.get(PropsKey.GET_SLEEPING_TIME, SLEEPING_TIME_DEFAULT), 
+			SLEEPING_MAX_TIME, SLEEPING_MIN_TIME);
+	public static final long POST_SLEEPING_TIME =
+		PropsUtil.get(PropsUtil.get(PropsKey.POST_SLEEPING_TIME, SLEEPING_TIME_DEFAULT), 
+			SLEEPING_MAX_TIME, SLEEPING_MIN_TIME);
 }
