@@ -55,7 +55,7 @@ public abstract class BaseModelDAOImpl implements ModelDAO {
 
 		try (
 			Connection conn = _daoFactory.getConnection();
-			PreparedStatement statement = preparedStatement(conn, SQL_DELETE, false, values);
+			PreparedStatement statement = preparedStatement(conn, replace(SQL_DELETE), false, values);
 		) {
 			int affectedRows = statement.executeUpdate();
 
@@ -75,7 +75,7 @@ public abstract class BaseModelDAOImpl implements ModelDAO {
 	protected String replace(String query) {
 
 		String sql = query.replace("[$TABLE_NAME$]", _tableName);
-		System.out.println(sql);
+
 		return sql;
 	}
 

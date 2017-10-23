@@ -41,8 +41,8 @@ public class DBConnection {
 		String userName = PropsUtil.get(name + "." + PropsKey.JDBC_USERNAME);
 		String password = PropsUtil.get(name + "." + PropsKey.JDBC_PASSWORD);
 
-		String postTableName = PropsValue.GET_SOURCE_TABLE_NAME;
-		String getTableName = PropsValue.POST_DESTINATION_TABLE_NAME;
+		String postTableName = PropsValue.POST_DESTINATION_TABLE_NAME;
+		String getTableName = PropsValue.GET_SOURCE_TABLE_NAME;
 
 		if (original) {
 			postTableName = PropsValue.POST_SOURCE_TABLE_NAME;

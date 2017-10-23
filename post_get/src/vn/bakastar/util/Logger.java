@@ -17,19 +17,20 @@ public class Logger {
 	public static void log(String className, String message) {
 
 		if (isEnable()) {
-			System.out.print(
-				String.format("%s [%s][%s] %s", 
-					Thread.currentThread().getName(), className, 
-					logSdf.format(new Date()), message));
+			System.out.println(
+				String.format("%s %s[%s] %s", 
+					logSdf.format(new Date()),
+					Thread.currentThread().getName(), className, message));
 		}
 	}
 
 	public static void log(String className, Throwable cause) {
 
 		if (isEnable()) {
-			System.out.print(
-				String.format("%s [%s][%s] %s", Thread.currentThread().getName(), 
-					className, logSdf.format(new Date()), cause.getMessage()));
+			System.out.println(
+				String.format("%s %s[%s] %s", logSdf.format(new Date()), 
+					Thread.currentThread().getName(), 
+					className, cause.getMessage()));
 
 			cause.printStackTrace();
 		}
@@ -38,9 +39,10 @@ public class Logger {
 	public static void log(String className, String message, Throwable cause) {
 
 		if (isEnable()) {
-			System.out.print(
-				String.format("%s [%s][%s] %s", Thread.currentThread().getName(), 
-					className, logSdf.format(new Date()), message));
+			System.out.println(
+				String.format("%s %s[%s] %s", logSdf.format(new Date()), 
+					Thread.currentThread().getName(), 
+					className, message));
 
 			cause.printStackTrace();
 		}

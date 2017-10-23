@@ -38,6 +38,23 @@ public class PropsUtil {
 		return PROPERTIES.getProperty(key, defaultValue);
 	}
 
+	public static String[] get(String key, String[] defaultValues) {
+
+		String value = get(key);
+		String[] results = null;
+
+		if (value != null && value.trim().length() != 0) {
+			results = value.split(",");
+		}
+
+		if (results != null && results.length != 0) {
+			return results;
+		}
+		else {
+			return defaultValues;
+		}
+	}
+
 	public static long get(String key, long defaultValue) {
 
 		return Long.parseLong(get(key, String.valueOf(defaultValue)));

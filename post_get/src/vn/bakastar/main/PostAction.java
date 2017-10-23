@@ -17,9 +17,14 @@ public class PostAction implements Runnable {
 	@Override
 	public void run() {
 		try {
-			process();
+			while(true) {
+				process();
 
-			Thread.sleep(PropsValue.POST_SLEEPING_TIME);
+				Logger.log(getClass().getName(), 
+					"Sleeping on " + (PropsValue.POST_SLEEPING_TIME / 1000) + " seconds...");
+
+				Thread.sleep(PropsValue.POST_SLEEPING_TIME);
+			}
 		}
 		catch (ConfigurationException e) {
 			Logger.log(getClass().getName(), e);
@@ -33,29 +38,45 @@ public class PostAction implements Runnable {
 	}
 
 	protected void process() throws DAOException, ConfigurationException {
-		DBConnection originalDB = DBConnectionUtil.getOriginalDB();
+		long start = System.currentTimeMillis();
+
+		Logger.log(getClass().getName(), "Starting PostAction");
+
+		int count = 0;
 
 		try {
-			List<PostEntry> posts = originalDB.listPost();
+			String[] sourceDBNames = PropsValue.POST_SOURCE_DB_NAME;
 
-			for (PostEntry post : posts) {
-				put(post, originalDB);
+			for (String sourceDBName : sourceDBNames) {
+				DBConnection sourceDB = DBConnectionUtil.getDB(sourceDBName.trim(), true);
+
+				List<PostEntry> posts = sourceDB.listPost();
+
+				count = posts.size();
+
+				for (PostEntry post : posts) {
+					put(post, sourceDB);
+				}
 			}
 		}
 		finally {
 			GeoCodeAPIHelper.release();
+
+			Logger.log(getClass().getName(), 
+				String.format("Processed %d records on %d ms", 
+					count, (System.currentTimeMillis() - start)));
 		}
 	}
 
-	protected void put(PostEntry postEntry, DBConnection originalDB) {
+	protected void put(PostEntry postEntry, DBConnection sourceDB) {
 		try {
 			String dbName = postEntry.getDBName();
 
-			DBConnection db = DBConnectionUtil.getDB(dbName);
+			DBConnection db = DBConnectionUtil.getDB(dbName.trim(), false);
 
 			db.create(postEntry);
 
-			originalDB.delete(postEntry);
+			sourceDB.delete(postEntry);
 		}
 		catch (DAOException e) {
 			Logger.log(getClass().getName(), e);

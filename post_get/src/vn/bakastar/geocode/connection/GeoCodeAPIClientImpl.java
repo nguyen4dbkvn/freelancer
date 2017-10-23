@@ -52,7 +52,9 @@ class GeoCodeAPIClientImpl implements GeoCodeAPIClient {
 	@Override
 	public void destroy() {
 		try {
-			_httpClient.close();
+			if (_httpClient != null) {
+				_httpClient.close();
+			}
 		}
 		catch (IOException e) {
 
@@ -73,6 +75,11 @@ class GeoCodeAPIClientImpl implements GeoCodeAPIClient {
 
 			if (address == null || address.trim().length() == 0) {
 
+				Logger.log(getClass().getName(), 
+					String.format(
+						"Not found location of (%f, %f) by QueryRoad", 
+						latitude, longitude));
+
 				address = getAddressByZone(latitude, longitude);
 			}
 		}
@@ -89,6 +96,8 @@ class GeoCodeAPIClientImpl implements GeoCodeAPIClient {
 	protected String getAddressByRoad(double latitude, double longitude) 
 		throws GeoCodeException {
 
+		long start = System.currentTimeMillis();
+
 		String response = null;
 
 		try {
@@ -100,7 +109,14 @@ class GeoCodeAPIClientImpl implements GeoCodeAPIClient {
 
 			response = doExcecute(uri);
 
-			return GeoCodeResultHelper.getAddressByRoad(response);
+			String address = GeoCodeResultHelper.getAddressByRoad(response);
+
+			Logger.log(getClass().getName(), String.format(
+					"Method[%s] - executedTime: %d ms - POINT(%f, %f): %s", 
+					"QueryRoad", (System.currentTimeMillis() - start), 
+					latitude, longitude, address));
+
+			return address;
 		}
 		catch (URISyntaxException e) {
 			throw new GeoCodeException(e);
@@ -109,6 +125,8 @@ class GeoCodeAPIClientImpl implements GeoCodeAPIClient {
 
 	protected String getAddressByZone(double latitude, double longitude) 
 		throws GeoCodeException {
+
+		long start = System.currentTimeMillis();
 
 		String response = null;
 
@@ -121,7 +139,14 @@ class GeoCodeAPIClientImpl implements GeoCodeAPIClient {
 
 			response = doExcecute(uri);
 
-			return GeoCodeResultHelper.getAddressByZone(response);
+			String address =  GeoCodeResultHelper.getAddressByZone(response);
+
+			Logger.log(getClass().getName(), String.format(
+					"Method[%s] - executedTime: %d ms - POINT(%f, %f): %s", 
+					"QueryZone", (System.currentTimeMillis() - start), 
+					latitude, longitude, address));
+
+			return address;
 		} 
 		catch (URISyntaxException e) {
 			throw new GeoCodeException(e);
@@ -129,12 +154,9 @@ class GeoCodeAPIClientImpl implements GeoCodeAPIClient {
 	}
 
 	protected String doExcecute(URI uri) throws GeoCodeException {
-		long start = System.currentTimeMillis();
-		
 		HttpGet httpGet = new HttpGet(uri);
 
 		try {
-			System.out.println("excecuting: " + uri.toString());
 			CloseableHttpResponse httpResponse = _httpClient.execute(httpGet);
 
 			StatusLine statusLine = httpResponse.getStatusLine();
@@ -151,13 +173,14 @@ class GeoCodeAPIClientImpl implements GeoCodeAPIClient {
 
 				throw new GeoCodeException(message, statusCode);
 			}
-			System.out.println("excecuted: " + (System.currentTimeMillis() - start) + "ms");
 
 			return EntityUtils.toString(httpResponse.getEntity(), StandardCharsets.UTF_8);
-		} catch (IOException e) {
+		} 
+		catch (IOException e) {
 			throw new GeoCodeException(
 					"Unable to commuticate with GeoCode API", e);
-		} finally {
+		} 
+		finally {
 			if (httpGet != null)
 				httpGet.releaseConnection();
 		}
