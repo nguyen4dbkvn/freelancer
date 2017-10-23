@@ -1,5 +1,6 @@
 package vn.bakastar.util;
 
+import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.Properties;
@@ -13,15 +14,10 @@ public class PropsUtil {
 	private static final Properties PROPERTIES = new Properties();
 
 	static {
-		ClassLoader classLoader = Thread.currentThread().getContextClassLoader();
-		InputStream propertiesFile = classLoader.getResourceAsStream(PROPERTIES_FILE);
 
-		if (propertiesFile == null) {
-			throw new ConfigurationException("Not found properties file " + PROPERTIES_FILE);
-		}
+		try (InputStream is = new FileInputStream(PROPERTIES_FILE)) {
 
-		try {
-			PROPERTIES.load(propertiesFile);
+			PROPERTIES.load(is);
 		}
 		catch(IOException e) {
 			throw new ConfigurationException("Cannot load properties file " + PROPERTIES_FILE, e);
