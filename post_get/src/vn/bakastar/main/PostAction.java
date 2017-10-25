@@ -7,7 +7,6 @@ import vn.bakastar.db.DBConnectionUtil;
 import vn.bakastar.exceptions.ConfigurationException;
 import vn.bakastar.exceptions.DAOException;
 import vn.bakastar.exceptions.GeoCodeException;
-import vn.bakastar.geocode.connection.GeoCodeAPIHelper;
 import vn.bakastar.model.PostEntry;
 import vn.bakastar.util.Logger;
 import vn.bakastar.util.PropsValue;
@@ -60,7 +59,6 @@ public class PostAction implements Runnable {
 			}
 		}
 		finally {
-			GeoCodeAPIHelper.release();
 
 			Logger.debug(getClass().getName(), 
 				String.format("Processed %d records on %d ms", 

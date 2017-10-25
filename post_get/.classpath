@@ -9,5 +9,6 @@
 	<classpathentry kind="lib" path="libs/httpmime-4.5.3.jar"/>
 	<classpathentry kind="lib" path="libs/json-simple-1.1.1.jar"/>
 	<classpathentry kind="lib" path="libs/mysql-connector.jar"/>
+	<classpathentry kind="lib" path="libs/commons-lang-2.6.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

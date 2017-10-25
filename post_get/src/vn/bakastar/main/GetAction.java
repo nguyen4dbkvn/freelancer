@@ -45,22 +45,10 @@ public class GetAction implements Runnable {
 
 		try {
 			String[] sourceDBNames = PropsValue.GET_SOURCE_DB_NAME;
-			String[] desDBNames = PropsValue.GET_DESTINATION_DB_NAME;
 
 			for (String sourceDBName : sourceDBNames) {
-				DBConnection sourceDB = DBConnectionUtil.getDB(sourceDBName.trim(), false);
 
-				List<GetEntry> getEntries = sourceDB.listGet();
-
-				count = getEntries.size();
-
-				for (GetEntry getEntry : getEntries) {
-
-					for (String desDBName : desDBNames) {
-
-						put(getEntry, sourceDB, desDBName.trim());
-					}
-				}
+				count += process(sourceDBName);
 			}
 		}
 		finally {
@@ -70,8 +58,48 @@ public class GetAction implements Runnable {
 		}
 	}
 
-	protected void put(GetEntry getEntry, DBConnection sourceDB, String desDBName) 
-		throws DAOException {
+	protected int process(String sourceDBName) {
+		String[] desDBNames = PropsValue.GET_DESTINATION_DB_NAME;
+
+		int processedCount = 0;
+
+		try {
+			DBConnection sourceDB = DBConnectionUtil.getDB(sourceDBName.trim(), false);
+
+			sourceDB.callStoreProcedure(PropsValue.GET_STORE_PROCEDURE_NAME);
+
+			List<GetEntry> getEntries = sourceDB.listGet();
+
+			processedCount = getEntries.size();
+
+			for (GetEntry getEntry : getEntries) {
+
+				for (String desDBName : desDBNames) {
+
+					put(getEntry, sourceDB, desDBName.trim());
+				}
+			}
+
+			return processedCount;
+		}
+		catch (DAOException e) {
+			Logger.error(getClass().getName(), e);
+
+			return processedCount;
+		}
+	}
+
+	protected void callStoreProcedure(DBConnection sourceDB) {
+
+		try {
+			sourceDB.callStoreProcedure(PropsValue.GET_STORE_PROCEDURE_NAME);
+		}
+		catch (DAOException e) {
+			Logger.error(getClass().getName(), e);
+		}
+	}
+
+	protected void put(GetEntry getEntry, DBConnection sourceDB, String desDBName) {
 		try {
 			DBConnection desDB = DBConnectionUtil.getDB(desDBName, true);
 

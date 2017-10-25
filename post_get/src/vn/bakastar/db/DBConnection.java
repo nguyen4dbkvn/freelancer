@@ -1,5 +1,6 @@
 package vn.bakastar.db;
 
+import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
@@ -64,12 +65,38 @@ public class DBConnection {
 		return new DBConnection(name, url, userName, password, postTableName, getTableName);
 	}
 
-	public Connection getConnection() throws SQLException {
-		return DriverManager.getConnection(url, userName, password);
+	public Connection getConnection() throws DAOException {
+		try {
+		
+			return DriverManager.getConnection(url, userName, password);
+		}
+		catch (SQLException e) {
+			throw new DAOException("Connecting fail database " + getName(), e);
+		}
+		
 	}
 
 	public String getName() {
 		return name;
+	}
+
+	public void callStoreProcedure(String storeName) throws DAOException {
+		StringBuilder sb = new StringBuilder(3);
+
+		sb.append("CALL ");
+		sb.append(storeName);
+		sb.append("();");
+
+		String call = sb.toString();
+
+		try(CallableStatement statement = getConnection().prepareCall(call)) {
+
+			statement.execute();
+		}
+		catch (SQLException e) {
+			throw new DAOException(String.format(
+				"Calling fail store `%s` on database[%s]", storeName, getName()), e);
+		}
 	}
 
 	public PostModelDAO getPostDAOModel() {

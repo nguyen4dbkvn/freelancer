@@ -2,7 +2,7 @@ package vn.bakastar.model;
 
 import java.io.Serializable;
 
-import vn.bakastar.geocode.connection.GeoCodeAPIHelper;
+import vn.bakastar.geocoder.mapxtreme.GeoCodeAPIHelper;
 
 public class PostEntry implements Serializable {
 
