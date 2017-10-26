@@ -6,7 +6,7 @@ import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.net.Socket;
 
-import org.apache.commons.lang.StringEscapeUtils;
+import org.apache.log4j.Logger;
 
 import vn.bakastar.exceptions.GeoCodeException;
 import vn.bakastar.util.PropsValue;
@@ -15,6 +15,8 @@ public class GeoCodeAPIHelper {
 
 	public static String getAddress(double latitude, double longitude) 
 		throws GeoCodeException {
+
+		long start = System.currentTimeMillis();
 
 		String address = null;
 		Socket socket = null;
@@ -38,12 +40,17 @@ public class GeoCodeAPIHelper {
 			out.flush();
 
 			String result = in.readLine();
-			address = StringEscapeUtils.unescapeHtml(result);
+			address = result;
 		} 
 		catch (IOException e) {
 			throw new GeoCodeException(e);
 		}
 		finally {
+			if (_logger.isDebugEnabled()) {
+				_logger.debug(String.format("GeoCodeAPI [%dms] POINT(%f, %f): %s", 
+					(System.currentTimeMillis() - start), latitude, longitude, address));
+			}
+
 			try {
 				if (out != null) 
 					out.close();
@@ -61,4 +68,6 @@ public class GeoCodeAPIHelper {
 
 		return address;
 	}
+
+	private static final Logger _logger = Logger.getLogger(GeoCodeAPIHelper.class.getName());
 }

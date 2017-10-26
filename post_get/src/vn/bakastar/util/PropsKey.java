@@ -28,4 +28,6 @@ public class PropsKey {
 	public static final String POST_SLEEPING_TIME = "post.sleeping.time";
 	public static final String SLEEPING_MIN_TIME = "sleeping.min.time";
 	public static final String SLEEPING_MAX_TIME = "sleeping.max.time";
+
+	public static final String LOG_FILE_PATH = "log.file.path";
 }

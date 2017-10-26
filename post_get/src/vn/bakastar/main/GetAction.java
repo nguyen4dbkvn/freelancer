@@ -2,13 +2,14 @@ package vn.bakastar.main;
 
 import java.util.List;
 
+import org.apache.log4j.Logger;
+
 import vn.bakastar.db.DBConnection;
 import vn.bakastar.db.DBConnectionUtil;
 import vn.bakastar.exceptions.ConfigurationException;
 import vn.bakastar.exceptions.DAOException;
 import vn.bakastar.exceptions.GeoCodeException;
 import vn.bakastar.model.GetEntry;
-import vn.bakastar.util.Logger;
 import vn.bakastar.util.PropsValue;
 
 public class GetAction implements Runnable {
@@ -19,27 +20,27 @@ public class GetAction implements Runnable {
 			while(true) {
 				process();
 
-				Logger.debug(getClass().getName(), 
-					"Sleeping " + (PropsValue.GET_SLEEPING_TIME / 1000) + " seconds...");
+				_logger.info("Sleeping " + (PropsValue.GET_SLEEPING_TIME / 1000) 
+					+ " second(s)...");
 
 				Thread.sleep(PropsValue.GET_SLEEPING_TIME);
 			}
 		}
 		catch (ConfigurationException e) {
-			Logger.error(getClass().getName(), e);
+			_logger.error(e.getMessage(), e);
 		}
 		catch (DAOException e) {
-			Logger.error(getClass().getName(), e);
+			_logger.error(e.getMessage(), e);
 		}
 		catch (InterruptedException e) {
-			Logger.error(getClass().getName(), e);
+			_logger.error(e.getMessage(), e);
 		}
 	}
 
 	protected void process() throws DAOException, ConfigurationException {
 		long start = System.currentTimeMillis();
 
-		Logger.debug(getClass().getName(), "Starting GetAction");
+		_logger.info("Starting GetAction...");
 
 		int count = 0;
 
@@ -52,9 +53,8 @@ public class GetAction implements Runnable {
 			}
 		}
 		finally {
-			Logger.debug(getClass().getName(), 
-				String.format("Processed %d records on %d ms", count, 
-					(System.currentTimeMillis() - start)));
+			_logger.info(String.format("Processed %d records on %dms", 
+				count, (System.currentTimeMillis() - start)));
 		}
 	}
 
@@ -72,18 +72,36 @@ public class GetAction implements Runnable {
 
 			processedCount = getEntries.size();
 
-			for (GetEntry getEntry : getEntries) {
+			long minTimestamp = System.currentTimeMillis() - (24 * 60 * 60 * 1000);
 
-				for (String desDBName : desDBNames) {
+			for (String desDBName : desDBNames) {
 
-					put(getEntry, sourceDB, desDBName.trim());
+				if (_logger.isDebugEnabled()) {
+					_logger.debug(String.format(
+						"Inserting %d record from db[%s] to db[%s]...", 
+						processedCount, sourceDBName, desDBName));
+				}
+
+				for (GetEntry getEntry : getEntries) {
+
+					if (getEntry.getTimestamp() > minTimestamp) {
+
+						put(getEntry, sourceDB, desDBName.trim());
+					}
+					else if (_logger.isDebugEnabled()) {
+						_logger.debug(String.format(
+							"Because timestamp < (now - 24h) skipped insert: %s ", 
+							getEntry.toString()));
+					}
+
+					sourceDB.deleteGet(getEntry.getSeqID());
 				}
 			}
 
 			return processedCount;
 		}
 		catch (DAOException e) {
-			Logger.error(getClass().getName(), e);
+			_logger.error(e.getMessage(), e);
 
 			return processedCount;
 		}
@@ -95,7 +113,7 @@ public class GetAction implements Runnable {
 			sourceDB.callStoreProcedure(PropsValue.GET_STORE_PROCEDURE_NAME);
 		}
 		catch (DAOException e) {
-			Logger.error(getClass().getName(), e);
+			_logger.error(e.getMessage(), e);
 		}
 	}
 
@@ -105,15 +123,19 @@ public class GetAction implements Runnable {
 
 			getEntry.setDBName(sourceDB.getName());
 
-			desDB.create(getEntry);
+			if (_logger.isDebugEnabled()) {
+				_logger.debug(">> " + getEntry.toString());
+			}
 
-			sourceDB.deleteGet(getEntry.getSeqID());
+			desDB.create(getEntry);
 		}
 		catch (DAOException e) {
-			Logger.error(getClass().getName(), e);
+			_logger.error(e.getMessage(), e);
 		}
 		catch (GeoCodeException e) {
-			Logger.error(getClass().getName(), e);
+			_logger.error(e.getMessage(), e);
 		}
 	}
+
+	private static final Logger _logger = Logger.getLogger(GetAction.class.getName());
 }

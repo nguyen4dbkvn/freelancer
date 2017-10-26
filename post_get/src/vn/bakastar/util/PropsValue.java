@@ -23,6 +23,8 @@ public class PropsValue {
 	public static final int GEOCODE_API_PORT_DEFAULT = 30000;
 	public static final int GEOCODE_API_READ_TIMEOUT_DEFAULT = 1000;
 
+	public static final String LOG_FILE_PATH_DEFAULT = "./post_get.log";
+
 	// ------------------ PROPERTIES VALUE --------------------
 	public static final String[] POST_SOURCE_DB_NAME = 
 		PropsUtil.get(PropsKey.POST_SOURCE_DB_NAME, new String[] {POST_SOURCE_DB_NAME_DEFAULT});
@@ -63,4 +65,7 @@ public class PropsValue {
 	public static final long POST_SLEEPING_TIME =
 		PropsUtil.get(PropsUtil.get(PropsKey.POST_SLEEPING_TIME, SLEEPING_TIME_DEFAULT), 
 			SLEEPING_MAX_TIME, SLEEPING_MIN_TIME) * 1000;
+
+	public static final String LOG_FILE_PATH =
+		PropsUtil.get(PropsKey.LOG_FILE_PATH, LOG_FILE_PATH_DEFAULT);
 }

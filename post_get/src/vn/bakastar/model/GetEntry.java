@@ -49,7 +49,7 @@ public class GetEntry extends PostEntry {
 	@Override
 	public String toString() {
 		return String.format(
-			"PostEntry[seq_ID=%d, accountID=%s, deviceID=%s, timeStamp=%d, statusCode=%d, statusLastingTime=%d, latitude=%f, longitude=%f, gpsAge=%d, speedKPH=%f, heading=%f, altitude=%f, address=%s, distanceKM=%f, odometerKM=%f, creationTime=%d, driverID=%s, driverStatus=%d, driverMessage=%s, Cua=%d, DieuHoa=%d, Speed30s=%s, params=%s, db_name=%s, imei=%s]",
+			"GetEntry[seq_ID=%d, accountID=%s, deviceID=%s, timeStamp=%d, statusCode=%d, statusLastingTime=%d, latitude=%f, longitude=%f, gpsAge=%d, speedKPH=%f, heading=%f, altitude=%f, address=%s, distanceKM=%f, odometerKM=%f, creationTime=%d, driverID=%s, driverStatus=%d, driverMessage=%s, Cua=%d, DieuHoa=%d, Speed30s=%s, params=%s, db_name=%s, imei=%s]",
 			seq_ID, accountID, deviceID, timestamp, statusCode, 
 			statusLastingTime, latitude, longitude, gpsAge, speedKPH,
 			heading, altitude, getAddress(), distanceKM, odometerKM, creationTime, 

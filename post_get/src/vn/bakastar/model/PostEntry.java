@@ -21,6 +21,7 @@ public class PostEntry implements Serializable {
 	protected double speedKPH;
 	protected double heading;
 	protected double altitude;
+	protected String address;
 	protected double distanceKM;
 	protected double odometerKM;
 	protected long creationTime;
@@ -136,7 +137,11 @@ public class PostEntry implements Serializable {
 	}
 
 	public String getAddress() {
-		return GeoCodeAPIHelper.getAddress(latitude, longitude);
+		if (address == null) {
+			address = GeoCodeAPIHelper.getAddress(latitude, longitude);
+		}
+
+		return address;
 	}
 
 	public void setDistanceKM(double distanceKm) {
