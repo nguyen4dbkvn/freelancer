@@ -1,5 +1,6 @@
 package vn.bakastar.main;
 
+import java.text.ParseException;
 import java.util.List;
 
 import org.apache.log4j.Logger;
@@ -10,6 +11,7 @@ import vn.bakastar.exceptions.ConfigurationException;
 import vn.bakastar.exceptions.DAOException;
 import vn.bakastar.exceptions.GeoCodeException;
 import vn.bakastar.model.GetEntry;
+import vn.bakastar.model.ImeiEntry;
 import vn.bakastar.util.PropsValue;
 
 public class GetAction implements Runnable {
@@ -72,7 +74,7 @@ public class GetAction implements Runnable {
 
 			processedCount = getEntries.size();
 
-			long minTimestamp = System.currentTimeMillis() - (24 * 60 * 60 * 1000);
+			long minTimestamp = (System.currentTimeMillis() - (24 * 60 * 60 * 1000)) / 1000;
 
 			for (String desDBName : desDBNames) {
 
@@ -128,6 +130,17 @@ public class GetAction implements Runnable {
 			}
 
 			desDB.create(getEntry);
+
+			ImeiEntry imeiEntry = new ImeiEntry(getEntry);
+
+			if (_logger.isDebugEnabled()) {
+				_logger.debug(">> " + imeiEntry.toString());
+			}
+
+			desDB.create(imeiEntry, getEntry.getImei());
+		}
+		catch (ParseException e) {
+			_logger.error(e.getMessage(), e);
 		}
 		catch (DAOException e) {
 			_logger.error(e.getMessage(), e);

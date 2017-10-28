@@ -1,14 +1,15 @@
-package vn.bakastar.db.model.impl;
+package vn.bakastar.dao.model.impl;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
 import java.util.List;
 
 import vn.bakastar.dao.model.ModelDAO;
+import vn.bakastar.db.DAOUtil;
 import vn.bakastar.db.DBConnection;
+import vn.bakastar.db.SQLConstants;
 import vn.bakastar.exceptions.DAOException;
 
 public abstract class BaseModelDAOImpl implements ModelDAO {
@@ -74,21 +75,12 @@ public abstract class BaseModelDAOImpl implements ModelDAO {
 
 	protected String replace(String query) {
 
-		String sql = query.replace("[$TABLE_NAME$]", _tableName);
-
-		return sql;
+		return DAOUtil.replace(query, SQLConstants.TABLE_NAME, _tableName);
 	}
 
 	protected PreparedStatement preparedStatement(Connection connection, String sql, 
 		boolean returnGeneratedKeys, Object... values) throws SQLException {
 
-		PreparedStatement statement = connection.prepareStatement(sql,
-				returnGeneratedKeys ? Statement.RETURN_GENERATED_KEYS : Statement.NO_GENERATED_KEYS);
-
-		for (int i = 0; i < values.length; i++) {
-			statement.setObject(i + 1, values[i]);
-		}
-
-		return statement;
+		return DAOUtil.preparedStatement(connection, sql, returnGeneratedKeys, values);
 	}
 }

@@ -47,7 +47,7 @@ public class PostAction implements Runnable {
 		try {
 			String[] sourceDBNames = PropsValue.POST_SOURCE_DB_NAME;
 
-			long minTimestamp = start - (24 * 60 * 60 * 1000);
+			long minTimestamp = (start - (24 * 60 * 60 * 1000)) / 1000;
 
 			for (String sourceDBName : sourceDBNames) {
 				DBConnection sourceDB = DBConnectionUtil.getDB(sourceDBName.trim(), true);

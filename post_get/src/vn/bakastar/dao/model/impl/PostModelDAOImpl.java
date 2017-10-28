@@ -1,4 +1,4 @@
-package vn.bakastar.db.model.impl;
+package vn.bakastar.dao.model.impl;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -73,7 +73,7 @@ public class PostModelDAOImpl extends BaseModelDAOImpl implements PostModelDAO {
 
 			if (count == 0) {
 				throw new DAOException(
-					String.format("Creating %s failed, no rows affected.", _tableName));
+					String.format("Inserting to table[%s] failed, no rows affected.", _tableName));
 			}
 		}
 		catch (SQLException e) {
@@ -87,6 +87,7 @@ public class PostModelDAOImpl extends BaseModelDAOImpl implements PostModelDAO {
 		delete(postEntry.getSeqID());
 	}
 
+	@Override
 	protected PostEntry map(ResultSet resultSet) throws SQLException {
 		PostEntry post = new PostEntry();
 

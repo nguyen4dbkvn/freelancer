@@ -1,4 +1,4 @@
-package vn.bakastar.db.model.impl;
+package vn.bakastar.dao.model.impl;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -78,7 +78,7 @@ public class GetModelDAOImpl extends BaseModelDAOImpl implements GetModelDAO {
 
 			if (count == 0) {
 				throw new DAOException(
-					String.format("Creating %s failed, no rows affected.", _tableName));
+					String.format("Inserting to table[%s] failed, no rows affected.", _tableName));
 			}
 		}
 		catch (SQLException e) {
@@ -92,6 +92,7 @@ public class GetModelDAOImpl extends BaseModelDAOImpl implements GetModelDAO {
 		delete(getEntry.getSeqID());
 	}
 
+	@Override
 	protected GetEntry map(ResultSet resultSet) throws SQLException {
 		GetEntry get = new GetEntry();
 
