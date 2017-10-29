@@ -1,0 +1,3 @@
+
+Version 1.0.1.final [27/10/2017]
+- NEW: Thêm tính năng insert dữ liệu vào bảng gs_object_data_XXXXXXXXXXXXXXX sau khi insert vào bảng dv_ed_get trong bài toán GET.

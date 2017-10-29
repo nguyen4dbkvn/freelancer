@@ -1,0 +1,3 @@
+
+Version 1.0.1.final [29/10/2017]
+- NEW: Sửa bug log level mặc định là INFO chứ không phải là DEBUG
