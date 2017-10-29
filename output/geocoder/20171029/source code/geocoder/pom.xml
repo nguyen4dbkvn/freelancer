@@ -34,6 +34,9 @@
   		<plugin>
   			<artifactId>maven-compiler-plugin</artifactId>
   			<version>3.5</version>
+  			<goals>
+  				<goal>compiler</goal>
+  			</goals>
   			<configuration>
   				<source>1.7</source>
   				<target>1.7</target>

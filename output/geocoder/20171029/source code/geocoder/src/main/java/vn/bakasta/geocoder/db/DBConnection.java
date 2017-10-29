@@ -39,7 +39,7 @@ public class DBConnection {
 			return DriverManager.getConnection(url, userName, password);
 		}
 		catch (SQLException e) {
-			throw new DAOException("Connecting fail database", e);
+			throw new DAOException("Connecting database failure!!!", e);
 		}
 		
 	}
