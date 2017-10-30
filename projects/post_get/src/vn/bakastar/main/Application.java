@@ -1,13 +1,9 @@
 package vn.bakastar.main;
 
 import org.apache.log4j.ConsoleAppender;
-import org.apache.log4j.FileAppender;
 import org.apache.log4j.Level;
 import org.apache.log4j.Logger;
 import org.apache.log4j.PatternLayout;
-import org.apache.log4j.RollingFileAppender;
-
-import vn.bakastar.util.PropsValue;
 
 
 public class Application {
@@ -15,6 +11,10 @@ public class Application {
 	public static void main(String[] args) {
 
 		setLog(args);
+
+		Thread callStoreThread = new Thread(new CallStoreAction());
+		callStoreThread.setName("STORE-thread");
+		callStoreThread.start();
 
 		Thread postThread = new Thread(new PostAction());
 		postThread.setName("POST-thread");
@@ -63,14 +63,6 @@ public class Application {
 
 			rootLogger.addAppender(console);
 		}
-
-		FileAppender file = new RollingFileAppender();
-
-		file.setFile(PropsValue.LOG_FILE_PATH);
-		file.setLayout(layout);
-		file.activateOptions();
-
-		rootLogger.addAppender(file);
 	}
 
 	private static boolean isEnableConsoleLog(String argument) {

@@ -7,7 +7,7 @@ import vn.bakastar.model.PostEntry;
 
 public interface PostModelDAO extends ModelDAO {
 
-	public List<PostEntry> list() throws DAOException;
+	public List<PostEntry> list(int limit) throws DAOException;
 
 	public void create(PostEntry postEntry) throws DAOException;
 

@@ -1,0 +1,9 @@
+
+Version 2.0.0.beta [30/10/2017]
+- NEW: Sửa bug log vào file 2 lần.
+- NEW: Tách việc gọi store sang 1 tiến trình riêng.
+- NEW: Chia việc xử lý của tiến trình POST và GET thành các batch, kích thước mỗi batch mặc định là 20 records.
+- NEW: Không xoá record sau khi xử lý xong.
+	   Lưu giá trị seq_ID lớn nhất sau mỗi lần xử lý vào file application.ini cho lần xử lý tiếp theo.
+- NEW: Trong bài toán GET, insert bảng IMEI, 
+	   set giá trị cột angle là heading của ed_post thay vì gpsAge như version trước.

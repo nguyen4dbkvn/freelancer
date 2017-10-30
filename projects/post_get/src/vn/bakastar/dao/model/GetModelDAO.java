@@ -7,7 +7,7 @@ import vn.bakastar.model.GetEntry;
 
 public interface GetModelDAO extends ModelDAO {
 
-	public List<GetEntry> list() throws DAOException;
+	public List<GetEntry> list(int limit) throws DAOException;
 
 	public void create(GetEntry getEntry) throws DAOException;
 

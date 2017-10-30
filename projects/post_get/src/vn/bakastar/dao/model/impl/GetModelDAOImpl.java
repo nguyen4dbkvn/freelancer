@@ -22,12 +22,17 @@ public class GetModelDAOImpl extends BaseModelDAOImpl implements GetModelDAO {
 	}
 
 	@Override
-	public List<GetEntry> list() throws DAOException {
+	public List<GetEntry> list(int limit) throws DAOException {
+		Object[] params = {
+			_daoFactory.getLastSeqID(),
+			limit
+		};
+
 		List<GetEntry> list = new ArrayList<GetEntry>();
 
 		try (
 			Connection conn = _daoFactory.getConnection();
-			PreparedStatement ps = conn.prepareStatement(replace(SQL_LIST_ORDER_BY_ID));
+			PreparedStatement ps = preparedStatement(conn, replace(SQL_LIST_ORDER_BY_ID), false, params);
 			ResultSet resultSet = ps.executeQuery();
 		) {
 			while (resultSet.next()) {
