@@ -18,7 +18,7 @@ public class GeoCodeAPIHelper {
 
 		long start = System.currentTimeMillis();
 
-		String address = null;
+		String address = "";
 		Socket socket = null;
 		PrintWriter out = null;
 		BufferedReader in = null;
@@ -39,11 +39,11 @@ public class GeoCodeAPIHelper {
 			out.println(longitude + " " + latitude);
 			out.flush();
 
-			String result = in.readLine();
-			address = result;
+			address = in.readLine();
 		} 
 		catch (IOException e) {
-			throw new GeoCodeException(e);
+			_logger.warn(String.format("Can not get adrress of POINT(%f, %f): %s", 
+					latitude, longitude, e.getMessage()));
 		}
 		finally {
 			if (_logger.isDebugEnabled()) {

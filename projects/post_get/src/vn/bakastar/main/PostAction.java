@@ -51,7 +51,8 @@ public class PostAction implements Runnable {
 			String[] sourceDBNames = PropsValue.POST_SOURCE_DB_NAME;
 
 			for (String sourceDBName : sourceDBNames) {
-				post(sourceDBName);
+
+				count += post(sourceDBName);
 			}
 		}
 		finally {

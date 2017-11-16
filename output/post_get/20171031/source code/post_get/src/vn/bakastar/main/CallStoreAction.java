@@ -43,27 +43,18 @@ public class CallStoreAction implements Runnable {
 
 			for (String sourceDBName : sourceDBNames) {
 
-				callStoreProcedure(sourceDBName);
+				DBConnection sourceDB = DBConnectionUtil.getDB(sourceDBName.trim(), false);
+
+				if (_logger.isDebugEnabled()) {
+					_logger.debug(String.format("Calling store `%s`.`%s`", 
+						sourceDBName, PropsValue.GET_STORE_PROCEDURE_NAME));
+				}
+				sourceDB.callStoreProcedure(PropsValue.GET_STORE_PROCEDURE_NAME);
 			}
 		}
 		finally {
 			_logger.info(String.format("Finish CallStoreAction on %dms", 
 				(System.currentTimeMillis() - start)));
-		}
-	}
-
-	protected void callStoreProcedure(String sourceDBName) {
-		try {
-			DBConnection sourceDB = DBConnectionUtil.getDB(sourceDBName.trim(), false);
-
-			if (_logger.isDebugEnabled()) {
-				_logger.debug(String.format("Calling store `%s`.`%s`", 
-					sourceDBName, PropsValue.GET_STORE_PROCEDURE_NAME));
-			}
-			sourceDB.callStoreProcedure(PropsValue.GET_STORE_PROCEDURE_NAME);
-		}
-		catch (DAOException e) {
-			_logger.error(e.getMessage(), e);
 		}
 	}
 
