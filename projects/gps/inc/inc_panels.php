@@ -101,7 +101,7 @@
 		</li>
 		<? } ?>
 		<li>
-			<a class="report_31_btn" href="#" onclick="rs31Open()" title="<? echo $la['REPORTS_OF_STANDARD_312014']?>">
+			<a class="rs31_btn" href="#" onclick="rs31Open()" title="<? echo $la['REPORTS_OF_STANDARD_312014']?>">
 				<img src="theme/images/export.svg" border="0"/>
 			</a>
 		</li>

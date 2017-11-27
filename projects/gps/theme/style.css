@@ -31,7 +31,7 @@ b, strong{ font-weight: 600; }
 /*#################################################*/
 
 input.checkbox { vertical-align: middle;}
-input[type="checkbox"] { 
+input[type="checkbox"] {
 	height: 14px;
 	margin: 5px 0 5px 0;
 }
@@ -499,7 +499,7 @@ input.button.panel:active { border: 1px solid #e5e5e5; background-color: #e5e5e5
 .ui-jqgrid .ui-jqgrid-btable {table-layout:fixed; margin:3px 0 0 0; outline-style: none;}
 .ui-jqgrid .ui-state-hover { background: #f5f5f5; opacity: 0.9; }
 .ui-jqgrid th.ui-state-hover { background: none; }
-.ui-jqgrid .ui-state-highlight, .ui-widget-content .ui-state-highlight, 
+.ui-jqgrid .ui-state-highlight, .ui-widget-content .ui-state-highlight,
 .ui-widget-header .ui-state-highlight { background: #f5f5f5; opacity: 0.9; }
 
 /*#################################################*/
@@ -539,7 +539,7 @@ input.button.panel:active { border: 1px solid #e5e5e5; background-color: #e5e5e5
 	margin-left: -10px !important;
 	margin-bottom: 0px !important;
 }
-	
+
 #dialog_image_gallery .ui-jqgrid .ui-jqgrid-pager
 {
 	margin-top: 10px !important;
@@ -788,13 +788,13 @@ body#login {
 #top_panel select { margin: 1px 0; }
 #top_panel .right-menu { float: right; }
 #top_panel ul { margin: 0; padding: 0; float: left; display: table; }
-#top_panel ul li a { 
+#top_panel ul li a {
 	display: table;
 	padding-top: 7px;
 	padding-bottom: 7px;
 	padding-left: 15px;
-	padding-right: 15px; 
-	text-decoration: none; 
+	padding-right: 15px;
+	text-decoration: none;
 	color: #808080;
 	font-size: 13px;
 }
@@ -1385,6 +1385,12 @@ body#login {
 }
 
 /*#################################################*/
+/* HISTORY AND REPORTS
+/*#################################################*/
+
+#dialog_rs31 { padding: 0px; }
+
+/*#################################################*/
 /* BILLING
 /*#################################################*/
 
@@ -1565,7 +1571,7 @@ body#cpanel { background: #e5e5e5; }
 #cpanel_manage_server .ui-img-container {
 	display: flex;
 	height: 160px;
-	background-color: #f5f5f5; 
+	background-color: #f5f5f5;
 	border: 1px solid #f5f5f5;
 	justify-content: center;
 	align-items: center;

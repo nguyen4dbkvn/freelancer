@@ -1,9 +1,26 @@
+/* 2017-11-26 NBNguyen: Add menu Report of Standard 31-2014 */
 function rs31Open() {
-	utilsCheckPrivileges("dtc") && ($("#dialog_dtc").bind("resize", function() {
-        $("#dtc_list_grid").setGridHeight($("#dialog_dtc").height() - 133)
-    }).trigger("resize"), $("#dialog_dtc").bind("resize", function() {
-        $("#dtc_list_grid").setGridWidth($("#dialog_dtc").width())
-    }).trigger("resize"), $("#dialog_dtc").dialog("open"))
+	utilsCheckPrivileges("dtc") && ($("#dialog_rs31").bind("resize", function() {
+        $("#rs31_list_grid").setGridHeight($("#dialog_rs31").height() - 133)
+    }).trigger("resize"), $("#dialog_rs31").bind("resize", function() {
+        $("#rs31_list_grid").setGridWidth($("#dialog_rs31").width())
+    }).trigger("resize"), $("#dialog_rs31").dialog("open"))
+}
+
+function rs31Close() {
+	$("#dialog_rs31").unbind("resize")
+}
+
+function rs31Show() {
+	console.log("rs31Show...")
+}
+
+function rs31ExportCSV() {
+	console.log("rs31ExportCSV...")
+}
+
+function rs31ExportPDF() {
+	console.log("rs31ExportPDF...")
 }
 
 function dtcOpen() {
@@ -1321,7 +1338,7 @@ function initGui() {
         dayNamesMin: [la.DAY_SUNDAY_S, la.DAY_MONDAY_S, la.DAY_TUESDAY_S, la.DAY_WEDNESDAY_S, la.DAY_THURSDAY_S, la.DAY_FRIDAY_S, la.DAY_SATURDAY_S],
         monthNames: [la.MONTH_JANUARY, la.MONTH_FEBRUARY, la.MONTH_MARCH, la.MONTH_APRIL, la.MONTH_MAY, la.MONTH_JUNE, la.MONTH_JULY, la.MONTH_AUGUST, la.MONTH_SEPTEMBER, la.MONTH_OCTOBER, la.MONTH_NOVEMBER, la.MONTH_DECEMBER],
         monthNamesShort: [la.MONTH_JANUARY_S, la.MONTH_FEBRUARY_S, la.MONTH_MARCH_S, la.MONTH_APRIL_S, la.MONTH_MAY_S, la.MONTH_JUNE_S, la.MONTH_JULY_S, la.MONTH_AUGUST_S, la.MONTH_SEPTEMBER_S, la.MONTH_OCTOBER_S, la.MONTH_NOVEMBER_S, la.MONTH_DECEMBER_S]
-    }), $("#side_panel,	  #side_panel_places,	  #bottom_panel_tabs,	  #cmd_tabs,	  #settings_main,	  #settings_main_objects_groups_drivers,	  #settings_object,	  #settings_object_edit_select_icon_tabs,	  #settings_event,	  #reports_tabs,	  #report_tabs,	  #places_marker_icon_tabs").tabs({
+    }), $("#side_panel,	  #side_panel_places,	  #bottom_panel_tabs,		#rs31_tabs,	  #cmd_tabs,	  #settings_main,	  #settings_main_objects_groups_drivers,	  #settings_object,	  #settings_object_edit_select_icon_tabs,	  #settings_event,	  #reports_tabs,	  #report_tabs,	  #places_marker_icon_tabs").tabs({
         show: function() {
             var e = $(ui.panel);
             $(".content:visible").effect(function() {
@@ -1415,6 +1432,16 @@ function initGui() {
         height: "auto",
         minHeight: "auto",
         resizable: !1
+    }), $("#dialog_rs31").dialog({
+        autoOpen: !1,
+        width: "992",
+        height: "700",
+				minWidth: 992,
+				minHeight: 350,
+        resizable: !1,
+				close: function() {
+            rs31Close()
+        }
     }), $("#dialog_report_properties").dialog({
         autoOpen: !1,
         width: "850",
@@ -4298,6 +4325,55 @@ function initGrids() {
         }), $(document).one("click", function() {
             $("#dtc_list_grid_action_menu").hide()
         }), !1
+    }), $("#rs31_car_journey_list_grid").jqGrid({
+        url: "",
+        datatype: "json",
+        colNames: [la.STT, la.TIME_POINT, la.COORDINATES, la.LOCATION, la.NOTE],
+        colModel: [{
+            name: "no",
+            index: "no",
+            width: 25,
+            sortable: !0
+        }, {
+            name: "time",
+            index: "time",
+            width: 80,
+            align: "left",
+            sortable: !0
+        }, {
+            name: "coordinates",
+            index: "coordinates",
+            width: 60,
+            align: "left",
+            sortable: !0
+        }, {
+            name: "location",
+            index: "location",
+            width: 120,
+            align: "center",
+            sortable: !0
+        }, {
+            name: "note",
+            index: "note",
+            width: 100,
+            align: "left",
+            sortable: !0
+        }],
+        sortname: "dt_tracker",
+        sortorder: "desc",
+        rowNum: 50,
+        rowList: [50, 100, 200, 300, 400, 500],
+        pager: "#rs31_car_journey_list_grid_pager",
+        viewrecords: !0,
+        height: "430px",
+        width: "962",
+        shrinkToFit: !0,
+        multiselect: !1
+    }), $("#rs31_car_journey_list_grid").jqGrid("navGrid", "#rs31_car_journey_list_grid_pager", {
+        add: !1,
+        edit: !1,
+        del: !1,
+        search: !1
     }), $("#image_gallery_list_grid").jqGrid({
         url: "func/fn_img.php?cmd=load_img_list",
         datatype: "json",

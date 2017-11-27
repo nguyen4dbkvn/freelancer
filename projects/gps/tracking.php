@@ -1,9 +1,9 @@
 <?
 	session_start();
 	include ('init.php');
-	include ('func/fn_common.php');	
+	include ('func/fn_common.php');
 	checkUserSession();
-	
+
 	setUserSessionSettings($_SESSION["user_id"]);
 	loadLanguage($_SESSION['language'], $_SESSION["units"]);
 ?>
@@ -14,20 +14,20 @@
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<? generatorTag(); ?>
         <title><? echo $gsValues['NAME'].' '.$gsValues['VERSION']; ?></title>
-	
+
 	<link rel="icon" href="<? echo $gsValues['URL_ROOT'].'/favicon.ico'; ?>" />
-	
+
         <link type="text/css" href="theme/jquery-ui.css?v=<? echo $gsValues['VERSION_ID']; ?>" rel="Stylesheet" />
         <link type="text/css" href="theme/jquery.qtip.css?v=<? echo $gsValues['VERSION_ID']; ?>" rel="Stylesheet" />
         <link type="text/css" href="theme/ui.jqgrid.css?v=<? echo $gsValues['VERSION_ID']; ?>" rel="Stylesheet" />
         <link type="text/css" href="theme/jquery.pnotify.default.css?v=<? echo $gsValues['VERSION_ID']; ?>" rel="Stylesheet" />
 	<link type="text/css" href="theme/style.css?v=<? echo $gsValues['VERSION_ID']; ?>" rel="Stylesheet" />
 	<link type="text/css" href="theme/style.custom.php?v=<? echo $gsValues['VERSION_ID']; ?>" rel="Stylesheet" />
-	
+
 	<link type="text/css" href="theme/leaflet/leaflet.css?v=<? echo $gsValues['VERSION_ID']; ?>" rel="Stylesheet" />
 	<link type="text/css" href="theme/leaflet/markercluster.css?v=<? echo $gsValues['VERSION_ID']; ?>" rel="Stylesheet" />
 	<link type="text/css" href="theme/leaflet/leaflet-routing-machine.css?v=<? echo $gsValues['VERSION_ID']; ?>" rel="Stylesheet" />
-	
+
 	<?
 	if ($gsValues['MAP_GOOGLE'] == 'true')
 	{
@@ -41,31 +41,31 @@
 		}
 	}
 	?>
-	
+
 	<?
 	if ($gsValues['MAP_YANDEX'] == 'true')
 	{
 		echo '<script src="'.$gsValues['HTTP_MODE'].'://api-maps.yandex.ru/2.0/?load=package.map&lang=ru-RU"></script>';
 	}
 	?>
-	
+
         <script type="text/javascript" src="js/leaflet/leaflet.js?v=<? echo $gsValues['VERSION_ID']; ?>"></script>
-	
+
 	<?
 	if ($gsValues['MAP_MAPBOX'] == 'true')
 	{
 		echo '<script src="'.$gsValues['HTTP_MODE'].'://api.mapbox.com/mapbox.js/v3.0.1/mapbox.js"></script>';
 	}
 	?>
-	
+
 	<script type="text/javascript" src="js/es6-promise.min.js?v=<? echo $gsValues['VERSION_ID']; ?>"></script>
 	<script>ES6Promise.polyfill();</script>
 	<script type="text/javascript" src="js/md5.js?v=<? echo $gsValues['VERSION_ID']; ?>"></script>
 	<script type="text/javascript" src="js/xml2json.min.js?v=<? echo $gsValues['VERSION_ID']; ?>"></script>
 	<script type="text/javascript" src="js/sprintf.min.js?v=<? echo $gsValues['VERSION_ID']; ?>"></script>
-	
+
 	<script type="text/javascript" src="js/jscolor.js?v=<? echo $gsValues['VERSION_ID']; ?>"></script>
-	
+
 	<script type="text/javascript" src="js/leaflet/tile/google.js?v=<? echo $gsValues['VERSION_ID']; ?>"></script>
 	<script type="text/javascript" src="js/leaflet/tile/bing.js?v=<? echo $gsValues['VERSION_ID']; ?>"></script>
 	<script type="text/javascript" src="js/leaflet/tile/yandex.js?v=<? echo $gsValues['VERSION_ID']; ?>"></script>
@@ -75,7 +75,7 @@
 	<script type="text/javascript" src="js/leaflet/leaflet.routingmachine.js?v='.$gsValues['VERSION_ID'].'"></script>
 	<script type="text/javascript" src="js/leaflet/marker.rotate.js?v=<? echo $gsValues['VERSION_ID']; ?>"></script>
 	<script type="text/javascript" src="js/leaflet/path.drag.js?v=<? echo $gsValues['VERSION_ID']; ?>"></script>
-	
+
 	<script type="text/javascript" src="js/jquery-2.1.4.min.js?v=<? echo $gsValues['VERSION_ID']; ?>"></script>
 	<script type="text/javascript" src="js/jquery-migrate-1.2.1.min.js?v=<? echo $gsValues['VERSION_ID']; ?>"></script>
         <script type="text/javascript" src="js/jquery-ui.min.js?v=<? echo $gsValues['VERSION_ID']; ?>"></script>
@@ -92,13 +92,13 @@
         <script type="text/javascript" src="js/jquery.flot.selection.min.js?v=<? echo $gsValues['VERSION_ID']; ?>"></script>
 	<script type="text/javascript" src="js/jquery.flot.time.min.js?v=<? echo $gsValues['VERSION_ID']; ?>"></script>
         <script type="text/javascript" src="js/jquery.flot.resize.min.js?v=<? echo $gsValues['VERSION_ID']; ?>"></script>
-	
+
 	<script type="text/javascript" src="js/moment.min.js?v=<? echo $gsValues['VERSION_ID']; ?>"></script>
 
 	<script type="text/javascript" src="js/gs.config.js?v=<? echo $gsValues['VERSION_ID']; ?>"></script>
 	<script type="text/javascript" src="js/gs.common.js?v=<? echo $gsValues['VERSION_ID']; ?>"></script>
 	<script type="text/javascript" src="js/gs.connect.js?v=<? echo $gsValues['VERSION_ID']; ?>"></script>
-        
+
         <?
 	// check if spare parts files exist, if not, use joined file
         if(file_exists('js/src/gs.tracking.js'))
@@ -141,19 +141,20 @@
 	{
 	?>
         	<script type="text/javascript" src="js/gs.main.js?v=<? echo $gsValues['VERSION_ID']; ?>"></script>
-        <? 
+        <?
 	}
 	?>
     </head>
-    
+
     <body onload="load()" onUnload="unload()">
 	<input id="load_file" type="file" style="display: none;" onchange=""/>
-	
+
         <? include ("inc/inc_panels.php"); ?>
 	<? include ("inc/inc_menus.php"); ?>
         <? include ("inc/inc_dialogs.main.php"); ?>
         <? include ("inc/inc_dialogs.places.php"); ?>
         <? include ("inc/inc_dialogs.reports.php"); ?>
+				<? include ("inc/inc_dialogs.reports_312014.php"); ?>
 	<? include ("inc/inc_dialogs.rilogbook.php"); ?>
 	<? include ("inc/inc_dialogs.dtc.php"); ?>
 	<? include ("inc/inc_dialogs.cmd.php"); ?>

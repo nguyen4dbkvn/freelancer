@@ -18,3 +18,5 @@ header('Content-Type:text/plain');
 [2017-11-23 14:21:15] ::1 [2]demo - User login: successful
 [2017-11-25 07:48:34] ::1 [1]admin - User login: successful
 [2017-11-25 16:01:21] ::1 [1]admin - User login: successful
+[2017-11-25 16:46:10] ::1 [1]admin - User login: successful
+[2017-11-25 16:55:02] ::1 [1]admin - User login: successful
