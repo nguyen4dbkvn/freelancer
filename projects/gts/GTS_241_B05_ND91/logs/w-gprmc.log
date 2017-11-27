@@ -1,0 +1,68 @@
+[INFO_|11/19 13:42:15|OSTools.printMemoryUsage:444] Memory-K: max=3712000, total=209408, free=117723, used=91685
+[ERROR|11/19 13:42:15|EventSelector.<init>:198] *** Internal error: EX2959-1 (contact service provider)
+[INFO_|11/19 13:42:15|StartupInit.addTableFactories:152] Loaded customed Rule functions/identifiers
+[INFO_|11/19 13:42:15|BasicPrivateLabelLoader.printInfo:372] Not a 'Track/Service' servlet
+[INFO_|11/19 13:42:15|DCServerFactory._startupInit:1329] Loading only DCServer name: w-gprmc
+[WARN_|11/19 13:42:15|DCServerFactory._loadDCServerXML:636] DCServerConfig XML file not found: dcserver_w-gprmc.xml
+[INFO_|11/19 13:42:15|DCServerFactory._loadDCServerXML:643] DCServerConfig XML file not loaded: C:\Users\NBNguyen\Projects\apache-tomcat-8.0.47\webapps\gprmc\WEB-INF\dcservers.xml
+[INFO_|11/19 13:42:15|RTConfigContextListener.contextInitialized:211] java.awt.headless=false
+[INFO_|11/19 13:42:54|RTConfigContextListener.contextDestroyed:233] ... Servlet Context destroyed: dcs:w-gprmc
+[INFO_|11/19 13:42:54|RTConfigContextListener.contextDestroyed:234] -----------------------------------------------
+[INFO_|11/19 13:43:18|OSTools.printMemoryUsage:444] Memory-K: max=3712000, total=397824, free=220552, used=177272
+[ERROR|11/19 13:43:19|EventSelector.<init>:198] *** Internal error: EX2959-1 (contact service provider)
+[INFO_|11/19 13:43:19|StartupInit.addTableFactories:152] Loaded customed Rule functions/identifiers
+[INFO_|11/19 13:43:19|BasicPrivateLabelLoader.printInfo:372] Not a 'Track/Service' servlet
+[INFO_|11/19 13:43:19|DCServerFactory._startupInit:1329] Loading only DCServer name: w-gprmc
+[WARN_|11/19 13:43:19|DCServerFactory._loadDCServerXML:636] DCServerConfig XML file not found: dcserver_w-gprmc.xml
+[INFO_|11/19 13:43:19|DCServerFactory._loadDCServerXML:643] DCServerConfig XML file not loaded: C:\Users\NBNguyen\Projects\apache-tomcat-8.0.47\webapps\gprmc\WEB-INF\dcservers.xml
+[INFO_|11/19 13:43:19|RTConfigContextListener.contextInitialized:211] java.awt.headless=false
+[INFO_|11/19 13:49:16|RTConfigContextListener.contextDestroyed:233] ... Servlet Context destroyed: dcs:w-gprmc
+[INFO_|11/19 13:49:16|RTConfigContextListener.contextDestroyed:234] -----------------------------------------------
+[INFO_|11/19 13:50:25|OSTools.printMemoryUsage:444] Memory-K: max=3712000, total=701952, free=542412, used=159540
+[ERROR|11/19 13:50:25|EventSelector.<init>:198] *** Internal error: EX2959-1 (contact service provider)
+[INFO_|11/19 13:50:25|StartupInit.addTableFactories:152] Loaded customed Rule functions/identifiers
+[INFO_|11/19 13:50:25|BasicPrivateLabelLoader.printInfo:372] Not a 'Track/Service' servlet
+[INFO_|11/19 13:50:26|DCServerFactory._startupInit:1329] Loading only DCServer name: w-gprmc
+[WARN_|11/19 13:50:26|DCServerFactory._loadDCServerXML:636] DCServerConfig XML file not found: dcserver_w-gprmc.xml
+[INFO_|11/19 13:50:26|DCServerFactory._loadDCServerXML:643] DCServerConfig XML file not loaded: C:\Users\NBNguyen\Projects\apache-tomcat-8.0.47\webapps\gprmc\WEB-INF\dcservers.xml
+[INFO_|11/19 13:50:26|RTConfigContextListener.contextInitialized:211] java.awt.headless=false
+[INFO_|11/19 13:52:22|RTConfigContextListener.contextDestroyed:233] ... Servlet Context destroyed: dcs:w-gprmc
+[INFO_|11/19 13:52:22|RTConfigContextListener.contextDestroyed:234] -----------------------------------------------
+[INFO_|11/19 13:52:36|OSTools.printMemoryUsage:444] Memory-K: max=3712000, total=865280, free=601506, used=263774
+[ERROR|11/19 13:52:36|EventSelector.<init>:198] *** Internal error: EX2959-1 (contact service provider)
+[INFO_|11/19 13:52:36|StartupInit.addTableFactories:152] Loaded customed Rule functions/identifiers
+[INFO_|11/19 13:52:36|BasicPrivateLabelLoader.printInfo:372] Not a 'Track/Service' servlet
+[INFO_|11/19 13:52:36|DCServerFactory._startupInit:1329] Loading only DCServer name: w-gprmc
+[WARN_|11/19 13:52:36|DCServerFactory._loadDCServerXML:636] DCServerConfig XML file not found: dcserver_w-gprmc.xml
+[INFO_|11/19 13:52:36|DCServerFactory._loadDCServerXML:643] DCServerConfig XML file not loaded: C:\Users\NBNguyen\Projects\apache-tomcat-8.0.47\webapps\gprmc\WEB-INF\dcservers.xml
+[INFO_|11/19 13:52:36|RTConfigContextListener.contextInitialized:211] java.awt.headless=false
+[INFO_|11/19 13:54:18|RTConfigContextListener.contextDestroyed:233] ... Servlet Context destroyed: dcs:w-gprmc
+[INFO_|11/19 13:54:18|RTConfigContextListener.contextDestroyed:234] -----------------------------------------------
+[INFO_|11/19 13:55:07|OSTools.printMemoryUsage:444] Memory-K: max=3712000, total=908288, free=492640, used=415648
+[ERROR|11/19 13:55:07|EventSelector.<init>:198] *** Internal error: EX2959-1 (contact service provider)
+[INFO_|11/19 13:55:07|StartupInit.addTableFactories:152] Loaded customed Rule functions/identifiers
+[INFO_|11/19 13:55:07|BasicPrivateLabelLoader.printInfo:372] Not a 'Track/Service' servlet
+[INFO_|11/19 13:55:07|DCServerFactory._startupInit:1329] Loading only DCServer name: w-gprmc
+[WARN_|11/19 13:55:07|DCServerFactory._loadDCServerXML:636] DCServerConfig XML file not found: dcserver_w-gprmc.xml
+[INFO_|11/19 13:55:07|DCServerFactory._loadDCServerXML:643] DCServerConfig XML file not loaded: C:\Users\NBNguyen\Projects\apache-tomcat-8.0.47\webapps\gprmc\WEB-INF\dcservers.xml
+[INFO_|11/19 13:55:07|RTConfigContextListener.contextInitialized:211] java.awt.headless=false
+[INFO_|11/19 14:54:03|RTConfigContextListener.contextDestroyed:233] ... Servlet Context destroyed: dcs:w-gprmc
+[INFO_|11/19 14:54:03|RTConfigContextListener.contextDestroyed:234] -----------------------------------------------
+[INFO_|11/26 16:11:47|OSTools.printMemoryUsage:444] Memory-K: max=3712000, total=204800, free=114820, used=89980
+[ERROR|11/26 16:11:47|EventSelector.<init>:198] *** Internal error: EX2959-1 (contact service provider)
+[INFO_|11/26 16:11:47|StartupInit.addTableFactories:152] Loaded customed Rule functions/identifiers
+[INFO_|11/26 16:11:47|BasicPrivateLabelLoader.printInfo:372] Not a 'Track/Service' servlet
+[INFO_|11/26 16:11:47|DCServerFactory._startupInit:1329] Loading only DCServer name: w-gprmc
+[WARN_|11/26 16:11:47|DCServerFactory._loadDCServerXML:636] DCServerConfig XML file not found: dcserver_w-gprmc.xml
+[INFO_|11/26 16:11:47|DCServerFactory._loadDCServerXML:643] DCServerConfig XML file not loaded: C:\Users\NBNguyen\Projects\apache-tomcat-8.0.47\webapps\gprmc\WEB-INF\dcservers.xml
+[INFO_|11/26 16:11:47|RTConfigContextListener.contextInitialized:211] java.awt.headless=false
+[INFO_|11/26 16:31:56|OSTools.printMemoryUsage:444] Memory-K: max=3712000, total=276480, free=129038, used=147442
+[ERROR|11/26 16:31:56|EventSelector.<init>:198] *** Internal error: EX2959-1 (contact service provider)
+[INFO_|11/26 16:31:56|StartupInit.addTableFactories:152] Loaded customed Rule functions/identifiers
+[INFO_|11/26 16:31:56|BasicPrivateLabelLoader.printInfo:372] Not a 'Track/Service' servlet
+[INFO_|11/26 16:31:56|DCServerFactory._startupInit:1329] Loading only DCServer name: w-gprmc
+[WARN_|11/26 16:31:56|DCServerFactory._loadDCServerXML:636] DCServerConfig XML file not found: dcserver_w-gprmc.xml
+[INFO_|11/26 16:31:56|DCServerFactory._loadDCServerXML:643] DCServerConfig XML file not loaded: C:\Users\NBNguyen\Projects\apache-tomcat-8.0.47\webapps\gprmc\WEB-INF\dcservers.xml
+[INFO_|11/26 16:31:56|RTConfigContextListener.contextInitialized:211] java.awt.headless=false
+[INFO_|11/26 16:50:48|RTConfigContextListener.contextDestroyed:233] ... Servlet Context destroyed: dcs:w-gprmc
+[INFO_|11/26 16:50:48|RTConfigContextListener.contextDestroyed:234] -----------------------------------------------

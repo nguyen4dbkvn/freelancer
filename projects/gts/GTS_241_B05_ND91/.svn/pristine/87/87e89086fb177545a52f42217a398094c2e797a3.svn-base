@@ -1,0 +1,449 @@
+BODY {
+     background-color: #5B5B67;
+}
+
+.navBar {
+     background-color: #EFEFEF;
+     border-bottom: 1px solid #555555;
+     border-top: 1px solid #555555;
+     font-size: 10pt;
+     padding-bottom: 1px;
+}
+
+.navBarClear {
+     font-size: 10pt;
+     padding-bottom: 1px;
+}
+
+.formButton {
+     margin: 0px;
+     padding: 0px;
+}
+
+.textInput {
+
+    background-color: #FFFFFF;
+    border-color: #555588 #AAAABB #AAAABB #555588;
+    border-radius: 5px 5px 5px 5px;
+    border-style: solid;
+    border-width: 1px;
+  
+    padding: 5px 5px 6px;
+
+}
+.textInput:focus { 
+    background-color: #FFFFC9; 
+}
+.textReadOnly {
+
+     background-color: #FFFFFF;
+     border-radius: 5px 5px 5px 5px;
+     border: 1px solid rgba(0, 0, 0, 0.25);
+     box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.25);
+     color: #000000 ! important;
+     cursor: pointer;
+     display: inline-block;
+     font-size: 10px;
+     font-weight: bold;
+     line-height: 1;
+     overflow: visible;
+     padding: 5px 5px 6px;
+     position: relative;
+     text-decoration: none;
+     width: auto;
+
+}
+
+.textReadOnly:focus {
+
+    background-color: #E7E7E7;
+    color: #111111;
+
+
+}
+
+.textOnClick {
+     background-color: #FFFFFF;
+     border-color: #444477 #9999AA #9999AA #444477;
+     border-style: solid;
+     border-width: 1px;
+     cursor: pointer;
+     border-radius: 5px 5px 5px 5px;
+     padding: 5px 5px 6px;
+}
+
+.textAreaInput {
+     background-color: #FFFFFF;
+     border-color: #444477 #9999AA #9999AA #444477;
+     border-style: solid;
+     border-width: 1px;
+     font-family: monospace;
+     padding-left: 2px;
+}
+
+.textAreaReadOnly {
+     background-color: #EFEFEF;
+     border-color: #444477 #9999AA #9999AA #444477;
+     border-style: solid;
+     border-width: 1px;
+     color: #555555;
+     font-family: monospace;
+     padding-left: 2px;
+}
+
+.textAreaReadOnly:focus {
+     background-color: #E7E7E7;
+     color: #111111;
+}
+
+.menuTitle {
+     font-size: 12pt;
+     font-weight: bold;
+     height: 25px;
+}
+
+.menuInstructions {
+     font-size: 10pt;
+}
+
+.menuDescription {
+     font-size: 9pt;
+     padding-top: 3px;
+}
+
+.contentTable {
+     color: white;
+     height: 550px;
+     margin-top: 10px;
+     max-height: 550px;
+     width: 100%;
+}
+
+.contentCell {
+     background-color: #F4F4FF;
+     border: 0px solid #555555;
+     padding: 5px;
+     vertical-align: top;
+}
+
+.contentTopMenuCell {
+     padding: 5px;
+     text-align: left;
+     vertical-align: top;
+}
+
+.contentMessage {
+     font-style: oblique;
+     margin-top: 5px;
+     text-align: center;
+}
+
+.contentMapTable {
+     height: 550px;
+     margin-top: 10px;
+     max-height: 550px;
+     width: 844px;
+}
+
+.contentTrackMapCell {
+     background-color: #0B1727;
+     border: 2px solid #555555;
+     font-size: 7pt;
+     padding: 5px;
+     vertical-align: top;
+     width: 100%;
+}
+
+.contentMapTableFull {
+     height: 99%;
+     width: 100%;
+}
+
+.contentTrackMapCellFull {
+     background-color: #0B1727;
+     border: 0px solid #555555;
+     font-size: 7pt;
+     padding: 5px;
+     vertical-align: top;
+     width: 100%;
+}
+
+.messageResponseTable {
+     margin-top: 50px;
+}
+
+.messageResponseCell {
+     background-color: #FBFBFB;
+     border-radius: 10px 10px 10px 10px;
+     border: 1px solid #555555;
+     color: black;
+     padding: 30px;
+     text-align: center;
+}
+
+.copyrightFooter {
+     background-color: #EFEFEF;
+     font-size: 7pt;
+     padding-bottom: 2px;
+     text-align: center;
+}
+
+.copyrightFooterClear {
+     background-image: url("../images/footer.png");
+     background-repeat: repeat-x;
+     border: 1px solid #FFFFFF;
+     color: #FFFFFF;
+     font-size: 7pt;
+     height: 40px;
+     margin-bottom: 10px;
+     margin-top: 10px;
+     padding-bottom: 2px;
+     text-align: center;
+     width: 100%;
+}
+
+TBODY.scrollExp {
+     max-height: 380px;
+     overflow-x: hidden;
+}
+
+TBODY.scroll {
+     height: 380px;
+     max-height: 380px;
+     overflow-x: hidden;
+     overflow-y: scroll;
+}
+
+TBODY.noScroll {
+    
+}
+
+H1.adminSelectTitle {
+     font: bold 9pt sans-serif;
+     margin-bottom: 3px;
+     margin-top: 0px;
+     text-align: left;
+}
+
+SPAN.adminSelectTitle {
+     font: bold 9pt sans-serif;
+     margin-bottom: 3px;
+     margin-top: 0px;
+     text-align: left;
+}
+
+TABLE.adminSelectTable {
+     border: 1px solid white;
+}
+
+TABLE.adminSelectTable_sortable {
+     background-color: #CDCDCD;
+     font-family: arial;
+     font-size: 8pt;
+     margin: 10px 0px 15px;
+     text-align: center;
+     width: 100%;
+}
+
+Tr.adminTableHeaderRow {
+     background-color: #E2E2E2;
+     border: 1px solid #FFFFFF;
+     color: black;
+     font-family: arial;
+     font-size: 12px;
+     font-weight: bold;
+     height: 30px;
+}
+
+TH.adminTableHeaderCol_sort {
+     background-color: #E2E2E2;
+     border: 1px solid #FFFFFF;
+     color: black;
+     cursor: pointer;
+     font: bold 8pt sans-serif;
+     height: 30px;
+     padding: 4px;
+     text-align: center;
+}
+
+Td.adminTableHeaderCol_sort {
+     background-color: #E2E2E2;
+     border: 1px solid #FFFFFF;
+     color: black;
+     cursor: pointer;
+     font: bold 9pt sans-serif;
+     height: 30px;
+     padding: 4px;
+     text-align: center;
+}
+
+TH.adminTableHeaderCol_sort:hover {
+     background-color: #E2E2E2;
+     border: 1px solid #FFFFFF;
+     font: bold 8pt sans-serif;
+     height: 30px;
+     padding: 4px;
+     text-align: center;
+}
+
+TH.adminTableHeaderCol_nosort {
+     background-color: #E2E2E2;
+     border: 1px solid #FFFFFF;
+     font: bold 8pt sans-serif;
+     height: 30px;
+     padding: 4px;
+     text-align: center;
+}
+
+TR.adminTableBodyRowOdd {
+     background-color: #FFFFFF;
+     color: black;
+     height: 20px;
+     text-align: center;
+}
+
+TR.adminTableBodyRowEven {
+     background-color: #F0F0F6;
+     color: black;
+     height: 20px;
+     text-align: center;
+}
+
+TD.adminTableBodyCol {
+     font: 8pt sans-serif;
+     padding: 0px 5px;
+     text-align: center;
+}
+
+TABLE.adminViewTable {
+     height: 65px;
+     margin-bottom: 10px;
+}
+
+TD.adminViewTableHeader {
+     font-size: 9pt;
+     height: 23px;
+     padding-left: 5px;
+     padding-right: 5px;
+     text-align: right;
+}
+
+TD.adminViewTableData {
+     height: 30px;
+}
+
+TD.adminViewTableTextArea {
+    
+}
+
+
+.adminComboBox {
+     background-color: #FFFFFF;
+     border-radius: 5px 5px 5px 5px;
+     border: 1px solid rgba(0, 0, 0, 0.25);
+     box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.25);
+     color: #000000 ! important;
+     cursor: pointer;
+     display: inline-block;
+     font-size: 10px;
+     font-weight: bold;
+     line-height: 1;
+     overflow: visible;
+     padding: 5px 5px 6px;
+     position: relative;
+     text-decoration: none;
+     width: auto;
+
+}
+
+
+.button {
+     background-color: #2DAEBF;
+     border-radius: 5px 5px 5px 5px;
+     border: 1px solid rgba(0, 0, 0, 0.25);
+     box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.25);
+     color: #FFFFFF ! important;
+     cursor: pointer;
+     display: inline-block;
+     font-size: 13px;
+     font-weight: bold;
+     line-height: 1;
+     overflow: visible;
+     padding: 5px 15px 6px;
+     position: relative;
+     text-decoration: none;
+     text-shadow: 0px -1px 1px rgba(0, 0, 0, 0.25);
+     width: auto;
+}
+
+.button:hover {
+     background-color: #007D9A;
+}
+
+.button1 {
+     background-color: #FFFFFF;
+     border-radius: 5px 5px 5px 5px;
+     border: 1px solid rgba(0, 0, 0, 0.25);
+     box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.25);
+     color: #767575;
+     cursor: pointer;
+     display: inline-block;
+     font-size: 13px;
+     font-weight: bold;
+     line-height: 1;
+     overflow: visible;
+     padding: 5px 15px 6px;
+     position: relative;
+     text-decoration: none;
+     width: auto;
+}
+
+.button1:hover {
+     background-color: #CACACA;
+     color: #FFFFFF;
+}
+
+.textDrop {
+     background-color: #FFFFFF;
+     background-image: url("../images/Pulldown1.png");
+     background-position: right top;
+     background-repeat: no-repeat;
+     border-color: #555588 #AAAABB #AAAABB #555588;
+     border-radius: 5px 5px 5px 5px;
+     border-style: solid;
+     border-width: 1px;
+     height: 20px;
+     padding-left: 2px;
+}
+
+.viewhoz {
+     background-color: #FF9000;
+}
+
+.groupDevicesHeaderCol {
+     background-color: #E2E2E2;
+     border: 1px solid #FFFFFF;
+     color: black;
+     cursor: pointer;
+     font: bold 8pt sans-serif;
+     height: 30px;
+     padding: 4px;
+     text-align: center;
+}
+
+.groupDevicesViewDiv {
+     height: 500px;
+     margin: 10px 0px 10px 15px;
+     overflow: scroll;
+     width: 500px;
+}
+
+.div_huongdan{
+ font-size:12px;
+font-family: verdana,sans-serif;
+padding:10px;
+line-height:20px;
+}
+.huongdannhantin{
+ padding-left:15px;
+}

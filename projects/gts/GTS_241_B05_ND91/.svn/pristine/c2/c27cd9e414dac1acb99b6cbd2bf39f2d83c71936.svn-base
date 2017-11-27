@@ -1,0 +1,138 @@
+BODY
+{
+  background-color:#0b1727;
+}
+/* report display content */
+TABLE.reportDisplayTable {
+    padding-top: 10px;		21.02184/105.79182
+}
+TD.reportDisplayCell {
+	width:1000px;
+}
+A
+{
+  color:white;
+}
+A:hover { 
+    color: blue;
+}
+SPAN.spanLink {
+    color: white;
+    text-decoration: underline;
+    cursor: pointer;
+}
+SPAN.spanLink:hover { 
+    color: blue;
+}
+/* report title */
+H1.rptTitle    { 
+    font: bold 15pt sans-serif; 
+    text-align: center; 
+    margin-bottom: 1px; 
+	color:#FFFFFF;
+	font-family:verdana;
+}
+H2.rptSubtitle { 
+    font: normal 8pt sans-serif; 
+    text-align: center; 
+    margin-bottom: 1px; 
+}
+
+/* no data */
+H2.rptNoData   { 
+    font: bold 8pt sans-serif; 
+    text-align: center; 
+    margin-bottom: 1px; 
+    color: black;
+}
+
+/* partial data */
+H2.rptPartial { 
+    font: bold 8pt sans-serif; 
+    text-align: center; 
+    margin-bottom: 1px; 
+    color: red; 
+}
+
+/* report table */
+TABLE.rptTbl { 
+    
+}
+TABLE.rptTbl_sortable { 
+    font-family:arial;
+	background-color: #CDCDCD;
+	margin:10px 0pt 15px;
+	font-size: 8pt;
+	width: 100%;
+	text-align: center;
+	color:black;
+}
+
+/* header */
+TR.rptHdrRow   { 
+ 
+}
+TH.rptHdrCol_sort   { 
+    background-color: #E2E2E2; 
+    font: bold 8pt sans-serif; 
+    text-align: center; 
+    border: 1px solid #FFFFFF;
+    padding: 4px;
+}
+TH.rptHdrCol_sort:hover   { 
+    font: bold 8pt sans-serif; 
+    text-align:  center; 
+    padding: 4px; 
+    cursor:pointer;
+}
+TH.rptHdrCol_nosort   { 
+    background-color: #E2E2E2; 
+    font: bold 8pt sans-serif; 
+    text-align: center; 
+    border: 1px solid #FFFFFF;
+    padding: 4px;
+
+}
+
+/* body */
+TR.rptBodyRowOdd  { 
+    background-color: #FFFFFF; 
+}
+TR.rptBodyRowEven { 
+    background-color: #F0F0F0; 
+}
+TD.rptBodyCol  { 
+    font: normal 8pt sans-serif; 
+    text-align: center; 
+    padding: 0px 5px 0px 5px; 
+  
+}
+
+/* body subtotal */
+TR.rptBodyRowTotal {
+    background-color: white; 
+}
+TD.rptBodyRowTotal  { 
+    font: bold 8pt sans-serif; 
+    text-align: center; 
+    padding: 1px 5px 13px 5px; 
+}
+
+/* totals */
+TR.rptTotalRow { 
+    background-color: white; 
+}
+TR.rptTotalRow2 { 
+    background-color: #F0F0F0; 
+}
+TD.rptTotalCol { 
+    font: normal 8pt sans-serif; 
+    text-align: center; 
+    padding: 0px 5px 0px 5px; 
+}
+TD.rptTotalCol2 { 
+    font: normal 8pt sans-serif; 
+    text-align: center; 
+    padding: 0px 5px 0px 5px; 
+    /* border-top: 3px double black; */
+}

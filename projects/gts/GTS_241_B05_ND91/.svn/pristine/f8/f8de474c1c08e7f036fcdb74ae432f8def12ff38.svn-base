@@ -1,0 +1,15 @@
+
+# --------------------------------------------------------
+# --- Service Account values
+# - GTS Installation ID: progressive
+ServiceAccount.ID=progressive
+ServiceAccount.Name=Progressive Platforms
+ServiceAccount.Type=
+ServiceAccount.Key=
+
+# --- Service Account DB Config
+ServiceAccount.db.name=gtse
+ServiceAccount.db.user=gts
+ServiceAccount.db.pass=gps@vmgvn2013!@#
+ServiceAccount.db.utf8=true
+

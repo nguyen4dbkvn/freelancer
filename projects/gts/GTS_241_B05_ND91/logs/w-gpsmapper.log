@@ -1,0 +1,68 @@
+[INFO_|11/19 13:42:15|OSTools.printMemoryUsage:444] Memory-K: max=3712000, total=236544, free=139807, used=96737
+[ERROR|11/19 13:42:16|EventSelector.<init>:198] *** Internal error: EX2959-1 (contact service provider)
+[INFO_|11/19 13:42:16|StartupInit.addTableFactories:152] Loaded customed Rule functions/identifiers
+[INFO_|11/19 13:42:16|BasicPrivateLabelLoader.printInfo:372] Not a 'Track/Service' servlet
+[INFO_|11/19 13:42:16|DCServerFactory._startupInit:1329] Loading only DCServer name: w-gpsmapper
+[WARN_|11/19 13:42:16|DCServerFactory._loadDCServerXML:636] DCServerConfig XML file not found: dcserver_w-gpsmapper.xml
+[INFO_|11/19 13:42:16|DCServerFactory._loadDCServerXML:643] DCServerConfig XML file not loaded: C:\Users\NBNguyen\Projects\apache-tomcat-8.0.47\webapps\gpsmapper\WEB-INF\dcservers.xml
+[INFO_|11/19 13:42:16|RTConfigContextListener.contextInitialized:211] java.awt.headless=false
+[INFO_|11/19 13:42:57|RTConfigContextListener.contextDestroyed:233] ... Servlet Context destroyed: dcs:w-gpsmapper
+[INFO_|11/19 13:42:57|RTConfigContextListener.contextDestroyed:234] -----------------------------------------------
+[INFO_|11/19 13:43:19|OSTools.printMemoryUsage:444] Memory-K: max=3712000, total=461312, free=356585, used=104727
+[ERROR|11/19 13:43:19|EventSelector.<init>:198] *** Internal error: EX2959-1 (contact service provider)
+[INFO_|11/19 13:43:19|StartupInit.addTableFactories:152] Loaded customed Rule functions/identifiers
+[INFO_|11/19 13:43:19|BasicPrivateLabelLoader.printInfo:372] Not a 'Track/Service' servlet
+[INFO_|11/19 13:43:19|DCServerFactory._startupInit:1329] Loading only DCServer name: w-gpsmapper
+[WARN_|11/19 13:43:19|DCServerFactory._loadDCServerXML:636] DCServerConfig XML file not found: dcserver_w-gpsmapper.xml
+[INFO_|11/19 13:43:19|DCServerFactory._loadDCServerXML:643] DCServerConfig XML file not loaded: C:\Users\NBNguyen\Projects\apache-tomcat-8.0.47\webapps\gpsmapper\WEB-INF\dcservers.xml
+[INFO_|11/19 13:43:19|RTConfigContextListener.contextInitialized:211] java.awt.headless=false
+[INFO_|11/19 13:49:19|RTConfigContextListener.contextDestroyed:233] ... Servlet Context destroyed: dcs:w-gpsmapper
+[INFO_|11/19 13:49:19|RTConfigContextListener.contextDestroyed:234] -----------------------------------------------
+[INFO_|11/19 13:50:26|OSTools.printMemoryUsage:444] Memory-K: max=3712000, total=701952, free=477843, used=224109
+[ERROR|11/19 13:50:26|EventSelector.<init>:198] *** Internal error: EX2959-1 (contact service provider)
+[INFO_|11/19 13:50:26|StartupInit.addTableFactories:152] Loaded customed Rule functions/identifiers
+[INFO_|11/19 13:50:26|BasicPrivateLabelLoader.printInfo:372] Not a 'Track/Service' servlet
+[INFO_|11/19 13:50:26|DCServerFactory._startupInit:1329] Loading only DCServer name: w-gpsmapper
+[WARN_|11/19 13:50:26|DCServerFactory._loadDCServerXML:636] DCServerConfig XML file not found: dcserver_w-gpsmapper.xml
+[INFO_|11/19 13:50:26|DCServerFactory._loadDCServerXML:643] DCServerConfig XML file not loaded: C:\Users\NBNguyen\Projects\apache-tomcat-8.0.47\webapps\gpsmapper\WEB-INF\dcservers.xml
+[INFO_|11/19 13:50:26|RTConfigContextListener.contextInitialized:211] java.awt.headless=false
+[INFO_|11/19 13:52:25|RTConfigContextListener.contextDestroyed:233] ... Servlet Context destroyed: dcs:w-gpsmapper
+[INFO_|11/19 13:52:25|RTConfigContextListener.contextDestroyed:234] -----------------------------------------------
+[INFO_|11/19 13:52:36|OSTools.printMemoryUsage:444] Memory-K: max=3712000, total=865280, free=537128, used=328152
+[ERROR|11/19 13:52:37|EventSelector.<init>:198] *** Internal error: EX2959-1 (contact service provider)
+[INFO_|11/19 13:52:37|StartupInit.addTableFactories:152] Loaded customed Rule functions/identifiers
+[INFO_|11/19 13:52:37|BasicPrivateLabelLoader.printInfo:372] Not a 'Track/Service' servlet
+[INFO_|11/19 13:52:37|DCServerFactory._startupInit:1329] Loading only DCServer name: w-gpsmapper
+[WARN_|11/19 13:52:37|DCServerFactory._loadDCServerXML:636] DCServerConfig XML file not found: dcserver_w-gpsmapper.xml
+[INFO_|11/19 13:52:37|DCServerFactory._loadDCServerXML:643] DCServerConfig XML file not loaded: C:\Users\NBNguyen\Projects\apache-tomcat-8.0.47\webapps\gpsmapper\WEB-INF\dcservers.xml
+[INFO_|11/19 13:52:37|RTConfigContextListener.contextInitialized:211] java.awt.headless=false
+[INFO_|11/19 13:54:20|RTConfigContextListener.contextDestroyed:233] ... Servlet Context destroyed: dcs:w-gpsmapper
+[INFO_|11/19 13:54:20|RTConfigContextListener.contextDestroyed:234] -----------------------------------------------
+[INFO_|11/19 13:55:07|OSTools.printMemoryUsage:444] Memory-K: max=3712000, total=908288, free=428256, used=480032
+[ERROR|11/19 13:55:07|EventSelector.<init>:198] *** Internal error: EX2959-1 (contact service provider)
+[INFO_|11/19 13:55:07|StartupInit.addTableFactories:152] Loaded customed Rule functions/identifiers
+[INFO_|11/19 13:55:07|BasicPrivateLabelLoader.printInfo:372] Not a 'Track/Service' servlet
+[INFO_|11/19 13:55:07|DCServerFactory._startupInit:1329] Loading only DCServer name: w-gpsmapper
+[WARN_|11/19 13:55:07|DCServerFactory._loadDCServerXML:636] DCServerConfig XML file not found: dcserver_w-gpsmapper.xml
+[INFO_|11/19 13:55:07|DCServerFactory._loadDCServerXML:643] DCServerConfig XML file not loaded: C:\Users\NBNguyen\Projects\apache-tomcat-8.0.47\webapps\gpsmapper\WEB-INF\dcservers.xml
+[INFO_|11/19 13:55:07|RTConfigContextListener.contextInitialized:211] java.awt.headless=false
+[INFO_|11/19 14:54:03|RTConfigContextListener.contextDestroyed:233] ... Servlet Context destroyed: dcs:w-gpsmapper
+[INFO_|11/19 14:54:03|RTConfigContextListener.contextDestroyed:234] -----------------------------------------------
+[INFO_|11/26 16:11:48|OSTools.printMemoryUsage:444] Memory-K: max=3712000, total=238080, free=141831, used=96249
+[ERROR|11/26 16:11:48|EventSelector.<init>:198] *** Internal error: EX2959-1 (contact service provider)
+[INFO_|11/26 16:11:48|StartupInit.addTableFactories:152] Loaded customed Rule functions/identifiers
+[INFO_|11/26 16:11:48|BasicPrivateLabelLoader.printInfo:372] Not a 'Track/Service' servlet
+[INFO_|11/26 16:11:48|DCServerFactory._startupInit:1329] Loading only DCServer name: w-gpsmapper
+[WARN_|11/26 16:11:48|DCServerFactory._loadDCServerXML:636] DCServerConfig XML file not found: dcserver_w-gpsmapper.xml
+[INFO_|11/26 16:11:48|DCServerFactory._loadDCServerXML:643] DCServerConfig XML file not loaded: C:\Users\NBNguyen\Projects\apache-tomcat-8.0.47\webapps\gpsmapper\WEB-INF\dcservers.xml
+[INFO_|11/26 16:11:48|RTConfigContextListener.contextInitialized:211] java.awt.headless=false
+[INFO_|11/26 16:31:56|OSTools.printMemoryUsage:444] Memory-K: max=3712000, total=276480, free=169752, used=106728
+[ERROR|11/26 16:31:56|EventSelector.<init>:198] *** Internal error: EX2959-1 (contact service provider)
+[INFO_|11/26 16:31:56|StartupInit.addTableFactories:152] Loaded customed Rule functions/identifiers
+[INFO_|11/26 16:31:56|BasicPrivateLabelLoader.printInfo:372] Not a 'Track/Service' servlet
+[INFO_|11/26 16:31:57|DCServerFactory._startupInit:1329] Loading only DCServer name: w-gpsmapper
+[WARN_|11/26 16:31:57|DCServerFactory._loadDCServerXML:636] DCServerConfig XML file not found: dcserver_w-gpsmapper.xml
+[INFO_|11/26 16:31:57|DCServerFactory._loadDCServerXML:643] DCServerConfig XML file not loaded: C:\Users\NBNguyen\Projects\apache-tomcat-8.0.47\webapps\gpsmapper\WEB-INF\dcservers.xml
+[INFO_|11/26 16:31:57|RTConfigContextListener.contextInitialized:211] java.awt.headless=false
+[INFO_|11/26 16:50:48|RTConfigContextListener.contextDestroyed:233] ... Servlet Context destroyed: dcs:w-gpsmapper
+[INFO_|11/26 16:50:48|RTConfigContextListener.contextDestroyed:234] -----------------------------------------------

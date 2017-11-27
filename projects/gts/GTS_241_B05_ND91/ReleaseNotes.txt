@@ -1,0 +1,20 @@
+
+Version 2.4.1 [2012/??/??]
+- Pending
+
+-----------------------------------------------------------------------------------
+
+Project Home Page:
+    http://www.opengts.org
+
+Download Latest Version from SourceForge:
+    https://sourceforge.net/projects/opengts/
+
+Documentation (installation/configuration, tutorials, FAQ):
+    http://www.opengts.org/FAQ.html
+    http://www.opengts.org/documentation.html
+
+GTS Enterprise:
+    http://www.geotelematic.com/gts.html
+    http://www.geotelematic.com/documentation.html
+

@@ -1,0 +1,68 @@
+[INFO_|11/19 13:42:16|OSTools.printMemoryUsage:444] Memory-K: max=3712000, total=342016, free=310989, used=31027
+[ERROR|11/19 13:42:16|EventSelector.<init>:198] *** Internal error: EX2959-1 (contact service provider)
+[INFO_|11/19 13:42:16|StartupInit.addTableFactories:152] Loaded customed Rule functions/identifiers
+[INFO_|11/19 13:42:16|BasicPrivateLabelLoader.printInfo:372] Not a 'Track/Service' servlet
+[INFO_|11/19 13:42:16|DCServerFactory._startupInit:1329] Loading only DCServer name: w-mologogo
+[WARN_|11/19 13:42:16|DCServerFactory._loadDCServerXML:636] DCServerConfig XML file not found: dcserver_w-mologogo.xml
+[INFO_|11/19 13:42:16|DCServerFactory._loadDCServerXML:643] DCServerConfig XML file not loaded: C:\Users\NBNguyen\Projects\apache-tomcat-8.0.47\webapps\mologogo\WEB-INF\dcservers.xml
+[INFO_|11/19 13:42:16|RTConfigContextListener.contextInitialized:211] java.awt.headless=false
+[INFO_|11/19 13:42:56|RTConfigContextListener.contextDestroyed:233] ... Servlet Context destroyed: dcs:w-mologogo
+[INFO_|11/19 13:42:56|RTConfigContextListener.contextDestroyed:234] -----------------------------------------------
+[INFO_|11/19 13:43:19|OSTools.printMemoryUsage:444] Memory-K: max=3712000, total=461312, free=290611, used=170701
+[ERROR|11/19 13:43:20|EventSelector.<init>:198] *** Internal error: EX2959-1 (contact service provider)
+[INFO_|11/19 13:43:20|StartupInit.addTableFactories:152] Loaded customed Rule functions/identifiers
+[INFO_|11/19 13:43:20|BasicPrivateLabelLoader.printInfo:372] Not a 'Track/Service' servlet
+[INFO_|11/19 13:43:20|DCServerFactory._startupInit:1329] Loading only DCServer name: w-mologogo
+[WARN_|11/19 13:43:20|DCServerFactory._loadDCServerXML:636] DCServerConfig XML file not found: dcserver_w-mologogo.xml
+[INFO_|11/19 13:43:20|DCServerFactory._loadDCServerXML:643] DCServerConfig XML file not loaded: C:\Users\NBNguyen\Projects\apache-tomcat-8.0.47\webapps\mologogo\WEB-INF\dcservers.xml
+[INFO_|11/19 13:43:20|RTConfigContextListener.contextInitialized:211] java.awt.headless=false
+[INFO_|11/19 13:49:18|RTConfigContextListener.contextDestroyed:233] ... Servlet Context destroyed: dcs:w-mologogo
+[INFO_|11/19 13:49:18|RTConfigContextListener.contextDestroyed:234] -----------------------------------------------
+[INFO_|11/19 13:50:26|OSTools.printMemoryUsage:444] Memory-K: max=3712000, total=701952, free=412633, used=289319
+[ERROR|11/19 13:50:27|EventSelector.<init>:198] *** Internal error: EX2959-1 (contact service provider)
+[INFO_|11/19 13:50:27|StartupInit.addTableFactories:152] Loaded customed Rule functions/identifiers
+[INFO_|11/19 13:50:27|BasicPrivateLabelLoader.printInfo:372] Not a 'Track/Service' servlet
+[INFO_|11/19 13:50:27|DCServerFactory._startupInit:1329] Loading only DCServer name: w-mologogo
+[WARN_|11/19 13:50:27|DCServerFactory._loadDCServerXML:636] DCServerConfig XML file not found: dcserver_w-mologogo.xml
+[INFO_|11/19 13:50:27|DCServerFactory._loadDCServerXML:643] DCServerConfig XML file not loaded: C:\Users\NBNguyen\Projects\apache-tomcat-8.0.47\webapps\mologogo\WEB-INF\dcservers.xml
+[INFO_|11/19 13:50:27|RTConfigContextListener.contextInitialized:211] java.awt.headless=false
+[INFO_|11/19 13:52:24|RTConfigContextListener.contextDestroyed:233] ... Servlet Context destroyed: dcs:w-mologogo
+[INFO_|11/19 13:52:24|RTConfigContextListener.contextDestroyed:234] -----------------------------------------------
+[INFO_|11/19 13:52:37|OSTools.printMemoryUsage:444] Memory-K: max=3712000, total=865280, free=472405, used=392875
+[ERROR|11/19 13:52:37|EventSelector.<init>:198] *** Internal error: EX2959-1 (contact service provider)
+[INFO_|11/19 13:52:37|StartupInit.addTableFactories:152] Loaded customed Rule functions/identifiers
+[INFO_|11/19 13:52:37|BasicPrivateLabelLoader.printInfo:372] Not a 'Track/Service' servlet
+[INFO_|11/19 13:52:37|DCServerFactory._startupInit:1329] Loading only DCServer name: w-mologogo
+[WARN_|11/19 13:52:37|DCServerFactory._loadDCServerXML:636] DCServerConfig XML file not found: dcserver_w-mologogo.xml
+[INFO_|11/19 13:52:37|DCServerFactory._loadDCServerXML:643] DCServerConfig XML file not loaded: C:\Users\NBNguyen\Projects\apache-tomcat-8.0.47\webapps\mologogo\WEB-INF\dcservers.xml
+[INFO_|11/19 13:52:37|RTConfigContextListener.contextInitialized:211] java.awt.headless=false
+[INFO_|11/19 13:54:19|RTConfigContextListener.contextDestroyed:233] ... Servlet Context destroyed: dcs:w-mologogo
+[INFO_|11/19 13:54:19|RTConfigContextListener.contextDestroyed:234] -----------------------------------------------
+[INFO_|11/19 13:55:08|OSTools.printMemoryUsage:444] Memory-K: max=3712000, total=912384, free=735838, used=176546
+[ERROR|11/19 13:55:08|EventSelector.<init>:198] *** Internal error: EX2959-1 (contact service provider)
+[INFO_|11/19 13:55:08|StartupInit.addTableFactories:152] Loaded customed Rule functions/identifiers
+[INFO_|11/19 13:55:08|BasicPrivateLabelLoader.printInfo:372] Not a 'Track/Service' servlet
+[INFO_|11/19 13:55:08|DCServerFactory._startupInit:1329] Loading only DCServer name: w-mologogo
+[WARN_|11/19 13:55:08|DCServerFactory._loadDCServerXML:636] DCServerConfig XML file not found: dcserver_w-mologogo.xml
+[INFO_|11/19 13:55:08|DCServerFactory._loadDCServerXML:643] DCServerConfig XML file not loaded: C:\Users\NBNguyen\Projects\apache-tomcat-8.0.47\webapps\mologogo\WEB-INF\dcservers.xml
+[INFO_|11/19 13:55:08|RTConfigContextListener.contextInitialized:211] java.awt.headless=false
+[INFO_|11/19 14:54:03|RTConfigContextListener.contextDestroyed:233] ... Servlet Context destroyed: dcs:w-mologogo
+[INFO_|11/19 14:54:03|RTConfigContextListener.contextDestroyed:234] -----------------------------------------------
+[INFO_|11/26 16:11:48|OSTools.printMemoryUsage:444] Memory-K: max=3712000, total=344064, free=313618, used=30446
+[ERROR|11/26 16:11:48|EventSelector.<init>:198] *** Internal error: EX2959-1 (contact service provider)
+[INFO_|11/26 16:11:48|StartupInit.addTableFactories:152] Loaded customed Rule functions/identifiers
+[INFO_|11/26 16:11:48|BasicPrivateLabelLoader.printInfo:372] Not a 'Track/Service' servlet
+[INFO_|11/26 16:11:48|DCServerFactory._startupInit:1329] Loading only DCServer name: w-mologogo
+[WARN_|11/26 16:11:48|DCServerFactory._loadDCServerXML:636] DCServerConfig XML file not found: dcserver_w-mologogo.xml
+[INFO_|11/26 16:11:48|DCServerFactory._loadDCServerXML:643] DCServerConfig XML file not loaded: C:\Users\NBNguyen\Projects\apache-tomcat-8.0.47\webapps\mologogo\WEB-INF\dcservers.xml
+[INFO_|11/26 16:11:49|RTConfigContextListener.contextInitialized:211] java.awt.headless=false
+[INFO_|11/26 16:31:57|OSTools.printMemoryUsage:444] Memory-K: max=3712000, total=421376, free=375049, used=46327
+[ERROR|11/26 16:31:57|EventSelector.<init>:198] *** Internal error: EX2959-1 (contact service provider)
+[INFO_|11/26 16:31:57|StartupInit.addTableFactories:152] Loaded customed Rule functions/identifiers
+[INFO_|11/26 16:31:57|BasicPrivateLabelLoader.printInfo:372] Not a 'Track/Service' servlet
+[INFO_|11/26 16:31:57|DCServerFactory._startupInit:1329] Loading only DCServer name: w-mologogo
+[WARN_|11/26 16:31:57|DCServerFactory._loadDCServerXML:636] DCServerConfig XML file not found: dcserver_w-mologogo.xml
+[INFO_|11/26 16:31:57|DCServerFactory._loadDCServerXML:643] DCServerConfig XML file not loaded: C:\Users\NBNguyen\Projects\apache-tomcat-8.0.47\webapps\mologogo\WEB-INF\dcservers.xml
+[INFO_|11/26 16:31:57|RTConfigContextListener.contextInitialized:211] java.awt.headless=false
+[INFO_|11/26 16:50:48|RTConfigContextListener.contextDestroyed:233] ... Servlet Context destroyed: dcs:w-mologogo
+[INFO_|11/26 16:50:48|RTConfigContextListener.contextDestroyed:234] -----------------------------------------------

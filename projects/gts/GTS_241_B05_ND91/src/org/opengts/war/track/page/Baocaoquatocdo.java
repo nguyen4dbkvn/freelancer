@@ -1,0 +1,840 @@
+// ----------------------------------------------------------------------------
+// Copyright 2007-2012, GeoTelematic Solutions, Inc.
+// All rights reserved
+// ----------------------------------------------------------------------------
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+// 
+// http://www.apache.org/licenses/LICENSE-2.0
+// 
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+//
+// ----------------------------------------------------------------------------
+// Change History:
+//  2007/12/13  Martin D. Flynn
+//     -Initial release
+// ----------------------------------------------------------------------------
+package org.opengts.war.track.page;
+
+import java.sql.ResultSet;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.Iterator;
+import java.util.Locale;
+import java.util.Map;
+import java.util.Vector;
+import java.util.TimeZone;
+import java.io.*;
+import java.text.DateFormat;
+import java.text.DecimalFormat;
+import java.text.SimpleDateFormat;
+import java.text.ParseException;
+import java.util.Date; 
+
+import javax.servlet.*;
+import javax.servlet.http.*;
+
+import org.apache.poi.hssf.usermodel.HSSFCell;
+import org.apache.poi.hssf.usermodel.HSSFCellStyle;
+import org.apache.poi.hssf.usermodel.HSSFFont;
+import org.apache.poi.hssf.usermodel.HSSFRow;
+import org.apache.poi.hssf.usermodel.HSSFSheet;
+import org.apache.poi.hssf.usermodel.HSSFWorkbook;
+import org.apache.poi.hssf.util.HSSFColor;
+import org.apache.poi.ss.util.CellRangeAddress;
+import org.opengts.util.*;
+import org.opengts.dbtools.*;
+import org.opengts.db.*;
+import org.opengts.db.tables.*;
+import org.opengts.war.tools.*;
+import org.opengts.war.report.*;
+import org.opengts.war.track.*;
+
+public class Baocaoquatocdo
+extends WebPageAdaptor
+implements Constants
+{
+
+// ------------------------------------------------------------------------
+// Parameters
+public  static final String COMMAND_INFO_UPDATE     = "update";
+// button types
+public  static final String PARM_BUTTON_CANCEL      = "a_btncan";
+public  static final String PARM_BUTTON_BACK        = "a_btnbak";
+
+// parameters
+//thanhtq
+public  static final String PARM_DATE_SL            = "a_date";
+public  static final String PARM_DEVICE_SL          = "a_device";
+public static int record							= 0;
+
+// ------------------------------------------------------------------------
+// WebPage interface
+    // ------------------------------------------------------------------------
+    // ------------------------------------------------------------------------
+    // ------------------------------------------------------------------------
+    // Reports: "device.detail"
+    //  - Event Detail
+    //  - Temperature Monitoring
+    //  - J1708 Fault codes
+
+    public Baocaoquatocdo()
+    {
+        this.setBaseURI(RequestProperties.TRACK_BASE_URI());
+        this.setPageName(PAGE_MENU_RPT_OVERSPEED);
+        this.setPageNavigation(new String[] { PAGE_LOGIN, PAGE_MENU_TOP });
+        this.setLoginRequired(true);
+        //this.setReportType(ReportFactory.REPORT_TYPE_DEVICE_DETAIL);
+    }
+
+    // ------------------------------------------------------------------------
+
+    public String getMenuName(RequestProperties reqState)
+    {
+        return MenuBar.PAGE_MENU_RPT_OVERSPEED;
+    }
+
+    public String getMenuDescription(RequestProperties reqState, String parentMenuName)
+    {
+        PrivateLabel privLabel   = reqState.getPrivateLabel();
+        I18N         i18n        = privLabel.getI18N(Baocaoquatocdo.class);
+        String       devTitles[] = reqState.getDeviceTitles();
+        return super._getMenuDescription(reqState,i18n.getString("ReportMenuOverSpeed.menuDesc","{0} Detail Reports", "B\u00E1o c\u00E1o qu\u00E1 t\u1ED1c \u0111\u1ED9"));
+    }
+
+    public String getMenuHelp(RequestProperties reqState, String parentMenuName)
+    {
+        PrivateLabel privLabel   = reqState.getPrivateLabel();
+        I18N         i18n        = privLabel.getI18N(Baocaoquatocdo.class);
+        String       devTitles[] = reqState.getDeviceTitles();
+        return super._getMenuHelp(reqState,i18n.getString("ReportMenuOverSpeed.menuHelp","Display various {0} detail reports", "B\u00E1o c\u00E1o qu\u00E1 t\u1ED1c \u0111\u1ED9"));
+    }
+
+    // ------------------------------------------------------------------------
+
+    public String getNavigationDescription(RequestProperties reqState)
+    {
+        PrivateLabel privLabel   = reqState.getPrivateLabel();
+        I18N         i18n        = privLabel.getI18N(Baocaoquatocdo.class);
+        String       devTitles[] = reqState.getDeviceTitles();
+        return super._getNavigationDescription(reqState,i18n.getString("ReportMenuOverSpeed.navDesc","{0}", "B\u00E1o c\u00E1o qu\u00E1 t\u1ED1c \u0111\u1ED9"));
+    }
+
+    public String getNavigationTab(RequestProperties reqState)
+    {
+        PrivateLabel privLabel   = reqState.getPrivateLabel();
+        I18N         i18n        = privLabel.getI18N(Baocaoquatocdo.class);
+        String       devTitles[] = reqState.getDeviceTitles();
+        return super._getNavigationTab(reqState,i18n.getString("ReportMenuOverSpeed.navTab","{0}", "B\u00E1o c\u00E1o qu\u00E1 t\u1ED1c \u0111\u1ED9"));
+    }
+
+    // ------------------------------------------------------------------------
+   
+
+    public boolean isOkToDisplay(RequestProperties reqState)
+    {
+        Account account = (reqState != null)? reqState.getCurrentAccount() : null;
+        if (account == null) {
+            return false; // no account?
+        } else
+        {
+        	int dem=0;
+        	DBCamera objcmr = new  DBCamera();
+    		dem= objcmr.phanQuyen(account.getAccountID(),"baoCaoQuaTocDo" );
+    		 
+    		if(dem>0)
+    			return false;
+    		else
+    			return true;
+        	
+        }
+    }
+    
+    
+    public String doiGio(int tg)
+    {
+        String chuoi = "";
+        int gio = tg / 3600;
+        int phut = (tg % 3600) / 60;
+        int giay = tg - gio * 3600 - phut * 60;
+        String h="",m="",s="";
+        if (gio < 10)
+            h = "0" +  Integer.toString(gio);
+        else
+            h = Integer.toString(gio);
+        if (phut < 10)
+            m = "0" + Integer.toString(phut);
+        else
+            m = Integer.toString(phut);
+        if (giay < 10)
+            s = "0" + Integer.toString(giay);
+        else
+            s = Integer.toString(giay);
+        return chuoi =chuoi+h+":"+m+":"+s;
+    
+    }
+    
+    public String CreateCbbDevice(String accountid, String idselect, RequestProperties reqState, PrivateLabel privLabel) throws IOException
+    {
+    	IDDescription.SortBy sortBy = DeviceChooser.getSortBy(privLabel);
+    	java.util.List<IDDescription> idList = reqState.createIDDescriptionList(false, sortBy);
+        IDDescription list[] = idList.toArray(new IDDescription[idList.size()]);
+        
+		     String strre = "<select id ='device' name = 'device' class='textReadOnly' style='width:100px;'>";
+		 	if(idselect=="-1")
+			{
+				strre +="<option value ='-1' selected =\"selected\">Tất cả</option>\n";
+			}
+			else
+			{
+				strre +="<option value ='-1'>Tất cả</option>\n";
+			}
+		     for (int d = 0; d < list.length ; d++) {
+		        if(idselect.equalsIgnoreCase(list[d].getID()))
+		          strre +="<option value ='"+list[d].getID()+"' selected =\"selected\">"+list[d].getID()+"</option>\n";
+		         else
+		          strre +="<option value ='"+list[d].getID()+"'>"+list[d].getID()+"</option>\n";
+		     	}      
+     
+     strre +="</select>\n";
+     strre +="<script type ='text/javascript' language ='javascript'> document.getElementById('device ').value = '"+idselect+"';</script>\n";
+     return strre;
+    }
+   
+    public static double round(double value, int decimalPlace) {
+  	  double power_of_ten = 1;
+  	  // floating point arithmetic can be very tricky.
+  	  // that's why I introduce a "fudge factor"
+  	  double fudge_factor = 0.05;
+  	  while (decimalPlace-- > 0) {
+  	   power_of_ten *= 10.0d;
+  	   fudge_factor /= 10.0d;
+  	  }
+  	  return Math.round((value + fudge_factor) * power_of_ten) / power_of_ten;
+  	 }
+    
+    private String ConvertFromEpochHour(long epoch, String timezone){
+  	  TimeZone tz = DateTime.getTimeZone(timezone, null);
+  	  DateTime dt = new DateTime(epoch);
+  	        String dtFmt = dt.format("dd/MM/yyyy", tz);
+  	  return dtFmt;
+  	 }
+    public long ConvertToEpoch(String date, String timezone) {
+		long res = 0;
+		try {
+
+			DateFormat df1 = new SimpleDateFormat("dd/MM/yyyy HH:mm");
+			DateFormat df12 = new SimpleDateFormat("dd/MM/yyyy HH:mm");
+
+			TimeZone tz = TimeZone.getTimeZone(timezone);
+			df1.setTimeZone(tz);
+			Date d = df1.parse(date);
+			date = df12.format(d);
+
+			long ep = new java.text.SimpleDateFormat("dd/MM/yyyy HH:mm").parse(
+					date).getTime();
+			ep = ep / 1000;
+			res = ep;
+
+		} catch (Exception e) {
+
+		}
+		return res;
+	}
+    private String ConvertFromEpochTime(long epoch, String timezone){
+  	  TimeZone tz = DateTime.getTimeZone(timezone, null);
+  	  DateTime dt = new DateTime(epoch);
+  	        String dtFmt = dt.format(" HH:mm:ss", tz);
+  	  return dtFmt;
+  	 }
+    public String LoadReport(String accid, String tungay, String denngay,
+			String device, PrivateLabel privLabel, RequestProperties reqState,
+			String timezone) throws IOException {
+
+		String strscr = "";
+
+		try {
+			int num = 0, i = 0;
+			int time = 0;
+			record = 0;
+			DBCamera objcmr = new DBCamera();
+
+			strscr = strscr
+					+ "<table  width='100%' class='adminSelectTable_sortable' cellspacing='1' ><thead><tr  align='center'>"
+					+ "<th class='adminTableHeaderCol_sort'>TT</th>"
+					+ "<th class='adminTableHeaderCol_sort' width='60px'>Biển kiểm soát</th>"
+					+ "<th  class='adminTableHeaderCol_sort'>Họ tên lái xe</th><th  class='adminTableHeaderCol_sort' width='60px'>Số Giấy <br/> phép lái xe</th><th  class='adminTableHeaderCol_sort'>Loại hình <br/> hoạt động</th><th  class='adminTableHeaderCol_sort'>Thời điểm<br/> (giờ, phút, ngày, tháng, năm)</th><th  class='adminTableHeaderCol_sort'>Tốc độ trung bình<br/> khi quá tốc độ <br/>(km/h)</th><th  class='adminTableHeaderCol_sort'>Tốc độ <br/> cho phép <br/> (km/h)</th><th  class='adminTableHeaderCol_sort'>Tọa độ quá tốc độ</th><th class='adminTableHeaderCol_sort'>Địa điểm <br/> quá tốc độ</th><th class='adminTableHeaderCol_sort'>Ghi chú</th></tr></thead>";
+
+			long fr = ConvertToEpoch(tungay + " 00:00:00", timezone);
+			long to = ConvertToEpoch(denngay + " 23:59:59", timezone);
+
+			// strscr += fr +"  " + to +"<br/>";
+			int dem = 0;
+			ArrayList<VuotToc> listreport = objcmr.StaticReportVuotToc(accid,
+					device, fr, to);
+
+			String _deviceID = "";
+			if (listreport.size() > 0)
+				_deviceID = listreport.get(0).getdeviceID().trim();
+
+			for (int t = 0; t < listreport.size(); t++) {
+				String css = "";
+				if (num % 2 == 0)
+					css = "adminTableBodyRowOdd";
+				else
+					css = "adminTableBodyRowEven";
+				num++;
+				i++;
+
+				if (listreport.get(t).getdeviceID().trim()
+						.equalsIgnoreCase(_deviceID) == false) {
+					strscr = strscr
+							+ "<tr class ='adminTableBodyRowOdd'><td colspan='11'><b> Xe "
+							+ _deviceID + ", Tổng:  " + dem + "</b></td></tr>";
+					_deviceID = listreport.get(t).getdeviceID().trim();
+					dem = 0;
+				}
+
+				dem++;
+				DecimalFormat df = new DecimalFormat("#0.#");
+				strscr = strscr
+						+ "<tr class ="
+						+ css
+						+ "><td>"
+						+ num
+						+ "</td><td>"
+						+ listreport.get(t).getdeviceID()
+						+ "</td><td>"
+						+ listreport.get(t).getHoTenLaiXe()
+						+ "</td><td>"
+						+ listreport.get(t).getSoGiayPhepLaiXe()
+						+ "</td><td>"
+						+ listreport.get(t).getLoaiHinhHoatDong()
+						+ "</td><td>"
+						+ ConvertFromEpochHour(
+								listreport.get(t).getstartTime(), timezone)
+						+ "</td><td>"
+						+ df.format(Double.parseDouble(listreport.get(t).getTocDoTBKhiQuaTocDo()))
+						+ "</td><td>" + df.format(Double.parseDouble(listreport.get(t).getTocDoChoPhep()))
+						+ "</td><td>" + round(listreport.get(t).getlat(), 5) + " - "
+						+ round(listreport.get(t).getlon(), 5) + "</td><td>"
+						+ listreport.get(t).getaddress() + "</td><td>"
+						+ listreport.get(t).getNote() + "</td></tr>";
+			}
+			if (listreport.size() > 0)
+				strscr = strscr
+						+ "<tr class ='adminTableBodyRowOdd'><td colspan='11'><b> Xe "
+						+ _deviceID + ", Tổng:  " + dem + "</b></td></tr>";
+
+			if(listreport.size()==0){
+    			strscr +="<tr  class='adminTableBodyRowEven'><td colspan='11'> Không có dữ liệu.</td></tr>";
+    		}
+			strscr = strscr + "</table>";
+		}
+		// }
+		catch (Exception e) {
+			strscr += e.toString();
+		}
+		return strscr;
+	}
+    /*public String LoadReport(String accid,String tungay,String denngay,String device,PrivateLabel privLabel,RequestProperties reqState,String timezone) throws IOException
+    {
+    	
+    	String strscr ="";
+    	
+    	try
+    	{
+    		int num = 0,i=0;
+    		 int time=0;
+    		record=0;
+    		DBCamera objcmr = new  DBCamera();
+    		//ResultSet rs = objcmr.GetCamera(ngay, device, page, pagesize);
+    		IDDescription.SortBy sortBy = DeviceChooser.getSortBy(privLabel);
+        	java.util.List<IDDescription> idList = reqState.createIDDescriptionList(false, sortBy);
+            IDDescription list[] = idList.toArray(new IDDescription[idList.size()]);
+    		strscr =strscr+ "<table  width='100%' class='adminSelectTable_sortable' cellspacing='1' ><thead><tr  align='center'><th class='adminTableHeaderCol_sort' width='60px'>Xe</th><th  class='adminTableHeaderCol_sort'>Ng\u00E0y</th><th  class='adminTableHeaderCol_sort' width='60px'>L\u1EA7n</th><th  class='adminTableHeaderCol_sort'>Th\u1EDDi gian <br/>b\u1EAFt \u0111\u1EA7u</th><th  class='adminTableHeaderCol_sort'>Th\u1EDDi gian<br/> k\u1EBFt th\u00FAc</th><th  class='adminTableHeaderCol_sort'>V\u1EADn t\u1ED1c<br/> b\u1EAFt \u0111\u1EA7u</th><th  class='adminTableHeaderCol_sort'>V\u1EADn t\u1ED1c<br/> k\u1EBFt th\u00FAc</th><th  class='adminTableHeaderCol_sort'>V\u1EADn t\u1ED1c<br/> l\u1EDBn nh\u1EA5t</th><th class='adminTableHeaderCol_sort'>Th\u1EDDi gian <br/>qu\u00E1 t\u1ED1c \u0111\u1ED9</th><th class='adminTableHeaderCol_sort'>V\u1ECB tr\u00ED qu\u00E1 t\u1ED1c \u0111\u1ED9</th></tr></thead>";
+    		
+    		if(device.equals("-1"))
+    		{
+    		for(int d2=0;d2<list.length;d2++)
+    		{
+    			
+    		  //strscr=strscr+"<tr><td colspan='10' style='height:30px;'></td></tr>";
+    		  strscr = strscr+"<tr class ='adminTableBodyRowOdd'><td colspan='10' style='text-align:left;font-weight:bold;'>"+list[d2].getID()+"</td></tr>";
+    		   SimpleDateFormat ft =
+    		        new SimpleDateFormat("dd/MM/yyyy");
+    		   Date d = ft.parse(tungay);
+    		  long fr=d.getTime()/1000;
+    		   Date d1 = ft.parse(denngay);
+    		    long to=d1.getTime()/1000;
+    		    num=0;
+    		   for(long k = fr;k<=to;k =k+ (24*3600))
+    		   {
+    		  // strscr=strscr+"<tr><td>"+k+"</td><>";
+    			   
+    			   ArrayList<VuotToc> listreport = objcmr.StaticReportVuotToc(accid, list[d2].getID(), k);
+    		  String date = ConvertFromEpochHour(k, timezone);
+    		  	for(int t=0;t<listreport.size();t++)
+    		   {
+    		  	  String css ="";
+    		  	if(num%2==0)
+    		  		css = "adminTableBodyRowOdd";
+    		  	else
+    		  		css = "adminTableBodyRowEven";
+            		  num++;
+            		  	  i++;
+          			//record++;
+          			//d2= d2  + rs.getDate(7);
+            		  	String datestart = ConvertFromEpochTime(listreport.get(t).getstartTime(), timezone);
+                 	   String dateend =  ConvertFromEpochTime(listreport.get(t).getstopTime(),timezone);
+                 	   time = time +(listreport.get(t).getstopTime()-listreport.get(t).getstartTime());
+                   strscr= strscr+"<tr class ="+css+"><td></td><td>"+date+"</td><td>"+i+"</td><td>"+ datestart +"</td><td>"+ dateend +"</td><td>"+ round(listreport.get(t).getstartSpeed(), 2)+"</td><td>"+ round(listreport.get(t).getendSpeed(), 2)+"</td><td>"+ round(listreport.get(t).getmaxSpeed(), 2)+"</td><td>"+doiGio(listreport.get(t).getstopTime()-listreport.get(t).getstartTime())+"</td><td>"+ listreport.get(t).getaddress()+" >> "+listreport.get(t).getendaddress()+"</td></tr>";
+                 }
+            		   //ResultSet rs2 = objcmr.Gettotaltime(accid,rs.getString(1),k);
+            		   if(i>0)
+            		   {
+            		   strscr=strscr+"<tr class ='adminTableBodyRowOdd'><td></td><td style='font-weight:bold;'>Tổng số lần quá tốc: "+i+" </td>";
+            		   i=0;
+            		   // while (rs2.next())
+            		   //{
+            		    	//if(rs2.getString(1)==null)
+            		    		// strscr=strscr+"<td style='font-weight:bold;'>T\u1ED5ng s\u1ED1 th\u1EDDi<br/> gian v\u01B0\u1EE3t qu\u00E1<br/> t\u1ED1c \u0111\u1ED9 :0</td>";
+            		    	//else
+            		  	  strscr=strscr+"<td style='font-weight:bold;'>Tổng thời gian vượt tốc: "+doiGio(time)+"</td>";
+            		  
+            		    strscr=strscr+"<td colspan='7'></td></tr>";
+            		    time=0;
+            		   }
+             }
+    		   if(num==0) strscr = strscr+"<tr class ='adminTableBodyRowEven'><td colspan='10' style='text-align:left;'>Kh\u00F4ng c\u00F3 d\u1EEF li\u1EC7u</td></tr>";
+    		}
+    		
+    		//</div></div></div>";
+    		
+    	}
+    		else
+    		{
+    			 strscr = strscr+"<tr class ='adminTableBodyRowOdd'><td colspan='10' style='text-align:left;font-weight:bold;'>"+device+"</td></tr>";
+      		   SimpleDateFormat ft =
+      		        new SimpleDateFormat("dd/MM/yyyy");
+      		   Date d = ft.parse(tungay);
+      		  long fr=d.getTime()/1000;
+      		   Date d1 = ft.parse(denngay);
+      		    long to=d1.getTime()/1000;
+      		    num=0;
+      		   for(long k = fr;k<=to;k =k+ (24*3600))
+      		   {
+      		  // strscr=strscr+"<tr><td>"+k+"</td><>";
+      			   
+      			   ArrayList<VuotToc> listreport = objcmr.StaticReportVuotToc(accid, device, k);
+      		  String date = ConvertFromEpochHour(k, timezone);
+      		  	for(int t=0;t<listreport.size();t++)
+      		   {
+      		  	  String css ="";
+      		  	if(num%2==0)
+      		  		css = "adminTableBodyRowOdd";
+      		  	else
+      		  		css = "adminTableBodyRowEven";
+              		  num++;
+              		  	  i++;
+            			//record++;
+            			//d2= d2  + rs.getDate(7);
+              		  	String datestart = ConvertFromEpochTime(listreport.get(t).getstartTime(), timezone);
+                   	   String dateend =  ConvertFromEpochTime(listreport.get(t).getstopTime(),timezone);
+                   	   time = time +(listreport.get(t).getstopTime()-listreport.get(t).getstartTime());
+                     strscr= strscr+"<tr class ="+css+"><td></td><td>"+date+"</td><td>"+i+"</td><td>"+ datestart +"</td><td>"+ dateend +"</td><td>"+ round(listreport.get(t).getstartSpeed(), 2)+"</td><td>"+ round(listreport.get(t).getendSpeed(), 2)+"</td><td>"+ round(listreport.get(t).getmaxSpeed(), 2)+"</td><td>"+doiGio(listreport.get(t).getstopTime()-listreport.get(t).getstartTime())+"</td><td>"+ listreport.get(t).getaddress()+" >> "+listreport.get(t).getendaddress()+"</td></tr>";
+                   }
+              		   //ResultSet rs2 = objcmr.Gettotaltime(accid,rs.getString(1),k);
+              		   if(i>0)
+              		   {
+              		   strscr=strscr+"<tr class ='adminTableBodyRowOdd'><td></td><td style='font-weight:bold;'>Tổng số lần quá tốc: "+i+" </td>";
+              		   i=0;
+              		   // while (rs2.next())
+              		   //{
+              		    	//if(rs2.getString(1)==null)
+              		    		// strscr=strscr+"<td style='font-weight:bold;'>T\u1ED5ng s\u1ED1 th\u1EDDi<br/> gian v\u01B0\u1EE3t qu\u00E1<br/> t\u1ED1c \u0111\u1ED9 :0</td>";
+              		    	//else
+              		  	  strscr=strscr+"<td style='font-weight:bold;'>Tổng thời gian vượt tốc: "+doiGio(time)+"</td>";
+              		  
+              		    strscr=strscr+"<td colspan='7'></td></tr>";
+              		    time=0;
+              		   }
+               }
+      		   if(num==0) strscr = strscr+"<tr class ='adminTableBodyRowEven'><td colspan='10' style='text-align:left;'>Kh\u00F4ng c\u00F3 d\u1EEF li\u1EC7u</td></tr>";
+      		
+    		}
+    		strscr =strscr+"</table>";
+    		}
+    	//}
+    	catch (Exception e)
+    	{
+    	
+    	}
+    	return strscr;
+    }*/
+    public String NCRToUnicode(String strInput)
+    {
+        String TCVN = "&#225;,&#224;,&#7841;,&#7843;,&#227;,&#226;,&#7845;,&#7847;,&#7853;,&#7849;,&#7851;,&#259;,&#7855;,&#7857;,&#7863;,&#7859;,&#7861;,&#é;,&#232;,&#7865;,&#7867;,&#7869;,&#234;,&#7871;,&#7873;,&#7879;,&#7875;,&#7877;,&#243;,&#242;,&#7885;,&#7887;,&#245;,&#244;,&#7889;,&#7891;,&#7897;,&#7893;,&#7895;,&#417;,&#7899;,&#7901;,&#7907;,&#7903;,&#7905;,&#250;,&#249;,&#7909;,&#7911;,&#361;,&#432;,&#7913;,&#7915;,&#7921;,&#7917;,&#7919;,&#237;,&#236;,&#7883;,&#7881;,&#297;,&#273;,&#253;,&#7923;,&#7925;,&#7927;,&#7929;,h";
+        TCVN += "&#193;,&#192;,&#7840;,&#7842;,&#195;,&#194;,&#7844;,&#7846;,&#7852;,&#7848;,&#7850;,&#258;,&#7854;,&#7856;,&#7862;,&#7858;,&#7860;,&#200;,&#7864;,&#7866;,&#7868;,&#7870;,&#7872;,&#7878;,&#7874;,&#7876;,&#211;,&#210;,&#7884;,&#7886;,&#213;,&#212;,&#7888;,&#7890;,&#7896;,&#7892;,&#7894;,&#416;,&#7898;,&#7900;,&#7906;,&#7902;,&#7904;,&#218;,&#217;,&#7908;,&#7910;,&#360;,&#431;,&#7912;,&#7914;,&#7920;,&#7916;,&#7918;,&#272;,&#221;,&#7922;,&#7924;,&#7926;,&#7928;,h";
+        String UNICODE = "á,à,ạ,ả,ã,â,ấ,ầ,ậ,ẩ,ẫ,ă,ắ,ằ,ặ,ẳ,ẵ,é,è,ẹ,ẻ,ẽ,ê,ế,ề,ệ,ể,ễ,ó,ò,ọ,ỏ,õ,ô,ố,ồ,ộ,ổ,ỗ,ơ,ớ,ờ,ợ,ở,ỡ,ú,ù,ụ,ủ,ũ,ư,ứ,ừ,ự,ử,ữ,í,ì,ị,ỉ,ĩ,đ,ý,ỳ,ỵ,ỷ,ỹ,h";
+        UNICODE += "Á,À,Ạ,Ả,Ã,Â,Ấ,Ầ,Ậ,Ẩ,Ẫ,Ă,Ắ,Ằ,Ặ,Ẳ,Ẵ,È,Ẹ,Ẻ,Ẽ,Ế,Ề,Ệ,Ể,Ễ,Ó,Ò,Ọ,Ỏ,Õ,Ô,Ố,Ồ,Ộ,Ổ,Ỗ,Ơ,Ớ,Ờ,Ợ,Ở,Ỡ,Ú,Ù,Ụ,Ủ,Ũ,Ư,Ứ,Ừ,Ự,Ử,Ữ,Đ,Ý,Ỳ,Ỵ,Ỷ,Ỹ,h";
+        String[] str = TCVN.split(",");
+        String[] str1 = UNICODE.split(",");
+        for (int i = 0; i < str.length; i++)
+        {
+            if (str[i] != "")
+            {
+                strInput = strInput.replace(str[i], str1[i]);
+            }
+        }
+        return strInput;
+    }
+    public void writePage(
+        final RequestProperties reqState,
+        String pageMsg)
+        throws IOException
+    {
+        final PrivateLabel privLabel = reqState.getPrivateLabel();
+        final I18N    i18n     = privLabel.getI18N(baoCaoTramTheoNgay.class);
+        final Locale  locale   = reqState.getLocale();
+        final Account currAcct = reqState.getCurrentAccount();
+        final User    currUser = reqState.getCurrentUser();
+        final String  pageName = this.getPageName();
+        String m = pageMsg;
+        boolean error = false;
+        
+        HttpServletRequest request = reqState.getHttpServletRequest();
+        HttpServletResponse response =reqState.getHttpServletResponse();
+        String excel=    AttributeTools.getRequestString(request, "btnExcel", "");
+        
+  		String xe =AttributeTools.getRequestString(request, "device", "");
+  		String tuNgay =AttributeTools.getRequestString(request, "tuNgay", "");
+  		String denNgay =AttributeTools.getRequestString(request, "denNgay", "");
+  		String contentall = AttributeTools.getRequestString(request, "device", "");
+  		if (excel.equals("Export Excel")) {
+			int num = 0, i = 0, dem = 0;
+			java.util.Calendar c = java.util.Calendar.getInstance();
+			Date now = c.getTime();
+			SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd");
+			String d3 = sdf.format(now);
+			response.setContentType("application/vnd.ms-excel;charset=utf-8");
+			response.setHeader("Content-Disposition",
+					"attachment; filename=baoCaoQuaTocDo_" + d3 + ".xls");
+			HSSFWorkbook wb = new HSSFWorkbook();
+			HSSFSheet sheet = wb.createSheet("Dispatch");
+			HSSFRow title = sheet.createRow((short) 1);
+
+			HSSFCellStyle cst = wb.createCellStyle();
+			HSSFFont ft = wb.createFont();
+			cst.setAlignment(HSSFCellStyle.ALIGN_CENTER);
+			cst.setVerticalAlignment(HSSFCellStyle.VERTICAL_CENTER);
+			ft.setFontHeightInPoints((short) 18);
+			// make it red
+			// f.setColor((short) HSSFColor.RED.index);
+			// make it bold
+			// arial is the default font
+			ft.setBoldweight((short) ft.BOLDWEIGHT_BOLD);
+			cst.setFont(ft);
+			HSSFCell ct = title.createCell((short) 0);
+
+			ct.setCellStyle(cst);
+			ct.setCellValue("BÁO CÁO QUÁ TỐC ĐỘ (" +xe+")");
+			title.setHeightInPoints(40);
+			sheet.addMergedRegion(new CellRangeAddress(1, 1, 0, 9));
+			HSSFCellStyle csNgay = wb.createCellStyle();
+
+			HSSFFont fngay = wb.createFont();
+			HSSFRow rngay = sheet.createRow((short) 2);
+
+			fngay.setFontHeightInPoints((short) 10);
+			fngay.setBoldweight((short) fngay.BOLDWEIGHT_BOLD);
+			csNgay.setFont(fngay);
+			HSSFCell cTuNgay = rngay.createCell((short) 1);
+			cTuNgay.setCellStyle(csNgay);
+			cTuNgay.setCellValue("Từ ngày");
+			rngay.createCell((short) 2).setCellValue(tuNgay);
+			HSSFCell cdenNgay = rngay.createCell((short) 4);
+			cdenNgay.setCellStyle(csNgay);
+			cdenNgay.setCellValue("Đến ngày");
+			rngay.createCell((short) 5).setCellValue(denNgay);
+
+			dem = dem + 3;
+
+			HSSFCellStyle cellStyle = wb.createCellStyle();
+			cellStyle.setBorderTop((short) 1);
+			cellStyle.setBorderRight((short) 1);
+			cellStyle.setBorderLeft((short) 1);
+			cellStyle.setBorderBottom((short) 1);
+			cellStyle.setFillForegroundColor(HSSFColor.LIGHT_TURQUOISE.index);
+			cellStyle.setFillPattern(HSSFCellStyle.SOLID_FOREGROUND);
+			cellStyle.setVerticalAlignment(HSSFCellStyle.VERTICAL_CENTER);
+			cellStyle.setAlignment(HSSFCellStyle.ALIGN_CENTER);
+			cellStyle.setWrapText(true);
+			HSSFFont f = wb.createFont();
+			f.setFontHeightInPoints((short) 10);
+			// make it red
+			// f.setColor((short) HSSFColor.RED.index);
+			// make it bold
+			// arial is the default font
+			f.setBoldweight((short) f.BOLDWEIGHT_BOLD);
+			cellStyle.setFont(f);
+
+			HSSFRow rowhead = sheet.createRow((short) dem);
+			HSSFCell h0 = rowhead.createCell((short) 0);
+			h0.setCellStyle(cellStyle);
+			h0.setCellValue("Biển kiểm soát ");
+			HSSFCell h1 = rowhead.createCell((short) 1);
+			h1.setCellStyle(cellStyle);
+			h1.setCellValue("Họ tên lái xe");
+			HSSFCell h2 = rowhead.createCell((short) 2);
+			h2.setCellStyle(cellStyle);
+			h2.setCellValue("Số Giấy \n phép lái xe");
+			HSSFCell h3 = rowhead.createCell((short) 3);
+			h3.setCellStyle(cellStyle);
+			h3.setCellValue("Loại hình hoạt động");
+			HSSFCell h4 = rowhead.createCell((short) 4);
+			h4.setCellStyle(cellStyle);
+			h4.setCellValue("Thời điểm \n (giờ, phút, ngày, tháng, năm)");
+			HSSFCell h5 = rowhead.createCell((short) 5);
+			h5.setCellStyle(cellStyle);
+			h5.setCellValue("Tốc độ trung bình \n khi quá tốc độ \n (km/h)");
+			HSSFCell h6 = rowhead.createCell((short) 6);
+			h6.setCellStyle(cellStyle);
+			h6.setCellValue("Tốc độ cho phép \n (km/h)");
+			HSSFCell h7 = rowhead.createCell((short) 7);
+			h7.setCellStyle(cellStyle);
+			h7.setCellValue("Tọa độ quá tốc độ");
+			HSSFCell h8 = rowhead.createCell((short) 8);
+			h8.setCellStyle(cellStyle);
+			h8.setCellValue("Địa điểm quá tốc độ");
+			HSSFCell h9 = rowhead.createCell((short) 9);
+			h9.setCellStyle(cellStyle);
+			h9.setCellValue("Ghi chú");
+
+			rowhead.setHeightInPoints((short) 40);
+			try {
+
+				int time = 0;
+				record = 0;
+				DecimalFormat df = new DecimalFormat("#0.#");
+				DBCamera objcmr = new DBCamera();
+				IDDescription.SortBy sortBy = DeviceChooser
+						.getSortBy(privLabel);
+				java.util.List<IDDescription> idList = reqState
+						.createIDDescriptionList(false, sortBy);
+				IDDescription list[] = idList.toArray(new IDDescription[idList
+						.size()]);
+				HSSFCellStyle csr = wb.createCellStyle();
+				csr.setWrapText(true);
+				csr.setBorderTop((short) 1);
+				csr.setBorderRight((short) 1);
+				csr.setBorderLeft((short) 1);
+				csr.setBorderBottom((short) 1);
+				dem--;
+				long fr = ConvertToEpoch(tuNgay + " 00:00:00",
+						currAcct.getTimeZone());
+				long to = ConvertToEpoch(denNgay + " 23:59:59",
+						currAcct.getTimeZone());
+
+				ArrayList<VuotToc> listreport = objcmr.StaticReportVuotToc(
+						currAcct.getAccountID(), xe, fr, to);
+
+				for (int t = 0; t < listreport.size(); t++) {
+					String css = "";
+					if (num % 2 == 0)
+						css = "adminTableBodyRowOdd";
+					else
+						css = "adminTableBodyRowEven";
+					num++;
+					i++;
+					dem++;
+					String datestart = ConvertFromEpochTime(listreport.get(t)
+							.getstartTime(), currAcct.getTimeZone());
+					String dateend = ConvertFromEpochTime(listreport.get(t)
+							.getstopTime(), currAcct.getTimeZone());
+					time = time
+							+ (listreport.get(t).getstopTime() - listreport
+									.get(t).getstartTime());
+					HSSFRow row = sheet.createRow((short) (dem + 1));
+					row.setHeightInPoints(25);
+
+					HSSFCell r0 = row.createCell((short) 0);
+					r0.setCellStyle(csr);
+					r0.setCellValue(listreport.get(t).getdeviceID());
+					HSSFCell r1 = row.createCell((short) 1);
+					r1.setCellStyle(csr);
+					r1.setCellValue(listreport.get(t).getHoTenLaiXe());
+					HSSFCell r2 = row.createCell((short) 2);
+					r2.setCellStyle(csr);
+					r2.setCellValue(listreport.get(t).getSoGiayPhepLaiXe());
+					HSSFCell r3 = row.createCell((short) 3);
+					r3.setCellStyle(csr);
+					r3.setCellValue(listreport.get(t).getLoaiHinhHoatDong());
+					HSSFCell r4 = row.createCell((short) 4);
+					r4.setCellStyle(csr);
+					r4.setCellValue(ConvertFromEpochHour(listreport.get(t)
+							.getstartTime(), currAcct.getTimeZone()));
+					HSSFCell r5 = row.createCell((short) 5);
+					r5.setCellStyle(csr);
+					r5.setCellValue(listreport.get(t).getTocDoTBKhiQuaTocDo());
+					HSSFCell r6 = row.createCell((short) 6);
+					r6.setCellStyle(csr);
+					r6.setCellValue(df.format(Double.parseDouble(listreport.get(t).getTocDoChoPhep())));
+					HSSFCell r7 = row.createCell((short) 7);
+					r7.setCellStyle(csr);
+					r7.setCellValue(listreport.get(t).getlat() + " - "
+							+ listreport.get(t).getlon());
+					HSSFCell r8 = row.createCell((short) 8);
+					r8.setCellStyle(csr);
+					r8.setCellValue(NCRToUnicode(listreport.get(t).getaddress()));
+					HSSFCell r9 = row.createCell((short) 9);
+					r9.setCellStyle(csr);
+					r9.setCellValue(listreport.get(t).getNote());
+				}
+
+				sheet.autoSizeColumn(0);
+				sheet.autoSizeColumn(1);
+				sheet.autoSizeColumn(2);
+				sheet.autoSizeColumn(3);
+				sheet.autoSizeColumn(4);
+				sheet.autoSizeColumn(5);
+				sheet.autoSizeColumn(6);
+				sheet.autoSizeColumn(7);
+				sheet.autoSizeColumn(8);
+				sheet.autoSizeColumn(9);
+
+				OutputStream out = response.getOutputStream();
+				wb.write(out);
+				out.close();
+			} catch (Exception e) {
+
+			}
+
+			return;
+		}
+     
+        
+        /* Style */
+        HTMLOutput HTML_CSS = new HTMLOutput() {
+            public void write(PrintWriter out) throws IOException {
+                String cssDir = Baocaoquatocdo.this.getCssDirectory();
+                WebPageAdaptor.writeCssLink(out, reqState, "Lich.css", cssDir);
+                WebPageAdaptor.writeCssLink(out, reqState, "scrollbar.css", cssDir);
+            }
+        };
+
+        /* javascript */
+        HTMLOutput HTML_JS = new HTMLOutput() {
+            public void write(PrintWriter out) throws IOException {
+                MenuBar.writeJavaScript(out, pageName, reqState);
+               
+                out.println("        <script type=\"text/javascript\" src=\"js/jquery-1.4.2.min.js\"></script>\n");
+                out.println("        <script type=\"text/javascript\" src=\"js/PCalendar.js\"></script>\n");
+                out.println( " <script type='text/javascript' src='js/jquery.tablesorter.min.js'></script>");
+                out.print( "<script src='./js/jquery.tinyscrollbar.min.js' type=\"text/javascript\"></script>");
+                out.print("<script type='text/javascript'>$(document).ready(function() {$('#scrollbar2').tinyscrollbar();}); </script>");
+                //out.println("<script type='text/javascript' src='js/sorttable.js'></script>");
+                //out.println("<script type='text/javascript' > $(function(){$('#myTable').tablesorter(); }); </script>");
+                
+            }
+        };
+
+        /* Content */
+       
+        
+        HTMLOutput HTML_CONTENT  = new HTMLOutput(CommonServlet.CSS_CONTENT_FRAME, m) {
+            public void write(PrintWriter out) throws IOException {
+                //Print.logStackTrace("here");
+
+              //String menuURL = EncodeMakeURL(reqState,RequestProperties.TRACK_BASE_URI(),PAGE_MENU_TOP);
+                String menuURL = privLabel.getWebPageURL(reqState, PAGE_MENU_TOP);
+              //String chgURL  = EncodeMakeURL(reqState,RequestProperties.TRACK_BASE_URI(),pageName,COMMAND_INFO_UPDATE);
+                String chgURL  = privLabel.getWebPageURL(reqState, pageName, COMMAND_INFO_UPDATE);
+                String frameTitle = i18n.getString("baocaoTram.PageTitle","Tr&#x1EA1;m");
+                
+                // frame content
+             // view submit
+                HttpServletRequest request = reqState.getHttpServletRequest();
+                String tuNgay=AttributeTools.getRequestString(request, "tuNgay", "");
+                String contentall="";
+                String denNgay=AttributeTools.getRequestString(request, "denNgay", "");
+                //HttpServletRequest request = reqState.getHttpServletRequest();
+                String xem=    AttributeTools.getRequestString(request, "btnview", "");
+                 contentall = AttributeTools.getRequestString(request, "device", "");
+                String sql = LoadReport(currAcct.getAccountID(),tuNgay,denNgay,contentall,privLabel,reqState,currAcct.getTimeZone());
+                java.util.Calendar c =java.util.Calendar.getInstance();  
+                c.add( java.util.Calendar.DAY_OF_YEAR, -1);
+                Date now = c.getTime();
+                SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+                String d = sdf.format(now);
+                out.println("<span class='"+CommonServlet.CSS_MENU_TITLE+"' style='text-align:center;'>B\u00C1O C\u00C1O QU\u00C1 T\u1ED0C \u0110\u1ED8</span><br/>");
+                out.println("<hr/>");
+                out.println("<form name='AccountInfo' method='post' action='"+chgURL+"' target='_self'>\n");
+              
+                out.println("<table class='"+CommonServlet.CSS_ADMIN_VIEW_TABLE+"' cellspacing='0' callpadding='0' border='0' width='100%' style='padding:15 0 15'>\n");
+                
+                out.print  ("<tr>\n");
+                out.print  ("<td width='80px' align='right'>T&#x1EEB; ng&#x00E0;y:</td>\n");
+                out.print  ("<td width='10%' align='left'>\n");
+                out.print( "<input id='Text1' name='tuNgay' type='text' style='width:120px' class='textReadOnly' onclick=\"displayCalendar(this,'dd/mm/yyyy',this,false,'','Text1')\" value='"+d+"' /></td>");
+                if(tuNgay!="")
+                {
+				out.print("<script language ='javascript' type ='text/javascript'>document.getElementById('Text1').value ='"+tuNgay+"'; </script>");
+                }
+                out.print  ("<td width='80px' align='right'>&#x0110;&#x1EBF;n ng&#x00E0;y:</td>\n");
+                out.print  ("<td width='100px' align='left'>\n");
+                out.print( "<input id='Text2' name='denNgay' type='text' class='textReadOnly' style='width:120px' onclick=\"displayCalendar(this,'dd/mm/yyyy',this,false,'','Text2')\" value='"+d+"' /></td>");
+                if(denNgay!="")
+                {
+                out.print("<script language ='javascript' type ='text/javascript'>document.getElementById('Text2').value ='"+denNgay+"'; </script>");
+                }
+                out.print  ("<td align='right' width='100px'><span style='margin-left: 10px;margin-right:5px;'>"+i18n.getString("DeviceSelect","ch&#x1ECD;n xe:")+"</span></td><td>\n");  
+               
+                out.print  (CreateCbbDevice(currAcct.getAccountID(),contentall,reqState,privLabel));
+               
+                out.print("</td>");
+                
+                out.println("</tr>");
+                
+                out.println("</table>");
+                out.print("<table cellspacing='0' style='width:100%;padding:10px 0px 10px'><tbody><tr class='viewhoz'><td width='80px'></td><td width='100px'> <input type='submit' class='button1' name='btnview' value='Xem' id='btnview'></td><td width='205px'></td><td align='left' width='220px'><input type='submit' id='btnExcel' value='Export Excel' name='btnExcel' class='button1'></td>"); 
+                out.print("<td align='left' width='520px'></td>");
+                out.print("</tr></tbody></table>");
+                if(tuNgay!="")
+                {
+                
+                out.print(sql);
+                }
+                //}}
+                /* end of form */
+                out.write("<hr style='margin-bottom:5px;'>\n");
+                out.write("<span style='padding-left:10px'>&nbsp;</span>\n");
+              //  out.print(request.getParameter("dateTo")+" "+request.getParameter("date")+" "+contentall+" "+currAcct.getAccountID()+" "+ pindex+" "+ pagesize);
+                
+                out.write("</form>\n");
+            }
+        };
+
+        /* write frame */
+        String onload = error? JS_alert(true,m) : null;
+        CommonServlet.writePageFrame(
+            reqState,
+            onload,null,                // onLoad/onUnload
+            HTML_CSS,                   // Style sheets
+            HTML_JS,                    // JavaScript
+            null,                       // Navigation
+            HTML_CONTENT);              // Content
+
+    }
+    
+    // ------------------------------------------------------------------------
+
+}

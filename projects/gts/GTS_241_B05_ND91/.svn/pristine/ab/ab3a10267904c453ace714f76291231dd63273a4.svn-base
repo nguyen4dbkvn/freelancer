@@ -1,0 +1,113 @@
+
+.btnSubmit {
+    margin-left: 160px;
+    width: 220px;
+}
+body {
+}
+a:link {
+    color: blue;
+    font-weight: bold;
+}
+.loginMinhNV {
+    background-color: transparent;
+    background-image: url("../images/login.png");
+    border: 1px solid gray;
+    border-radius: 3px 3px 3px 3px;
+    height: 20px;
+    width: 80px;
+}
+.minhnvAnh {
+    background-image: url("../images/icon-dn.png");
+    background-position: 70px 0;
+    background-repeat: no-repeat;
+    float: left;
+    height: 35px;
+    width: 100px;
+}
+.MinhnvLogo {
+    bottom: 50px;
+    left: 250px;
+    position: absolute;
+}
+.MinhnvLoginRequest {
+    color: #353536;
+    font-family: tahoma;
+    font-size: 18px;
+    font-weight: bold;
+    height: 50px;
+    line-height: 40px;
+    text-align: center;
+    width: 100%;
+}
+.MinhnvTextInput {
+    background-color: #FFFFFF;
+    border-color: #555588 #AAAABB #AAAABB #555588;
+    border-radius: 5px 5px 5px 5px;
+    border-style: solid;
+    border-width: 1px;
+    height: 20px;
+    padding-left: 2px;
+    width: 170px;
+}
+.MinhnvLoginSys {
+    color: #00B4FF;
+    float: right;
+    font-family: arial;
+    font-size: 14pt;
+    font-weight: bold;
+    text-align: left;
+    width: 250px;
+    margin-bottom: 20px;
+}
+.accountLoginTable {
+    margin-top: 50px;
+    text-align: center;
+    width: 350px;
+}
+.accountLoginCell {
+    background-color: #FBFBFB;
+    border: 1px solid #555555;
+    padding: 10px;
+    text-align: center;
+}
+.accountLoginTable_nobord {
+    margin-top: 110px;
+    text-align: center;
+    width: 100%;
+}
+.accountLoginCell_nobord {
+    text-align: center;
+}
+TABLE.accountLoginContentTable {
+    text-align: center;
+    width: 100%;
+
+}
+TD.accountLoginVertSepCell {
+    height: 100%;
+    padding-right: 12px;
+    width: 50%;
+}
+TD.accountLoginTextCell {
+    background-color: white;
+    border-radius: 10px 10px 10px 10px;
+    height: 220px;
+     margin-top: 10px;
+    width: 30%;
+}
+TABLE.accountLoginFormTable {
+    margin-left: 50px;
+}
+TD.accountLoginFieldLabel {
+    color: #353536;
+    font-family: arial;
+    font-size: 13px;
+    font-weight: bold;
+    padding-right: 10px;
+    padding-top: 10px;
+    text-align: right;
+}
+TD.accountLoginFieldValue {
+    padding-top: 11px;
+}

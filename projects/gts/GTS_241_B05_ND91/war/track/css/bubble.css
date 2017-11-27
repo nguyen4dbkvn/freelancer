@@ -1,0 +1,100 @@
+#page {
+    position: relative;
+    width: 100%;
+}
+#menu {
+    bottom: 1px;
+	 _bottom: 50px;
+    display: none;
+    left: 350px;
+    position: absolute;
+    width: 50%;
+}
+#menu div.jqDockWrap {
+    margin: 0 auto;
+}
+#menu div.jqDock {
+	behavior: url(iepngfix.htc);
+    cursor: pointer;
+}
+div.jqDockLabel {
+    color: #000000;
+    cursor: pointer;
+    font-style: italic;
+    font-weight: bold;
+    white-space: nowrap;
+}
+.chooseTram {
+    color: white;
+    height: 160px;
+    overflow: auto;
+    position: absolute;
+    right: 15px;
+    top: -385px;
+	_top: -355px;
+    width: 190px;
+}
+.chooseTram td a:link {
+    color: white;
+    text-decoration: none;
+}
+.chooseTram td a:hover {
+    color: red;
+    text-decoration: none;
+}
+#titleChooseTram {
+    background-color: gray;
+    border: 5px solid white;
+    border-radius: 10px 10px 10px 10px;
+    color: white;
+    font-family: times New Roman;
+    font-size: 14px;
+    font-weight: bold;
+    height: 200px;
+    opacity: 0.9;
+    position: absolute;
+    right: 10px;
+    text-align: center;
+    top: -430px;
+	_top: -395px;
+    width: 200px;
+}
+.speedo {
+
+    background: url("../images/speedo/tocdo.png");
+	background-repeat:no-repeat;
+   height:130px;
+    position: relative;
+    width: 190px;
+    margin-top: -125px;
+    float: right;
+    margin-right: 110;
+	_top:-10px;
+	
+	
+}
+.anh {
+
+    left: 88px;
+    position: absolute;
+    top: 15px;
+}
+.XangMinhnv {
+behavior: url(iepngfix.htc);
+    background: url("../images/speedo/xang.png") repeat scroll 0 50% transparent;
+    float: left;
+    height: 70px;
+    position: relative;
+    width: 114px;
+    margin-top: -68px;
+    float: right;
+    margin-right: -300px;
+    display:none;
+   
+}
+.kimXang {
+
+    left: 53px;
+    position: absolute;
+    top: 10px;
+}

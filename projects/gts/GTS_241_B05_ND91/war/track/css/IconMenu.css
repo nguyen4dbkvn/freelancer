@@ -1,0 +1,154 @@
+#iconMenu {
+     font: 9pt sans-serif;
+     text-align: left;
+}
+
+#iconMenu .iconMenuTable {
+    
+}
+
+#iconMenu TR.menuGroupTitle {
+     background-color: #EFEFEF;
+     font: 9pt sans-serif;
+     text-align: left;
+}
+body{
+behavior: url(iepngfix.htc);
+}
+
+#iconMenu TD.menuGroupTitle {
+	behavior: url(iepngfix.htc);
+     background-image: url("../images/title-bg.png");
+     background-repeat: no-repeat;
+     border-bottom: 2px solid #059ebf;
+     color: #FFFFFF;
+     font: 10pt sans-serif;
+ 
+     padding-left:10px;
+     text-align: left;
+     font-weight: bold;
+}
+
+#iconMenu TR.menuGroupIcons {
+     font: 9pt sans-serif;
+     text-align: left;
+}
+
+#iconMenu TD.menuGroupIcons {
+     font: 9pt sans-serif;
+     padding-top: 2px;
+     padding-bottom:10px;
+     text-align: left;
+}
+
+#iconMenu TABLE.menuItemTable {
+     border-spacing: 20px 5px;
+     table-layout: fixed;
+}
+
+#iconMenu TR.menuItemRow {
+    
+}
+
+#iconMenu TD.menuItemImage_on {
+     cursor: pointer;
+     height: 100px;
+     padding: 0pt 2px 2px 0pt;
+     text-align: center;
+     vertical-align: top;
+     width: 100px;
+}
+
+#iconMenu TD.menuItemImage_off {
+     cursor: pointer;
+     height: 100px;
+     padding: 0pt 2px 2px 0pt;
+     text-align: center;
+     vertical-align: top;
+     width: 100px;
+}
+
+#iconMenu IMG.menuItemImage {
+     height: 100px;
+     width: 100px;
+}
+
+#iconMenu SPAN.menuItemText {
+    color:white;
+    font: 9pt sans-serif;
+    text-decoration: none;
+    text-shadow: 5px 5px 5px #666666;
+}
+
+#iconMenu TD.menuItemText_on {
+behavior: url(iepngfix.htc);
+     background: url("../images/MenuBtnH.png") no-repeat scroll 0pt 0pt transparent;
+     color: black;
+     cursor: pointer;
+     height: 100px;
+     margin: 0pt;
+     padding: 7px 0pt 0pt;
+     text-align: center;
+     vertical-align: middle;
+     width: 90px;
+}
+
+#iconMenu TD.menuItemText_off {
+behavior: url(iepngfix.htc);
+     background: url("../images/MenuBtn.png") no-repeat scroll 0pt 0pt transparent;
+     color: black;
+     cursor: pointer;
+     height: 100px;
+     margin: 0pt;
+     padding: 5px 0pt 0pt;
+     text-align: center;
+     vertical-align: middle;
+     width: 90px;
+}
+
+#iconMenu TD.menuItemTextW_on {
+     background: url("../images/MenuBtnH_lg.png") no-repeat scroll 0pt 0pt transparent;
+     color: black;
+     cursor: pointer;
+     height: 100px;
+     margin: 0pt;
+     padding: 7px 0pt 0pt;
+     text-align: center;
+     vertical-align: middle;
+     width: 100px;
+}
+
+#iconMenu TD.menuItemTextW_off {
+     background: url("../images/MenuBtn_lg.png") no-repeat scroll 0pt 0pt transparent;
+     color: black;
+     cursor: pointer;
+     height: 100px;
+     margin: 0pt;
+     padding: 5px 0pt 0pt;
+     text-align: center;
+     vertical-align: middle;
+     width: 100px;
+}
+
+#iconMenu IMG.menuIconImage {
+    
+}
+
+#iconMenu P.shadowText {
+     color: #FFFFFF;
+     display: block;
+     position: relative;
+}
+
+#iconMenu P.shadowText span {
+     display: block;
+     position: absolute;
+     top: 0pt;
+}
+
+#iconMenu P.shadowText:before {
+     color: #333333;
+     content: attr(title);
+     display: block;
+     padding: 2px 0pt 0pt 3px;
+}

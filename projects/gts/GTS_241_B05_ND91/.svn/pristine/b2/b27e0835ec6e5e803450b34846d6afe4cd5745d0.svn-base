@@ -1,0 +1,99 @@
+# ----------------------------------------------------------------------------
+# LocalStrings_en.properties: org.opengts.war.report.event
+# ----------------------------------------------------------------------------
+# Text formatting rules: (see 'java.text.MessageFormat' and 'java.util.Properties')
+# 1) Lines starting with '#' are comments.
+# 2) The text 'key' preceeds the first '=' and should remain as-is.
+# 3) The values {0}...{9} are used for text substitution.
+# 4) The literal value '\n' is replaced with a newline character in the actual text.
+# 5) 2 single quotes are replaced with 1 single quote in the actual text.
+# 6) Key/Value lines starting with a comment (#) have not yet been translated.
+# 7) This file MUST be 'ISO-8859-1' character encoded.
+#    Unicode characters must be escaped using a '\uXXXX' format, where 'XXXX' is
+#    the hex representation of the unicode character.
+# Helpful links:
+#  - Table of unicode characters:
+#     http://www.fileformat.info/info/unicode/char/a.htm
+#  - Unicode conversion tools:
+#     http://people.w3.org/rishida/scripts/uniview/conversion.php
+# ----------------------------------------------------------------------------
+#
+# --- org.opengts.war.report.event.EventDataLayout
+#EventDataLayout.BatteryLevel=Battery\nLevel
+#EventDataLayout.BatteryPercent=Battery\n%
+#EventDataLayout.BatteryVolts=Battery\nVolts
+EventDataLayout.address=\u0110\u1ECBa ch\u1EC9
+#EventDataLayout.altitude=Altitude
+#EventDataLayout.ambientTemp=Ambient\nTemp
+#EventDataLayout.barometer=Barometer
+#EventDataLayout.brakeForce=Braking\n${distanceUnits}/hr/sec
+#EventDataLayout.brakeGForce=Braking\nG-force
+#EventDataLayout.brakePressure=Brake Press.
+#EventDataLayout.city=City
+#EventDataLayout.coolantLevel=Coolant\nLevel
+#EventDataLayout.coolantTemp=Coolant\nTemp.
+#EventDataLayout.country=Country
+#EventDataLayout.createDate=Insert\nDate
+EventDataLayout.createDateTime=Insert\nDate/Time
+#EventDataLayout.createTime=insert\nTime
+EventDataLayout.createTimestamp=Insert\nTimestamp
+#EventDataLayout.customAttribute=Custom\nAttribute
+EventDataLayout.date=Ng\u00E0y
+EventDataLayout.dateTime=Th&#7901;i &#273;i&#7875;m
+#EventDataLayout.deviceBattery=Last\nBattery
+EventDataLayout.deviceDescription=Xe
+EventDataLayout.deviceID=Bi&#7875;n s&#7889;
+#EventDataLayout.distance=Distance
+EventDataLayout.driverDescription=T&#224;i x&#7871;
+EventDataLayout.driverID=Driver-ID
+#EventDataLayout.driverMessage=Driver\nMessage
+#EventDataLayout.engineHours=Engine\nHours
+#EventDataLayout.engineLoad=Engine\nLoad %
+#EventDataLayout.engineRpm=Engine\nRPM
+EventDataLayout.entityDescription=Entity\nDescription
+EventDataLayout.entityID=Entity-ID
+#EventDataLayout.eventField=Event\nField
+#EventDataLayout.fuelCapacity=Fuel Capacity
+#EventDataLayout.fuelEcon=Fuel Econ
+#EventDataLayout.fuelIdle=Idle Fuel
+#EventDataLayout.fuelLevelVolume=Fuel Level
+#EventDataLayout.fuelPercent=Fuel%
+#EventDataLayout.fuelTotal=Total Fuel
+#EventDataLayout.geozoneDescription=Geozone\nDescription
+#EventDataLayout.geozoneID=Geozone-ID
+#EventDataLayout.gpsAge=GPS\nAge
+#EventDataLayout.groupID=Group-ID
+#EventDataLayout.idleHours=Idle\nHours
+#EventDataLayout.inputBitMask=Inputs\n(BitMask)
+#EventDataLayout.j1708Fault=OBD Fault
+#EventDataLayout.jobNumber=Job\nNumber
+#EventDataLayout.lastCheckinAge=Since Last\nCheck-In
+#EventDataLayout.lastCheckinTime=Last Check-In\nTime
+#EventDataLayout.lat=Lat
+EventDataLayout.latLon=T\u1ECDa \u0111\u1ED9
+#EventDataLayout.latestBatteryPercent=Latest\nBatt %
+#EventDataLayout.lon=Lon
+EventDataLayout.notAvailable=n/a
+EventDataLayout.odometer=Qu\u00E3ng \u0111\u01B0\u1EDDng
+#EventDataLayout.oilLevel=Oil Level
+#EventDataLayout.oilPressure=Oil Press.
+#EventDataLayout.oilTemp=Oil\nTemp.
+#EventDataLayout.ptoEngaged=PTO\nEngaged
+#EventDataLayout.ptoHours=PTO\nHours
+#EventDataLayout.rawData=Raw Data
+EventDataLayout.rfidTag=RFID\nTag
+#EventDataLayout.satelliteCount=Sat\nCount
+EventDataLayout.speed=T&#7889;c &#273;&#7897;
+#EventDataLayout.speedLimit=Speed Limit
+#EventDataLayout.stateProvince=State\nProvince
+EventDataLayout.statusCode=Status#
+EventDataLayout.statusDescription=Tr\u1EA1ng th\u00E1i
+EventDataLayout.DateFromUNIXTIME=Ng\u00E0y
+#EventDataLayout.subdivision=Subdivision
+#EventDataLayout.temperature=Temp
+EventDataLayout.time=Gi\u1EDD
+#EventDataLayout.timestamp=Timestamp
+#EventDataLayout.transOilTemp=Trans Oil\nTemp.
+#EventDataLayout.vBatteryVolts=Veh Batt.\nVolts
+EventDataLayout.Door=C\u1EEDa
+EventDataLayout.AirConditional=\u0110i\u1EC1u H\u00F2a

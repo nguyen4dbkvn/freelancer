@@ -1,0 +1,215 @@
+
+/* DIV: The Div element containing the Calendar table(s) */
+DIV.calDiv {
+    width: 150px;
+}
+
+/* TABLE: The table containing the entire Calendar */
+TABLE.calTable {
+    width: 100%;
+  
+    border: solid #999999 1px;
+}
+
+/* TD: The cell containing the title/date/time table 'calTitleTable' */
+TD.calTitleDateCell {
+    width: 100%; 
+    font-size: 9pt;
+    border-bottom-style: solid; 
+    border-width: 1px; 
+    border-color: #FF0000; 
+}
+
+/* TABLE: The table containing the "title", date and time */
+TABLE.calTitleTable {
+    width: 100%;
+    background-color: #FFF666; 
+    border-width: 0px; 
+}
+
+/* TD: The title cell in the title table */
+TD.calTitleFieldExpanded { 
+    width: 100%;
+    /* height: 12px; */
+    /* overflow-y: hidden; */
+    font-family:arial;
+    font-size: 8pt;
+    color:black;
+    text-align: left;
+    padding-left: 2px;
+    /*cursor: pointer;*/
+}
+TD.calTitleFieldCollapsed { 
+    width: 100%;
+    font-family:arial;
+    font-size: 8pt;
+   
+    color: #1111BB;
+    text-align: left;
+    padding-left: 2px;
+    cursor: pointer;
+	
+}
+
+/* TD: The date/time cell in the title table */
+TD.calDateTimeFieldExpanded { 
+    /* height: 12px; */
+    font-family:arial; 
+    font-size: 8pt; 
+    padding-right: 1px;
+    /*cursor: pointer;*/
+}
+TD.calDateTimeFieldCollapsed { 
+    font-family:arial; 
+    font-size: 8pt; 
+    padding-right: 1px;
+    color: #1111BB;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/* SPAN: The date/time field in the 'calDateTimeField' cell */
+SPAN.calDateField { 
+    /*cursor: pointer; */
+    color:black;
+}
+
+/* The time field in the 'calDateTimeField' cell */
+.calTimeFieldExpandedColon { 
+    /* height: 12; */
+    font-family:arial; 
+    font-size: 8pt; 
+    color: blue;
+    text-decoration: none;
+    cursor: pointer; 
+}
+.calTimeFieldExpanded { 
+    /* height: 12;  */
+    font-family:arial; 
+    font-size: 8pt; 
+    color: blue;
+    text-decoration: none; /* underline; */
+    cursor: pointer; 
+}
+.calTimeFieldExpanded:hover {
+    color: blue;
+}
+.calTimeFieldCollapsed { 
+    color: #1111BB;
+    text-decoration: none;
+    cursor: pointer; 
+}
+
+/* SPAN: The time field in the 'calDateTimeField' cell */
+.calTimeFieldDisabled { 
+    color: black;
+    text-decoration: none;
+}
+
+/* TABLE: The table containing the Month name and previous/next links */
+TABLE.calMonthHeaderTable {
+    
+    height: 16px;
+	background-position: 1px -30px;
+	background-color:#E9EEEF;
+
+}
+
+/* TD: The cell containing the previous/next month links */
+TD.calMonthAdvance { 
+    font-family:arial; 
+    font-size: 9pt; 
+}
+
+/* TD: The cell containing the month name/abbreviation */
+TD.calMonthName { 
+    font-family:arial; 
+    font-size: 8pt; 
+    color:black;
+}
+
+/* TD: The Calendar table (calTable) cell which contains the month days table */
+TD.calMonthDaysCell { 
+    width: 100%;
+    font-family: arial; 
+    font-size: 7pt; 
+    text-align: center; 
+   
+    color: #000000; 
+}
+
+/* TABLE: The table containing the day-of-week header and month days */
+TABLE.calMonthDaysTable {
+    width: 100%;
+   
+    border: solid #DDDDDD 1px; 
+}
+
+/* TD: The cell containing the days-of-week header */
+TD.calMonthDOW { 
+    font-family: arial; 
+    font-size: 7pt; 
+    width: 18px; 
+    text-align: center; 
+   
+    color: #FFFFFF; 
+   
+}
+
+/* TD: The cell containing the previous month days */
+TD.calPrevMonthDays { 
+    font-family: arial; 
+    font-size: 11px; 
+    text-align: center; 
+    
+    color: red; 
+   }
+
+/* TD: The cell containing the next month days */
+TD.calNextMonthDays { 
+   font-family: arial; 
+    font-size: 11px; 
+    text-align: center; 
+    
+    color: red; 
+   
+}
+
+/* TD: The cell containing the current month days, when enabled */
+TD.calThisMonthDaysEnabled { 
+    font-family: arial; 
+    font-size: 11px; 
+    text-align: center; 
+    
+    color: white; 
+    cursor: pointer;
+   
+}
+
+/* TD: The cell containing the current month days, when disabled */
+TD.calThisMonthDaysDisabled { 
+    font-family: arial; 
+    font-size: 9pt; 
+    text-align: center; 
+    
+    color: #000033;
+   
+}
+
+/* TD: The cell containing the calendar 'expand' bar */
+TD.calExpandBar { 
+    height: 9px; 
+    text-align: center;
+  
+   
+    cursor: pointer;
+}
+
+/* TD: The cell containing the calendar 'expand' bar */
+TD.calCollapseBar { 
+    height: 9px; 
+    text-align: center;
+  
+   
+    cursor: pointer;
+}

@@ -1,0 +1,112 @@
+# ----------------------------------------------------------------------------------
+# --- Enfora device script
+# --- This script is intended to be loaded by the accomanying 'Enfora.exe' script
+# --- loading tool.  The following script is only an example, and will need to be
+# --- customized to fit your specific requirements.
+# ----------------------------------------------------------------------------------
+# Notes: 
+#  - The StatusCode definitions below (which begin with the property key "SC.")
+#    should match the StatusCode hex values which are defined in the Java source 
+#    module "src/org/opengts/db/StatusCodes.java".  A few example codes have been 
+#    provided below.
+# ----------------------------------------------------------------------------------
+# Key definition rules:
+#  - Key=Value definitions must start with "#!"
+#  - Key matches are case insensitive
+#  - Key values may be overridden on the command line.
+#  - Key lengths may not exceed 32 characters. Values may not exceed 128 characters.
+#  - Keys must not include embedded spaces
+#  - Spaces around the '=' are not significant
+#  - Recursive key references are allowed.
+#  - Hex key references beginning with "0x" are converted to their decimal equivalent
+#  - Comments ('#') may NOT follow a value (on the same line)
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+# Key definitions:
+#-- (these values must be changed to match your server and wireless provider)
+#! Host             = 192.168.0.1
+#! Port             = 37400
+#! APN.Name         = WAP.CINGULAR
+#! APN.User         = WAP@CINGULARGPRS.COM
+#! APN.Pass         = CINGULAR1
+#! Interval         = 120
+#! DataMask         = 9043967
+#-- (optionL)
+#! NetMon.unavail   = 60
+#! NetMon.resetCnt  = 2
+#-- (status code constants)
+#! SC.Initialized   = ${0xF010}
+#! SC.Location      = ${0xF020}
+#! SC.Waymark_0     = ${0xF030}
+#! SC.MotionStart   = ${0xF111}
+#! SC.InMotion      = ${0xF112}
+#! SC.MotionStop    = ${0xF113}
+#! SC.Dormant       = ${0xF114}
+#! SC.ExcessSpeed   = ${0xF11A}
+#! SC.GeozoneArrive = ${0xF210}
+#! SC.GeozoneDepart = ${0xF230}
+#! SC.InputState    = ${0xF400}
+#! SC.InputOn_0     = ${0xF420}
+#! SC.InputOff_0    = ${0xF440}
+#! SC.InputOn_1     = ${0xF421}
+#! SC.InputOff_1    = ${0xF441}
+#! SC.LowBattery    = ${0xFD10}
+# ----------------------------------------------------------------------------------
+# ----------------------------------------------------------------------------------
+# Notes:
+#   - All specified commands must begin with "AT"
+#   - Comment lines begin with a '#' character.  Comments may also follow the "AT" 
+#     command to be sent to the Enfora device.
+#   - Replacement variables of the form ${variable} may be used to represent values
+#     assigned above.  An error will be displayed if a referenced key/variable is  
+#     not defined.
+# ----------------------------------------------------------------------------------
+
+# ---- Initialization (start from factory settings)
+ATE1                                            # echo ON
+ATI                                             # ==> "Enfora, Inc."
+AT&F                                            # reset to factory settings
+AT$EVDELA                                       # clear all previous events
+AT&W                                            # save
+AT$RESET                                        # ==> "AT-Command Interpreter ready"
+
+# ---- Configure APN, username, and password
+AT+CGDCONT=1,"IP","${APN.Name}"     
+AT%CGPCO=1,"${APN.User},${APN.Pass}"
+
+# ---- Enable GPRS
+AT$AREG=2
+
+# --- network monitor
+#AT$NETMON=${NetMon.unavail},${NetMon.resetCnt},0,0
+
+# ---- Store configuration and reset
+AT&W                                            # save
+AT$RESET                                        # <== "AT-Command Interpreter ready"
+
+# ---- Verify GSM/GPRS status and activation
+AT+CREG?                                        # <== "+CREG: 0,1" or "+CREG: 0,5"
+AT%CGREG?                                       # <== "%CGREG: 0,1" or "%CGREG: 0,5"
+AT$NETIP?                                       # <== '$NETIP: "X.X.X.X", "X.X.X.X", "X.X.X.X"'
+
+# ---- Configure server/port:
+AT$FRIEND=1,1,"${Host}"    
+AT$UDPAPI=,${Port}
+
+# --- Enable optional headers (may not be supported by all Enfora devices)
+AT$APIOPT=1,1,0
+
+# --- Report power up
+AT$EVENT=8,0,8,1,1                              # modem power up
+AT$EVENT=8,3,40,${SC.Initialized},${DataMask}   # UDP message 0xF010(61456)STATUS_INITIALIZED
+
+# ---- Periodic interval reporting timer (event group 10)
+AT$EVTIM1=${Interval}                           # event message interval
+AT$EVENT=10,1,12,1,1                            # activate timer (event group 10)
+AT$EVENT=10,3,43,1,0                            # reset/restart timer on timer expiration
+AT$EVENT=10,3,40,${SC.Location},${DataMask}     # UDP message 0xF020(62464)STATUS_LOCATION
+
+# --- Store configuration and reset
+AT&W                                            # save
+AT$RESET                                        # <== "AT-Command Interpreter ready"
+
+# --- end of commands

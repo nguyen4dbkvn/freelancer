@@ -1,0 +1,133 @@
+
+#MinhNVScrollBar  .viewport {
+	width: 250px;
+	/*height: 200px;*/
+	overflow: hidden;
+	position: relative;
+	_margin-top:-200px;
+}
+
+#MinhNVScrollBar .overview {
+	list-style: none;
+	position: absolute;
+	left: 0;
+	top: 0;
+	padding: 0;
+	margin: 0;
+}
+
+#MinhNVScrollBar .scrollbar {
+	background: transparent url(../images/bg-scrollbar-track-y.png)
+		no-repeat 0 0;
+	position: relative;
+	background-position: 0 0;
+	float: right;
+	width: 15px;
+}
+
+#MinhNVScrollBar .track {
+	background: transparent url(../images/bg-scrollbar-trackend-y.png)
+		no-repeat 0 100%;
+	height: 100%;
+	width: 13px;
+	position: relative;
+	padding: 0 1px;
+}
+
+#MinhNVScrollBar.thumb {
+	background: transparent url(../images/bg-scrollbar-thumb-y.png)
+		no-repeat 50% 100%;
+	height: 20px;
+	width: 25px;
+	cursor: pointer;
+	overflow: hidden;
+	position: absolute;
+	top: 0;
+	left: -5px;
+}
+
+#MinhNVScrollBar .thumb .end {
+	background: transparent url(../images/bg-scrollbar-thumb-y.png)
+		no-repeat 50% 0;
+	overflow: hidden;
+	height: 5px;
+	width: 25px;
+}
+
+#MinhNVScrollBar .disable {
+	display: none;
+}
+#chiTietHanhTrinh  .viewport {
+	width: 98%;
+	height: 98%;
+	_width: 99%;
+	_height: 99%;
+	overflow: hidden;
+	position: relative;
+	
+}
+
+#chiTietHanhTrinh .overview {
+	list-style: none;
+	position: absolute;
+	left: 0;
+	top: 0;
+	padding: 0;
+	margin: 0;
+	width:99%;
+}
+
+#chiTietHanhTrinh .scrollbar {
+	background: transparent url(../images/bg-scrollbar-track-y.png)
+		no-repeat 0 0;
+	position: relative;
+	background-position: 0 0;
+	float: right;
+	width: 15px;
+	left:-7px;
+	_left:-16px;
+}
+
+#chiTietHanhTrinh .track {
+	background: transparent url(../images/bg-scrollbar-trackend-y.png)
+		no-repeat 0 100%;
+	height: 100%;
+	width: 13px;
+	position: relative;
+	padding: 0 1px;
+	top:1px;
+}
+
+#chiTietHanhTrinh .thumb {
+	background: transparent url(../images/bg-scrollbar-thumb-y.png)
+		no-repeat 50% 100%;
+	height: 20px;
+	width: 25px;
+	cursor: pointer;
+	overflow: hidden;
+	position: absolute;
+	top: 0;
+	left: -5px;
+}
+
+#chiTietHanhTrinh .thumb .end {
+	background: transparent url(../images/bg-scrollbar-thumb-y.png)
+		no-repeat 50% 0;
+	overflow: hidden;
+	height: 5px;
+	width: 25px;
+}
+
+#chiTietHanhTrinh  .disable {
+	display: none;
+}
+TABLE.adminSelectTable_sortable1 {
+     background-color: #CDCDCD;
+     font-family: arial;
+     font-size: 8pt;
+     margin: 0px 0px 0px;
+     text-align: center;
+     width: 100%;
+}
+
+

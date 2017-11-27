@@ -1,0 +1,430 @@
+
+div.customStyleSelectBox { font-size:11px; color:#7c7c7c; padding:5px 7px; border:1px solid #e7dab0;
+-moz-border-radius: 5px; -webkit-border-radius: 5px;
+border-radius: 5px 5px; background-color: gray; }
+div.customStyleSelectBox.changed {}
+.customStyleSelectBoxInner { background:url(down_arrow.gif) no-repeat center right; }
+
+
+.buttonGeoZone {
+    background-color: #33AEE7;
+    border: 1px solid white;
+    border-radius: 5px 5px 5px 5px;
+    color: white;
+    font-weight: bold;
+    height: 20px;
+    width: 90px;
+}
+.mGrid td a:link {
+    color: orange;
+    text-decoration: none;
+}
+.mGrid td a:visited {
+    color: orange;
+    text-decoration: none;
+}
+.mGrid td a:hover {
+    color: white;
+    text-decoration: none;
+}
+.mGrid {
+    border: 1px solid black;
+    border-collapse: collapse;
+    margin: 5px 0 10px;
+    width: 100%;
+}
+.mGrid td {
+    border: 1px solid #C1C1C1;
+    padding: 5px;
+}
+.mGrid th {
+    background: none repeat scroll 0 0 #00C0C0;
+    border-left: 1px solid #525252;
+    color: black;
+    font-size: 0.9em;
+    height: 30px;
+    padding: 4px 2px;
+}
+.mGrid a {
+    color: #3366FF;
+}
+.mGrid a:hover {
+    color: Red;
+}
+.mGrid .alt {
+    background-color: AliceBlue;
+    color: black;
+    font-weight: bold;
+    height: 30px;
+}
+.mGrid .pgr {
+    background: none repeat scroll 0 0 AliceBlue;
+}
+.mGrid .pgr table {
+    margin: 5px 0;
+}
+.mGrid .pgr td {
+    border-left: 1px solid #666666;
+    border-width: 0 0 0 1px;
+    color: #FFFFFF;
+    font-weight: bold;
+    line-height: 12px;
+    padding: 0 6px;
+}
+.mGrid .pgr a {
+    color: red;
+    text-decoration: none;
+}
+.mGrid .pgr a:hover {
+    color: #000000;
+    text-decoration: none;
+}
+.chanMinhNV {
+    background-color: #F0F4F8;
+    color: black;
+}
+.leMinhNV {
+    background-color: #FFF1A8;
+    color: black;
+}
+.buttonImg {
+    -moz-background-inline-policy: continuous;
+    background: url("../Images/calendar.png") no-repeat scroll left top transparent;
+    height: 20px;
+    width: 22px;
+}
+#calendar {
+    left: 0;
+    position: absolute;
+    top: 0;
+}
+#calendarDiv {
+    background-color: #FFFFFF;
+    border: 1px solid #317082;
+    font-family: arial;
+    font-size: 10px;
+    padding: 1px 1px 20px;
+    position: absolute;
+    visibility: hidden;
+    width: 250px;
+}
+#calendarDiv #monthSelect {
+    width: 100px;
+}
+#calendarDiv .activeDay {
+    border: 1px solid #DBDBDB;
+    color: red;
+    font-weight: 700;
+}
+#calendarDiv .monthYearActive {
+    background-color: #317082;
+    color: #E2EBED;
+}
+#calendarDiv .monthYearPicker {
+    background-color: #E2EBED;
+    border: 1px solid #AAAAAA;
+    color: #317082;
+    display: none;
+    left: 0;
+    position: absolute;
+    top: 15px;
+    z-index: 1000;
+}
+#calendarDiv .monthYearPicker div {
+    clear: both;
+    cursor: pointer;
+    float: none;
+    font-family: Arial,"times new roman",Verdana,"Palatino linotype",Tahoma;
+    font-size: 9pt;
+    margin: 1px;
+    padding: 1px;
+}
+#calendarDiv .selectBox {
+    border: 1px solid #E2EBED;
+    color: #E2EBED;
+    position: relative;
+}
+#calendarDiv .selectBox, #calendarDiv .selectBoxOver {
+    cursor: pointer;
+    font-family: Arial,"times new roman",Verdana,"Palatino linotype",Tahoma;
+    font-size: 9pt;
+    line-height: 12px;
+    padding: 1px 1px 1px 2px;
+}
+#calendarDiv .selectBoxOver {
+    background-color: #317082;
+    border: 1px solid #FFFFFF;
+    color: #FFFFFF;
+    position: relative;
+}
+#calendarDiv .selectBoxTime {
+    border: 1px solid #317082;
+    color: #317082;
+    position: relative;
+}
+#calendarDiv .selectBoxTime, #calendarDiv .selectBoxTimeOver {
+    cursor: pointer;
+    line-height: 12px;
+    padding: 1px 1px 1px 2px;
+}
+#calendarDiv .selectBoxTimeOver {
+    border: 1px solid #216072;
+    color: #216072;
+    position: relative;
+}
+#calendarDiv .timeBar {
+    background-color: #E2EBED;
+    color: #FFFFFF;
+    height: 17px;
+    line-height: 17px;
+    position: absolute;
+    right: 0;
+    width: 72px;
+}
+#calendarDiv .timeBar div, #calendarDiv .topBar div {
+    float: left;
+    margin-right: 1px;
+}
+#calendarDiv .todaysDate {
+    background-color: #F0F0F0;
+    bottom: 0;
+    font-family: Arial,"times new roman",Verdana,"Palatino linotype",Tahoma;
+    font-size: 9pt;
+    height: 17px;
+    line-height: 17px;
+    margin-top: 3px;
+    padding: 0 2px 2px;
+    position: absolute;
+    text-align: center;
+    width: 247px;
+	color:#000066;
+}
+#calendarDiv .topBar {
+    background-color: #317082;
+    height: 16px;
+    padding: 2px;
+}
+#calendarDiv .topBar img {
+    cursor: pointer;
+}
+#calendarDiv span, #calendarDiv img, #calendarDiv .todaysDate div {
+    float: left;
+}
+#calendarDiv td {
+    color: #000066;
+    cursor: pointer;
+    font-family: Arial,"times new roman",Verdana,"Palatino linotype",Tahoma;
+    font-size: 9pt;
+    margin: 0;
+    padding: 3px;
+    text-align: right;
+}
+.calendar_week_column {
+    border-right: 1px solid #DBDBDB;
+}
+.calendar_week_row {
+    padding-top: 5px;
+}
+.calendar_week_row td {
+    font-weight: 700;
+}
+#calendarDiv .overday {
+    color: #909090;
+    cursor: text;
+}
+.img_container {
+    height: 120px;
+}
+.img_container ul {
+    display: block;
+    list-style: none outside none;
+    margin: 0;
+    padding: 0;
+}
+.img_container ul li {
+    float: left;
+    margin: 10px;
+    text-align: center;
+    width: 180px;
+}
+.img_container ul li a img {
+    background: none repeat scroll 0 0 #EEEEEE;
+    border: 1px solid #574331;
+    height: 120px;
+    padding: 5px;
+    width: 170px;
+}
+.img_container ul li a {
+    color: #E0691A;
+    text-decoration: none;
+}
+a.imageborder img {
+    background: none repeat scroll 0 0 #EEEEEE;
+    border: 1px solid #574331;
+    float: left;
+    height: 120px;
+    margin: 0 10px;
+    padding: 5px;
+    width: 170px;
+}
+.img_container ul li a:hover img, a.imageborder:hover img {
+    background: none repeat scroll 0 0 #E8E8E8;
+    border-color: darkred;
+}
+#fade {
+    background: none repeat scroll 0 0 silver;
+    display: none;
+    height: 100%;
+    left: 0;
+    opacity: 0.8;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 9999;
+}
+.popup_block {
+    background: none repeat scroll 0 0 #FFFFFF;
+    border: 10px solid #DDDDDD;
+    border-radius: 5px 5px 5px 5px;
+    box-shadow: 0 0 10px #000000;
+    display: none;
+    float: left;
+    font-size: 1.2em;
+    left: 50%;
+    padding: 10px;
+    position: fixed;
+    top: 50%;
+    z-index: 99999;
+}
+img.btn_close {
+    float: right;
+    margin: -28px -28px 0 0;
+}
+.popup p {
+    margin: 5px 0;
+    padding: 5px 10px;
+}
+.apaging {
+    border: 1px solid DimGray;
+    color: Gray;
+    margin: 2px;
+    padding: 2px 4px;
+    text-decoration: none;
+}
+.apaging1 {
+    border: 1px solid DimGray;
+    color: red;
+    margin: 2px;
+    padding: 2px 4px;
+    text-decoration: none;
+}
+.apaging2 {
+    border: 1px solid silver;
+    color: silver;
+    margin: 2px;
+    padding: 2px 4px;
+    text-decoration: none;
+}
+.buttonleft {
+    background-color: #FFFFFF;
+    border: 1px solid #A5A5A5;
+    border-radius: 2px 2px 2px 2px;
+    cursor: pointer;
+    left: -30px;
+    padding: 5px;
+    position: absolute;
+    top: 180px;
+}
+.buttonright {
+    background-color: #FFFFFF;
+    border: 1px solid #A5A5A5;
+    border-radius: 2px 2px 2px 2px;
+    cursor: pointer;
+    padding: 5px;
+    position: absolute;
+    right: -30px;
+    top: 180px;
+}
+.nutBamMinhnv {
+    background-color: transparent;
+    background-image: url("../images/button.png");
+    border: medium none;
+    font-family: arial;
+    font-size: 14px;
+    font-weight: bolder;
+    height: 40px;
+    width: 102px;
+}
+body {
+    font-family: Times New Roman;
+    font-size: 13pt;
+}
+.tdheader {
+    border-bottom: 1px solid silver;
+    font-size: 14pt;
+    font-weight: bold;
+    height: 40px;
+    text-align: left;
+    width: 100%;
+}
+.tdheader1 {
+    border-bottom: 1px solid silver;
+    font-size: 13pt;
+    font-weight: bold;
+    height: 50px;
+    text-align: left;
+    width: 100%;
+}
+.table {
+    background: url("../images/back2.gif") repeat-x scroll 0 0 transparent;
+    border: 1px solid silver;
+    margin-top: 20px;
+    width: 100%;
+}
+.table1 {
+    background: url("../images/back2.gif") repeat-x scroll 0 0 transparent;
+    border: 1px solid silver;
+    margin-top: 20px;
+    width: 100%;
+}
+.tdleft {
+    font-size: 11pt;
+    font-weight: bolder;
+    text-align: left;
+    width: 30%;
+}
+.tdleft1 {
+    font-size: 11pt;
+    font-weight: bolder;
+    text-align: left;
+    width: 30%;
+}
+.tdright {
+    font-size: 11pt;
+    font-weight: bolder;
+    text-align: left;
+    width: 70%;
+}
+.tdright1 {
+    font-size: 11pt;
+    text-align: left;
+    width: 70%;
+}
+.textbox {
+    border-color: DimGray silver silver;
+    border-radius: 3px 3px 3px 3px;
+    border-style: solid;
+    border-width: 1.5px 1px 1px;
+    font-size: 11pt;
+}
+.textbox1 {
+    border-color: DimGray silver silver;
+    border-radius: 3px 3px 3px 3px;
+    border-style: solid;
+    border-width: 1.5px 1px 1px;
+    font-size: 11pt;
+    width: 510px;
+}
+.combo {
+    background: url("../images/iFleetMap.png") no-repeat scroll 0 0 #FFF666;
+}

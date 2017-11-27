@@ -1,0 +1,82 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+#container {
+    background-image: url("../images/menu/menu_bg.png");
+    background-position: center bottom;
+    float: left;
+    width: 100%;
+}
+#container ul {
+    float: left;
+    list-style: none outside none;
+    behavior: url(whateverhover.htc);
+}
+#container ul li {
+    float: left;
+    position: relative;
+	z-index:1000;
+}
+#container ul li:hover {
+    background-image: url("../images/menu/menu_bg_hover.png");
+    float: left;
+    position: relative;
+}
+#container ul li a {
+    color: #FFFFFF;
+    display: block;
+    font-weight: bold;
+    padding: 0 0 0 6px;
+    text-decoration: none;
+}
+#container li a:hover {
+    color: red;
+}
+#container ul li ul {
+
+    background-color: #008EC1;
+    border-bottom: 1px solid gray;
+    border-left: 1px solid gray;
+    border-radius: 0 0 10px 10px;
+    border-right: 1px solid gray;
+    box-shadow: 5px 5px 5px #444444;
+    display: none;
+    font-weight: normal;
+    position: absolute;
+    width: 200px;
+    z-index: 1000;
+	
+}
+#container li:hover ul {
+    display: block;
+    position: absolute;
+}
+#container ul li ul li {
+    background-image: url("../images/menu/thanhNgang.png");
+    background-position: center bottom;
+    background-repeat: no-repeat;
+    width: 100%;
+}
+#container ul li ul li a:hover {
+    background-color: #B5DEF5;
+    color: blue;
+}
+#container ul li ul li:last-child a:hover {
+    background-color: #B5DEF5;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    color: blue;
+}
+#container ul li ul li a {
+    font-weight: normal;
+    padding: 3px;
+}
+.MinhNVAccount {
+    border: 1px solid;
+    border-radius: 7px 7px 7px 7px;
+    color: white;
+    float: right;
+    height: 32px;
+    margin-right: 1px;
+}

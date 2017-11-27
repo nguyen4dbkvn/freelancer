@@ -1,0 +1,121 @@
+DIV.devSelectorDiv {
+    background-color: #FFFFFF;
+    border-radius: 7px 7px 7px 7px;
+    box-shadow: 1px 1px 1px 2px gray;
+    cursor: default;
+    left: 0;
+    max-height: 440px;
+    overflow-x: hidden;
+    overflow-y: auto;
+    position: absolute;
+    top: 0;
+    z-index: 30000;
+}
+
+DIV.devSelectorDiv_hidden {
+    display: none;
+    height: 0;
+    visibility: collapse;
+}
+DIV.devSelectorTableList {
+    background-color: #B5DEF5;
+}
+INPUT.deviceChooserInput {
+    font: 8pt sans-serif;
+}
+TR.devSelectorRowHeader {
+    background-color: #008EC1;
+    color: white;
+}
+TH.devSelectorColHeader {
+    border-bottom: 3px double black;
+    color: white;
+    font: bold 8pt sans-serif;
+    height: 12px;
+    text-align: center;
+}
+TH.devSelectorColHeaderX:hover {
+    background-color: #CCCCCC;
+    border-bottom: 3px double #770000;
+    font: bold 8pt sans-serif;
+    height: 12px;
+    text-align: center;
+}
+TR.devSelectorRowData {
+    background-color: white;
+    color: black;
+    cursor: pointer;
+}
+TR.devSelectorRowData:hover {
+    background-color: #FFFFBB;
+    color: black;
+}
+TR.devSelectorRow_hidden {
+    display: none;
+    height: 0;
+    visibility: collapse;
+}
+TD.devSelectorColData {
+    border-bottom: 1px solid #CCCCCC;
+    border-right: 1px solid #CCCCCC;
+    font: 8pt sans-serif;
+    text-align: center;
+}
+TD.devSelectorColData:hover {
+    background-color: #FFFFBB;
+}
+TD.devSelectorCol_hidden {
+    display: none;
+    height: 0;
+    visibility: collapse;
+}
+#devChooserView {
+    width: 290px;
+	
+}
+#devChooserView .viewport {
+    height: 200px;
+    overflow: hidden;
+    width: 275px;
+    position: relative;
+}
+#devChooserView .overview {
+    left: 0;
+    list-style: none outside none;
+    margin: 0;
+    padding: 0;
+    position: absolute;
+    top: 0;
+}
+#devChooserView .scrollbar {
+    background: url("../images/bg-scrollbar-track-y.png") no-repeat scroll 0 0 transparent;
+    float: right;
+    position: relative;
+    width: 15px;
+}
+#devChooserView .track {
+    background: url("../images/bg-scrollbar-trackend-y.png") no-repeat scroll 0 100% transparent;
+    height: 100%;
+    padding: 0 1px;
+    position: relative;
+    width: 13px;
+}
+#devChooserView .thumb {
+    background: url("../images/bg-scrollbar-thumb-y.png") no-repeat scroll 50% 100% transparent;
+    cursor: pointer;
+    height: 20px;
+    left: -5px;
+    overflow: hidden;
+    position: absolute;
+    top: 0;
+    width: 25px;
+}
+#devChooserView .thumb .end {
+    background: url("../images/bg-scrollbar-thumb-y.png") no-repeat scroll 50% 0 transparent;
+    height: 5px;
+    overflow: hidden;
+    width: 25px;
+}
+#devChooserView .disable {
+    display: none;
+}

@@ -1,0 +1,1656 @@
+/* ----------- */
+/* Base Styles */
+/* ----------- */
+html 
+{
+	height: 97%;
+	margin: 0px;
+	padding: 0px;
+}
+form 
+{
+	height: 100%;
+}
+h2 
+{
+	font-size: 1.2em;
+	margin-bottom: 0px;
+	background: white;
+}
+h5
+{
+	margin:0px;
+	padding:0px;
+	padding-bottom:2px;
+	color: #6699CC;
+	padding-left:1px;
+}
+table 
+{
+	margin: 0px;
+	padding: 0px;
+}
+th 
+{
+	text-align: right;
+}
+tr.disabled 
+{
+	color: Silver;
+}
+tr.error 
+{
+	color: red;
+	font-weight: bold;
+}
+td.help 
+{
+	font-size: 9px;
+}
+td.highlight 
+{
+	font-weight: bold;
+}
+input.readonly 
+{
+	border: 0px;
+}
+br.clear 
+{
+	clear: both;
+}
+em, .bold
+{
+	font-weight: bold;
+	font-style: normal;
+}
+.right 
+{
+	text-align: right;
+}
+.hidden 
+{
+	display: none;
+}
+a, a:active, a:link
+{
+	color: black;
+	text-decoration: none;
+}
+a:hover 
+{
+	color: #5C86E5;
+}
+div 
+{
+	padding: 0px;
+	margin: 0px;
+}
+img.imglink 
+{
+	border: none;
+}
+img.toggleArrow
+{
+	padding-right: 3px;
+}
+img.waiting 
+{
+	border: none;
+}
+.OKMessage 
+{
+	border: solid 2px #0f0 !important;
+	padding: 2px;
+}
+.minorWarn 
+{
+	border: solid 2px #ff0 !important;
+	padding: 2px;
+}
+.majorWarn 
+{
+	border: solid 2px #fa0 !important;
+	padding: 2px;
+}
+.severeWarn 
+{
+	border: solid 2px #f00 !important;
+	padding: 2px;
+}
+.small 
+{
+	font-size: 9px;
+	font-weight: normal;
+}
+input.disabled 
+{
+	background-color: #ccc;
+	color: gray;
+}
+.disabled 
+{
+	color: #666;
+}
+
+/* ---- Overlay 2 (for new Report style) ---- */
+.overlay2Shadow 
+{
+	position: fixed;
+	top: 0px;
+	left: 0px;
+	width: 100%;
+	height: 100%;
+	display: block;
+	z-index: 100;
+	background-color: white;
+	opacity: 0.7;
+	filter: alpha(opacity=70);
+	-moz-opacity: 0.7;
+	
+}
+.overlay2FormWrapper 
+{
+	position: absolute;
+	top: 50px;
+	display: block;
+	z-index: 101;
+	width: 100%;	
+}
+
+/* ----------------- */
+/*  Overlay Wrapper  */
+/* ----------------- */
+.overlayShadow 
+{
+	position: fixed;
+	top: 0px;
+	left: 0px;
+	width: 100%;
+	height: 100%;
+	display: block;
+	z-index: 100;
+	background-color: white;
+	opacity: 0.7;
+	filter: alpha(opacity=70);
+	-moz-opacity: 0.7;
+	
+}
+.overlayFormWrapper 
+{
+	position: fixed;
+	top: 50px;
+	display: block;
+	z-index: 101;
+	width: 100%;	
+}
+.overlayForm 
+{
+	position: relative;
+	display: block;
+	width: 400px;
+	margin: auto;
+	padding: 10px;
+	border: solid 1px silver;
+	background-color: white;
+	color: Black;
+	text-align: center;
+	opacity: 1.0;
+	filter: alpha(opacity=100);
+	-moz-opacity: 1.0;
+}
+.overlayForm .formRow 
+{
+	position: relative;
+	text-align: left;
+	height: 30px;
+}
+.overlayForm .formRow label
+{
+	font-weight: bold;
+}
+.overlayForm .formRow input.backBtn 
+{
+	display: block;
+	position: absolute;
+	left: 10px;
+	width: 100px;
+	text-align: center;
+}
+.overlayForm .formRow input.nextBtn 
+{
+	display: block;
+	position: absolute;
+	right: 10px;
+	width: 100px;
+	text-align: center;
+}
+
+
+.overlayForm label 
+{
+	float: left;
+	width: 180px;
+	text-align: right;
+	position: relative;
+	top: 2px;
+	padding-right: 10px;
+}
+
+
+/* ----------------- */
+/* The Waiting Block */
+/* ----------------- */
+#waitingBlock 
+{
+	position: fixed;
+	top: 0px;
+	left: 0px;
+	width: 100%;
+	height: 100%;
+	display: none;
+	margin: auto;
+	z-index: -50;
+	background-color:Transparent;
+	color: #5C86E5;
+	border: none;
+	filter:alpha(opacity=80);
+	opacity: 0.8;
+}
+
+#waitingBlock img
+{
+	background-color: Transparent;
+}
+
+
+/* ---------------- */
+/* List View Styles */
+/* ---------------- */
+#listControls 
+{
+	position: absolute;
+	position: fixed;
+	top: 0px;
+	left: 0px;
+	height: 68px;
+	background: #808080;
+	background-repeat: no-repeat;
+	font-size: 0.8em;
+	z-index: 1;
+	padding: 2px;
+	border:none;
+}
+#listSelector 
+{
+	text-align: center;
+	margin-top: 10px;
+}
+#listSelector span 
+{
+	margin: 0px 25px 0px 25px;
+	font-size: 1.2em;
+	font-weight: bold;
+}
+
+#listView_vehlist
+{
+	margin-top: 72px;
+}
+
+.vehListItem 
+{
+	background: background: url(../images/listview.png);
+	border-bottom: solid 1px black;
+	border-left: solid 1px black;
+	font-size: 0.8em;
+	width:256px;
+}
+.vehListItem:Active
+{
+	background: url(../images/listview_active.png);
+	background-repeat:no-repeat;
+	border-bottom: solid 1px black;
+	font-size: 0.8em;
+}
+.vehListItemImage
+{
+	padding: 2px;
+}
+.vehListItemText 
+{
+	padding: 5px;
+	margin-top: 10px;
+}
+.tagImage 
+{
+	position: relative;
+	bottom: 0px;
+}
+
+.LHSMiniButtons
+{
+	padding:0px 0px 0px 0px;
+	margin:	0px 0px 0px 0px;
+	border:none;
+}
+
+.TabExtras
+{
+	background: url(./images/LHSMiniButtonsBackground.png);
+	background-repeat:no-repeat;
+	text-align:center;
+	vertical-align:middle;
+}
+
+.new_listview_tabs
+{
+	background:white;
+	text-align:center;
+}
+
+.LHSExtraTabs
+{
+	padding:0px 0px 0px 0px;
+	margin:	0px 0px 0px 0px;
+	border:none;
+}
+
+.grpListButton
+{
+	background:url(../images/groupBackground.png);
+	background-repeat:no-repeat;
+	height:23px;
+	cursor:pointer;
+	text-align:center;
+	margin-left:0px;
+}
+/* ----------------- */
+/* Navigation Styles */
+/* ----------------- */
+table.mainNav 
+{
+	background: url(./images/topNavBackground.png);
+	padding: 0px;
+	margin: 0px;
+}
+table.mainNav td.navStart 
+{
+	background: url(./images/topNavBackground.png);
+	width: 5px;
+}
+table.mainNav td.navLogo 
+{
+	width: 280px;
+}
+table.mainNav td.navEnd
+{
+	background: url(./images/topNavBackground.png);
+	width: 5px;
+}
+
+/* ---------------------- */
+/* Config navigation Menu */
+/* ---------------------- */
+.configNavButton 
+{
+	position: relative;
+	display: block;
+	width: 500px;
+	height: 66px;
+	margin: 10px auto 10px auto;
+	border: solid 1px #333;
+	background: white;
+}
+
+.configNavButton a:hover
+{
+	text-decoration:none;
+	color:Black;
+}
+
+.configNavButton:hover
+{
+	background:url(./images/navBackground_active.png);	
+	cursor:pointer;
+}
+
+.configNavButton img 
+{
+	vertical-align: middle;
+	position: absolute;
+	top: 0px;
+	left: 10px;
+}
+.configNavButton h1 
+{
+	vertical-align: middle;
+	text-align: center;
+	font-size: 16pt;
+}
+
+/* ---------------------- */
+/*  Group List container  */
+/* ---------------------- */
+
+.grpListButton 
+{
+	width: 100%;
+}
+.grpListContainer 
+{
+    display: none;
+    overflow: scroll;
+    top: 25px;
+    left: 10px;
+    width: 100%;
+    height: 400px;
+    background: url(./images/MainBackground.png);
+    border: solid 1px black;
+    text-align: left;
+    cursor: pointer;
+    cursor: hand;
+    font-weight:bold;
+    
+}
+
+.grpListContainer a:hover
+{
+	color: #5C86E5;
+}
+
+/* ---------------------- */
+/* Report navigation Menu */
+/* ---------------------- */
+.reportNavButton:hover 
+{
+	background: url(./images/navBackground_active.png);
+	background-color:White;
+	background-repeat:no-repeat;
+}
+
+
+.reportNavButton 
+{
+	border-style: none;
+    border-color: inherit;
+    border-width: medium;
+    position: relative;
+	display: block;
+	width: 300px;
+	height: 80px;
+	margin: 15px 7px 5px 7px;
+	float: left;
+	color:black;
+	background: ;
+	cursor:pointer;
+}
+.reportNavButton img 
+{
+	vertical-align: middle;
+	position: absolute;
+	top: 0px;
+	left: 10px;
+}
+.reportNavButton h1 
+{
+	vertical-align: middle;
+	text-align: right;
+	font-size: 12pt;
+	margin: 5px;
+	color:Black;
+}
+.reportNavButton p 
+{
+	text-align: right;
+	font-size: 12px;
+	font-style: italic;
+	padding-left: 70px;
+	margin: 5px;
+}
+
+.reportNavButton h2 
+{
+	vertical-align: middle;
+	text-align: right;
+	font-size: 10pt;
+	margin: 5px;
+}
+
+.reportNavButtonActive 
+{
+	background: url(navBackground_active.png);
+	background-color:White;
+	background-repeat:no-repeat;
+	position: relative;
+	display: block;
+	width: 300px;
+	height: 80px;
+	margin: 20px 10px 10px 10px;
+	border: solid 1px #333;
+	float: left;
+}
+
+.reportNavButtonActive img 
+{
+	vertical-align: middle;
+	position: absolute;
+	top: 0px;
+	left: 10px;
+}
+.reportNavButtonActive h1 
+{
+	vertical-align: middle;
+	text-align: right;
+	font-size: 12pt;
+	margin: 5px;
+}
+.reportNavButtonActive p 
+{
+	text-align: right;
+	font-size: 12px;
+	font-style: italic;
+	padding-left: 70px;
+	margin: 5px;
+}
+
+.reportNavButtonActive h2 
+{
+	vertical-align: middle;
+	text-align: right;
+	font-size: 10pt;
+	margin: 5px;
+}
+
+
+	
+/* --------------------- */
+/* Journey Report Styles */
+/* --------------------- */
+span.vehicleTag 
+{
+	display: block;
+	width: 130px;
+	border: solid 1px silver;
+	margin: 3px;
+	padding: 3px;
+	float: left;
+	font-size: 11px;
+}
+
+/* --------------------- */
+/* Icon Picker --------- */
+/* --------------------- */
+
+.IconPickerImage
+{
+	/*border: 1px solid #808080;*/
+	border: none;
+	margin: 3px;
+	cursor: pointer;
+}
+
+/* --------------------- */
+/* Content Layout Blocks */
+/* --------------------- */
+.groupadmintitle 
+{
+	font-size: 12px;
+	font-weight: bold;
+	margin: auto;
+	text-align: center;
+	padding: 2px;
+}
+.groupadmintitle em 
+{
+	font-size: 28px;
+	color: red;
+}
+
+.contentError 
+{
+	border: solid 2px red;
+	padding: 10px;
+	margin: 5px;
+}
+.contentSuccess 
+{
+	border: solid 2px green;
+	padding: 10px;
+	margin: 5px;
+}
+.contentBlock 
+{
+	margin: 10px;
+}
+.contentBlock h3 
+{
+	margin: 10px 10px 0px 0px;
+}
+.innerContentBlock 
+{
+	border: solid 1px silver;
+	padding: 10px;
+	margin: 0px 0px 5px 0px;
+	position: relative;
+}
+.innerContentBlock em 
+{
+	font-weight: bold;
+}
+.innerContentBlockTight 
+{
+	padding: 5px;
+	margin-bottom: 1px;
+	background: ;
+	color:Black;
+}
+.innerContentBlockTight h3 
+{
+	margin-bottom: 0px;
+	font-size: 14px;
+	background: ;
+	color:Black;
+}
+.innerContentBlockTight h2 
+{
+	display: inline;
+	font-size: 12px;
+	background: ;
+	color:Black;
+}
+
+/* ------------ */
+/*   Dashboard  */
+/* ------------ */
+.DashBoardElement
+{
+	padding: 0px 0px 0px 0px;
+	margin: 0px 0px 0px 0px;	
+}
+
+
+
+
+/* ------------ */
+/* Login Tables */
+/* ------------ */
+.loginTable 
+{
+	width: 300px;
+	padding: 10px;
+	color: black;
+	font-size: 0.9em;
+	margin: auto;
+	/*margin-top: 120px;
+	margin-right:450px;*/
+	border: solid 1px black;
+	background: url(loginBackground.png);
+	background-repeat: no-repeat;
+	background-color: White;
+	
+}
+
+.loginTable a, a:active, a:link
+{
+	color: #462dc9;
+	text-decoration: underline;
+}
+
+.loginTable a:hover 
+{
+	color: #5C86E5;
+	text-decoration: none;
+}
+
+/****Dealer Site Login****/
+.AutologinTable 
+{
+ width: 160px;
+ padding: 0px;
+ color: White;
+ font-size: 0.9em;
+ margin: auto;
+ margin-top: 0px;
+ border: solid 1px black;
+ /*background: url(AutoLoginBackground.png);*/
+ background-repeat: no-repeat;
+ background-color: #16475A;
+}          
+
+.AutologinTable td
+{
+	padding:0px;
+	margin:0px;
+}
+
+.AutologinTable tr
+{
+	padding:0px;
+	margin:0px;
+}
+
+.AutoLoginTextBox
+{
+    background: url("text_bar.png") no-repeat scroll 0 0 transparent;
+    border: 0 none;
+    color: #7E7E7E;
+    height: 30px;
+    margin-left: 5px;
+    padding-left: 8px;
+    width: 254px;
+}
+
+
+.AutologinGreenTable 
+{
+ width: 160px;
+ padding: 0px;
+ color: White;
+ font-size: 0.9em;
+ margin: auto;
+ margin-top: 0px;
+ border: solid 1px black;
+ background: url(AutoLoginBackground.png);
+ background-repeat: no-repeat;
+ /*background-color: #16475A;*/
+}          
+
+.AutologinGreenTable td
+{
+	padding:0px;
+	margin:0px;
+}
+
+.AutologinGreenTable tr
+{
+	padding:0px;
+	margin:0px;
+}
+
+.AutoLoginTextBox
+{
+    background: url("text_bar.png") no-repeat scroll 0 0 transparent;
+    border: 0 none;
+    color: #7E7E7E;
+    height: 30px;
+    margin-left: 5px;
+    padding-left: 8px;
+    width: 254px;
+}
+
+.loginMessage 
+{
+	padding: 5px;
+}
+
+/* ---------------- */
+/* Permission Table */
+/* ---------------- */
+.permissionTable 
+{
+	
+}
+.permissionTable tr:hover
+{
+	background-color: #aaf;
+}
+.permissionTable td 
+{
+	text-align: center;
+}
+.permissionTable th.horz 
+{
+	text-align: center;
+	width: 80px;
+}
+
+/* ----------- */
+/* Date Range  */
+/* ----------- */
+
+.DateRangePicker a
+{
+	border:none;
+	text-decoration:none;
+}
+
+.DateRangePicker a:hover
+{
+	border:none;
+	text-decoration:none;
+}
+.DateRangePicker a:active, a:link
+{
+	border:none;
+	text-decoration:none;
+}
+
+.DateRangePicker img
+{
+	border:0;
+}
+
+/* ----------- */
+/* Data Tables */
+/* ----------- */
+.hiddenData
+{
+	display: none;
+}
+.dataTable 
+{
+	width: 100%;
+	padding: 0px;
+	font-size: 0.9em;
+	border: 0;
+}
+
+.dataTable tbody
+{
+	width: 100%;
+}
+
+.dataTable th 
+{
+	margin: 0px;
+	text-align: center;
+	background: #98B3EF;
+	padding: 2px;
+	font-weight: bold;
+	color: black;
+}
+.dataTable th a:hover 
+{
+	color: #6699cc;
+	text-decoration: underline;
+}
+.dataTable td
+{
+	padding: 0px;
+	padding-left:3px;
+	margin: 0px;
+	font-size: 0.9em;
+}
+.dataTable tr.alt
+{
+	background: #D0CDCD;
+}
+.dataTable tr.alt2
+{
+	background: gray;
+}
+
+.dataTable tr
+{
+	width: 100%;	
+}
+
+.dataTable tr.alt:hover
+{
+	background-color: #B6CDFF;
+}
+.dataTable tr.alt2:hover
+{
+	background-color: #B6CDFF;
+}
+.dataTable tr:hover
+{
+	background-color: #B6CDFF;
+}
+
+.dataTable tr.MDTMessage 
+{
+	background: #B6CDFF;
+}
+.dataTable tr.speed 
+{
+	font-weight: bold;
+	color: red;
+}
+.dataTable .warn 
+{
+	font-weight: bold;
+	color: red;
+}
+.dataTable .ok 
+{
+	font-weight: bold;
+	color: darkgreen;
+}
+.dataTable tr
+{
+	background: #EDEBEB;
+}
+.dataTable td.totals 
+{
+	font-weight: bold;
+	background: #98b3ef;
+}
+.dataTable td.subheading 
+{
+	font-weight: bold;
+	font-style: italic;
+	background: #ddd;
+}
+.dataTable tr.assetData .asset
+{
+	margin-left: 10px;
+	border: none;
+	padding: 1px;
+}
+.dataTable .number, .dataTable td.number
+{
+	text-align: right;
+	padding-right: 5px;
+}
+.dataTable .middle 
+{
+	text-align: center;
+}
+
+.dataTable tr.hiddenData 
+{
+	display: none;
+}
+.dataTable tr.unhiddenData 
+{
+}
+
+.dataTable .temperature
+{
+	text-align: left;
+	padding-left: 10px;
+}
+
+
+	
+/* ---------------- */
+/* Inner Data Table */
+/* ---------------- */
+
+.innerDataTable 
+{
+	width: 100%;
+	padding: 0px;
+	color: black;
+	font-size: 0.9em;
+}
+.innerDataTable th 
+{
+	margin: 0px;
+	text-align: center;
+	background: #808080;
+	padding: 2px;
+	font-weight: normal;
+	color: black;
+}
+.innerDataTable th a:hover 
+{
+	color: #6699cc;
+	text-decoration: underline;
+}
+.innerDataTable td
+{
+	padding: 2px;
+	margin: 0px;
+	font-size: 0.9em;
+	border: none;
+}
+.innerDataTable tr.alt
+{
+	background: #eef;
+}
+.innerDataTable tr.alt2
+{
+	background: #efe;
+}
+.innerDataTable tr.MDTMessage 
+{
+	background: #fcc;
+}
+.innerDataTable tr.speed 
+{
+	font-weight: bold;
+	color: red;
+}
+.innerDataTable tr
+{
+	background: #fff;
+}
+.innerDataTable tr.assetData .asset
+{
+	margin-left: 10px;
+	border: solid 1px #aaa;
+	padding: 1px;
+}
+.innerDataTable .number 
+{
+	text-align: right;
+	padding-right: 5px;
+}
+.innerDataTable .middle 
+{
+	text-align: center;
+}
+
+.innerDataTable tr.hiddenData 
+{
+	display: none;
+}
+.innerDataTable tr.unhiddenData 
+{
+}
+
+.innerDataTable .temperature
+{
+	text-align: left;
+	padding-left: 10px;
+}
+
+/* -------------- */
+/* Routing Styles */
+/* -------------- */
+.routingDropDownList 
+{
+	color: black;
+}
+.routingDropDownListOff 
+{
+	color: silver;
+}
+.routingTextBox 
+{
+	color: black;
+}
+.routingTextBoxOff 
+{
+	color: silver;
+}
+.leftcolbtn 
+{
+	float: right;
+	margin-right: 5px;
+}
+#pnlDirections 
+{
+	width: 255px;
+	font-size: 9px;
+}
+.routingStartIcon 
+{
+	float: left;
+	margin: 0px 5px 10px 5px;
+}
+.routingEndIcon 
+{
+	float: left;
+	margin: 10px 5px 10px 5px;
+}
+.routingDirectionIcon 
+{
+	float: left;
+	margin: 20px 5px 10px 5px;
+}
+.routingDirections p
+{
+	margin-left: 40px;
+}
+.routingInfo 
+{
+	font-size: 9px;
+}
+
+/* ---------- */
+/* POP-UP Map */
+/* ---------- */
+#SnailForm
+{
+	position: relative;
+}
+
+#Snail_theMap 
+{
+	top: 0px;
+	height: 70%;
+	width: 100%;
+	/*position:fixed;*/
+}
+#Snail_PrintableMap
+{
+	top: 0px;
+	height: 450px;
+	width: 100%;
+	position: relative;
+}
+#SnailKey 
+{
+	/*position: fixed;
+	top: 450px;*/
+	width: 100%;
+	height: 17px; 
+	overflow: hidden;
+	z-index: 10;
+	background: url(./images/MainBackground.png);
+}
+
+#Snail_PrintableDetails
+{
+	margin-top: 50px;
+	position: relative;
+}
+
+#Snail_details 
+{
+	height:30%;
+	overflow:scroll;
+	/*margin-top: 475px;*/
+}
+
+/* ------------ */
+/* Other styles */
+/* ------------ */
+.jdmgrit 
+{
+	font-weight: bold;
+}
+
+/* ------------- */
+/* Despatch Main */
+/* ------------- */
+
+.onlineDespatch
+{
+	border: solid 1px silver; 
+	background-color:Transparent;	
+}
+
+.onlineDespatch label
+{
+	padding:none;
+	margin:1px;
+}
+
+.onlineDespatch input
+{
+	padding:none;
+	margin:1px; 
+}
+
+.onlineDespatch a
+{
+	text-decoration:none;
+}
+
+
+.despatch
+{
+	width: 100%;
+	padding: 0px;
+	color: #003366;
+	font-size: 1.25em;
+	font-family:Arial;
+	
+}
+
+.despatch a
+{
+	text-decoration:none;	
+}
+
+.despatchContentBlock 
+{
+	border: solid 1px silver;
+	padding: 10px;
+	margin: 1px 1px 1px 1px;
+	width:305px; 
+	float:left;
+}
+.despatchContentBlock em 
+{
+	font-weight: bold;
+}
+
+.despatchContentBlock a 
+{
+	text-decoration:none;
+	color:Gray;
+	font-family:Arial;
+}
+
+.despatchContentBlock a:hover
+{
+	color:#003366;
+}
+.despatchInnerContentBlock 
+{
+	border: solid 1px silver;
+	padding: 10px;
+	margin: 1px 1px 1px 1px;
+	width:305px; 
+}
+.despatchInnerContentBlock em 
+{
+	font-weight: bold;
+}
+
+.jobDespatchInnerContentBlock 
+{
+	border: solid 1px silver;
+	padding: 0px;
+	margin: 1px 1px 1px 1px;
+	width:950px; 
+}
+.jobDespatchInnerContentBlock em 
+{
+	font-weight: bold;
+}
+.despatchOuterContentBlock 
+{
+	float:left
+}
+
+.despatchNav
+{
+	width:100%;
+	line-height:30px;
+	background-image: url("despatchNav_TabButtons_on.png");
+	position: absolute;
+	position: fixed;
+	font-weight:bold;
+	font-family:Verdana;
+	color:#003366;
+}
+
+.despatchNav a
+{
+	text-decoration:none;
+	color: #003366;
+	
+	width:200px;
+	height:30px;
+	padding:5px 8px 5px 8px;
+	margin:0px 0px 0px 0px;
+	font-family:Arial;
+}
+
+.despatchNav a:hover
+{
+	
+	background-image: url("despatchNav_TabButtons.png");	
+}
+
+.tinyTextBox
+{
+	width:20px;
+	height: 16px;	
+}
+
+/* Despatch DataTable*/
+.DespatchDataTable 
+{
+	width: 100%;
+	padding: 0px;
+	color: #003366;
+	font-size: 0.9em;
+	
+}
+.DespatchDataTable th 
+{
+	margin: 0px;
+	text-align: center;
+	background: #003366;
+	padding: 2px;
+	font-weight: normal;
+	color: #6699cc;
+}
+.DespatchDataTable td a:hover 
+{
+	text-decoration: underline;
+	color:Red;
+}
+
+.photoContainer a:hover 
+{
+	text-decoration: none;
+}
+
+.DespatchDataTable td a
+{
+	font-family:Arial;
+	font-weight:bold;
+	color:#003366;
+}
+
+.DespatchDataTable td
+{
+	padding: 2px;
+	margin: 1px;
+	font-size: 0.9em;
+	
+}
+.DespatchDataTable tr.Unallocated
+{
+	color:red;
+	
+}
+.DespatchDataTable tr.Allocated
+{
+	color:orange;
+	
+}
+.DespatchDataTable tr.Accepted
+{
+	color:green;
+	
+	
+}
+.DespatchDataTable tr.EnRoute
+{
+	color:green;
+	
+}
+.DespatchDataTable tr.InProgress
+{
+	color:green;
+	
+}
+
+.DespatchDataTable tr.Active
+{
+	
+}
+
+.DespatchDataTable tr.Active td
+{
+	font-size:10pt;
+	font-weight:bold;
+	
+}
+
+.DespatchDataTable tr.Normal
+{
+	background-color:blue;
+	
+}    
+
+.DespatchAdmin
+{
+	width: 180px; 
+	padding: 0px; 
+	border: 1px solid #7C9CBD; 
+	
+}
+
+
+/****PANIC****/
+
+.Despatch_Panic
+{
+	background-color:Red;
+	color:White;
+	text-align:center;
+}
+
+.Despatch_Panic a:hover
+{
+	color:Black;
+}
+
+
+/**********New Vehicle Admin**********/
+.vehAdmin
+{
+	font-size: 10pt;
+	font-family: Verdana, Arial, Sans-Serif;
+	margin: 0px;
+	padding: 0px;
+	height: 100%;
+	color: #003366;
+}
+
+/**********GoDrive Job details Menu Bar**********/
+
+.hide
+{
+	display: none;
+}
+
+.fieldTitle
+{
+	font-family: Sans-Serif;
+	font-size: 13px;
+	font-weight: bold;
+}
+
+.fieldValue
+{
+	font-family: Sans-Serif;
+	font-size: 13px;
+	font-weight: bold;
+}
+
+/*Credits: By Santosh Setty (http://webdesigninfo.wordpress.com) */
+/*Posted to: Dynamic Drive CSS Library (http://www.dynamicdrive.com/style/) */
+
+.glossymenu{
+	position: relative;
+	padding: 0 0 0 34px;
+	margin: 0 auto 0 auto;
+	background: url(menub_bg.gif) repeat-x; /*tab background image path*/
+	height: 46px;
+	list-style: none;
+}
+
+.glossymenu li{
+	float:left;
+}
+
+.glossymenu li a{
+	float: left;
+	display: block;
+	color:#000;
+	text-decoration: none;
+	font-family: sans-serif;
+	font-size: 13px;
+	font-weight: bold;
+	padding:0 0 0 16px; /*Padding to accomodate left tab image. Do not change*/
+	height: 46px;
+	line-height: 46px;
+	text-align: center;
+	cursor: pointer;	
+}
+
+.glossymenu li a b{
+	float: left;
+	display: block;
+	padding: 0 24px 0 8px; /*Padding of menu items*/
+}
+
+.glossymenu li.current a, .glossymenu li a:hover{
+	color: #fff;
+	background: url(menub_hover_left.gif) no-repeat; /*left tab image path*/
+	background-position: left;
+}
+
+.glossymenu li.current a b, .glossymenu li a:hover b{
+	color: #fff;
+	background: url(menub_hover_right.gif) no-repeat right top; /*right tab image path*/
+}
+
+ .pg-normal {
+	color: black;
+	font-weight: normal;
+	text-decoration: none;
+	cursor: pointer;
+}
+
+ .pg-selected {
+	color: black;
+	font-weight: bold;
+	text-decoration: underline;
+	cursor: pointer;
+}
+
+
+/* the overlayed element */
+.simple_overlay {
+ 
+ /* must be initially hidden */
+ display:none;
+ 
+ /* place overlay on top of other elements */
+ z-index:10000;
+ 
+ /* styling */
+ background-color:#333;
+ 
+ width:750px; 
+ border:1px solid #666;
+ max-height: 800px;
+ 
+ /* CSS3 styling for latest browsers */
+ -moz-box-shadow:0 0 90px 5px #000;
+ -webkit-box-shadow: 0 0 90px #000; 
+}
+
+/* close button positioned on upper right corner */
+.simple_overlay .close {
+ background-image:url(close.png);
+ position:absolute;
+ right:-15px;
+ top:-15px;
+ cursor:pointer;
+ height:35px;
+ width:35px;
+}
+
+ .content {
+	background: url(./images/MainBackground.png);
+	height:100%;
+}
+
+ .contentWrapper {
+	background: url(./images/MainBackground.png);
+	height:100%;
+}
+
+
+/* the overlayed element */
+.simple_overlay2 {
+ 
+ /* must be initially hidden */
+ display:none;
+ 
+ /* place overlay on top of other elements */
+ z-index:10000;
+ 
+ /* styling */
+ background-color:#333;
+ 
+ background: url(./images/MainBackground.png);
+ width:500px; 
+ max-height:550px;
+ border:1px solid #666;
+ padding: 50px;
+ 
+ /* CSS3 styling for latest browsers */
+ -moz-box-shadow:0 0 90px 5px #000;
+ -webkit-box-shadow: 0 0 90px #000; 
+}
+
+/* close button positioned on upper right corner */
+.simple_overlay2 .close {
+ background-image:url(close.png);
+ position:absolute;
+ right:-15px;
+ top:-15px;
+ cursor:pointer;
+ height:35px;
+ width:35px;
+}
+
+/* ----------- */
+/* Driver Score Screen (<table> */
+/* ----------- */
+.hiddenData
+{
+	display: none;
+}
+.driverScore 
+{
+	width: 100%;
+	padding: 0px;
+	margin: 0px;
+	font-size: 0.9em;
+	border: 0;
+	text-align:center;
+}
+
+.driverScore tbody
+{
+	width: 100%;
+}
+
+.driverScore th
+{
+	font-size:large;
+	background-color: #98B3EF;
+	text-align:center;
+	border-right:solid 1px silver;
+}
+
+.driverScore a
+{
+	text-decoration: none;
+	border: none;
+	
+}
+
+.driverScore a img
+{
+	text-decoration: none;
+	border: none;
+}
+
+.driverScore img
+{
+	text-decoration: none;
+	border: none;
+}
+
+.driverScore td
+{
+	padding: 0px;
+	margin: 0px;
+	border-right:solid 1px silver;
+	font-size: large;
+}
+
+.driverScore td.highlight
+{
+	background-color: #808080;
+	background-image: url("scoreBackground.png");
+	background-repeat: no-repeat;
+	background-position: center;
+}
+
+.driverScore td.highlight-nb
+{
+	background-image: url("scoreBackground.png");
+	background-repeat: no-repeat;
+	background-position: center ;
+}
+
+.driverScore td.max
+{
+	background-image: url("maxArrow.png");
+	background-repeat: no-repeat;
+	background-position: left;
+}
+
+.driverScore td.highlightScore
+{
+	background-color: #98B3EF;
+	font-size: xx-large;
+}
